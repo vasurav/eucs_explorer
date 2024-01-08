@@ -133,6 +133,8 @@ function(input, output, session) {
                   list(paging = F, 
                        info = F,
                        scrollY = scrollY,
+                       sScrollX =  "100%",
+                       scrollCollapse = T,
                        columnDefs = list(list(className = 'dt-left', targets = "_all"))
                   )
       )
