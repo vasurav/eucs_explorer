@@ -39,8 +39,8 @@ function(input, output, session) {
   
   output$season_games_table <- renderDT({
     game_data_filtered() %>% 
-      mutate(Game = paste0(Team_1, ":", Score_1, " - ", 
-                           Team_2, ":", Score_2)) %>% 
+      mutate(Game = paste0(Team_1, " vs. ", Team_2, " : ", 
+                           Score_1, "-", Score_2)) %>% 
       mutate(Game_Rating_Diff = Game_Rank_Diff_USAU %>% round(2),
              Team_Rating_Diff = Team_Rank_Diff_USAU %>% round(2)) %>% 
       select(Tournament, Date, 
