@@ -5,26 +5,24 @@ This explanation is based on these sources:
 - [USAU Algorithm (scroll below the initial table)](https://play.usaultimate.org/teams/events/rankings/)
 - [Frisbee-Rankings.com - Blowout Explained](https://www.frisbee-rankings.com/blowout-rule)
 
-The only major difference between the EUCS implementation of the algorithm is that USAU includes a recency bias, which weights games at the end of the season more than games at the beginning of the season. In the EUCS implementation, weighting does not consider recency, so games are weighed equally regardless of when they occur.
+The only major difference between the EUCS implementation of the algorithm is that USAU includes a recency bias which weighs games at the end of the season more than games at the beginning of the season. In the EUCS implementation, weighting does not consider recency, so games are weighed equally regardless of when they occur.
 
 ## The Algorithm
 Each game played earns the team a rating. The rating of a team is the average rating of all the games played.
 
 ### How to Calculate a Rating for a Game
-The rating is calculated by taking the rating of the opponent and then adding or subtracting a differential based on the score difference of the game. You add the differential if you win the game and subtract the differential if you lose the game. The rating for the score difference is calculated below:
+The rating is calculated by taking the rating of the opponent and then adding or subtracting a differential based on the score difference of the game. You add the differential if you win the game and subtract the differential if you lose the game. The rating difference is calculated with this formula:
 
 $$125+475\frac{\sin{\left(\min{\left(1, \frac{1-r}{0.5}\right)}\cdot 0.4 \pi\right)} }{\sin{\left(0.4 \pi\right)}}$$
 
 $$r=\frac{losing score}{winning score-1} $$
 
-This the following important properties:
+This formula has the following important properties:
 
-- each additional goal is worth more when games are close than when they are not;
-- every game decided by one point gets the same differential of 125, no matter the game total;
-- the maximum differential can be is 600;
-- a game earns the maximum differential if and only if the winning score is more than twice the losing score.
-
-See plot and tables showing the rating difference below.
+- Each additional goal is worth more when games are close than when they are not
+- Every game decided by one point gets the same differential of 125, no matter the game total
+- The maximum differential can be is 600
+- A game earns the maximum differential if and only if the winning score is more than twice the losing score
 
 So as an example if you beat a team with a rating of 1302 15-14, you would earn a game rating for that game of 1302 + 125 = 1427. If you would lose to the same team 14-15 you would earn a game rating of 1302 - 125 = 1177.
 
@@ -35,7 +33,7 @@ The weight function is given below:
 
 $$\min{\left( 1, \sqrt{\frac{W + \max{\left( L, \left| \left(W-1 \right)/2 \right| \right)}}{19}}\right)}$$
 
-- All games that go to at least 13 are counted fully
+- All games where the winning team scores at least 13 are counted fully
 - Games that reach a minimum combined score of 19 points are counted fully
 - Other games are weighted less
 
@@ -45,15 +43,13 @@ The calculion for the rating of a team is done iteratively. Every team starts wi
 ### Blowout Rule
 The maximum rating difference that can be achieved is 600 points. So what happens if you play a team that is 600 points below you? Doesn't that mean that no matter what you will reduce your rating even if you beat them 15-0?
 
-Yes this is true, to deal with this there is a blowout rule. blowout games are not counted for either the winning or losing team if *ALL* of the following conditions are met:
+Yes this is true. To deal with this there is a blowout rule. blowout games are not counted for either the winning or losing team if ***ALL*** of the following conditions are met:
 
 - The winning team is has a rating of 600 or more points higher than the losing team
-- The winning team wins by *more than* twice the score of the losing team + 1
+- The winning team wins by ***more than*** twice the score of the losing team + 1
 - The winning team has at least 5 other results where results are not being ignored. If removing multiple games would bring the winning team below 5 games (for example, 5 blowout elgible wins in 8 total games), then the first games removed are the ones that hurt the winning team the most.
 
-Again, this only counts if *ALL* of the above conditions are met.
-
-### Source Code
+## Source Code
 To be completely transparent, the source code for the ranking calculation and producing the visualizations on this webpage are avialable to the public:
 
 - [Ranking Algorithm](https://github.com/Berenito/Ranking).
