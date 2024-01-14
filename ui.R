@@ -14,16 +14,19 @@ function(reqest){
         "nav-link-font-size" = "25px",
         "nav-link-font-weight" = "normal",
         "nav-text-color" = "#fc0 !important",
-        "nav-link-hover-color" = "#FC0 !important",
+        "nav-link-hover-color" = "#fc0 !important",
         base_font = font_google("Bebas Neue")
       ),
     tags$style(".datatables td {padding-top: 1px; padding-bottom: 1px;}"),
-    tags$style(".nav-tabs .nav-link {color: #000000; font-size: 18px;}"),
+    tags$style(".nav-tabs .nav-link {color: #000000; font-size: 18px;}",
+               ".nav-tabs .nav-link:hover {color: #ddaa00; font-size: 18px;}"),
+    tags$style(".card-body a {color: #000000}",
+               ".card-body a:hover {color: #ddaa00}"),
     
     # Title
     title=img(
       src = "European_Ultimate_Federation_EUF_Logo.png",
-      height = 80
+      height = 60
     ),
     window_title = "EUCS Explorer",
     
