@@ -5,12 +5,10 @@ season_nav_panel <-
       tabsetPanel(
         tabPanel(
           title = "Ranking",
-          #tags$style("#season_ranking_table td {padding-top: 1px; padding-left:5px, padding-right:5px;padding-bottom: 1px;}"),
           DTOutput("season_ranking_table")
         ),
         tabPanel(
           title = "Games",
-          #tags$style("#season_games_table td {padding-top: 1px; padding-left:5px, padding-right:5px;padding-bottom: 1px;}"),
           DTOutput("season_games_table")
         )
       )
@@ -23,23 +21,35 @@ team_nav_panel <-
     uiOutput("team_selector"),
     layout_columns(
       widths = 1/5, fill = F, fillable = F,
-      value_box(title = "Rank", 
+      value_box(title = 
+                  card_title("Rank"), 
                 showcase=bs_icon("reception-4"), 
-                value = textOutput("team_rank"), 
+                value = textOutput("team_rank"),
                 theme="primary"),
-      value_box(title = "Rating", 
+      value_box(title = 
+                  card_title("Rating"), 
                 showcase=bs_icon("heart-half"), 
                 value = textOutput("team_rating"), 
                 theme="primary"),
-      value_box(title = "Record", 
+      value_box(title = 
+                  card_title("Record"), 
                 showcase=bs_icon("rulers"), 
                 value = textOutput("team_record"), 
                 theme="primary"),
-      value_box(title = "Strenght of Schedule", 
+      value_box(title = 
+                  card_title("Strenght of Schedule",
+                             tooltip(bs_icon("info-circle"),
+                                     "Average rating of opponent.")), 
                 showcase=bs_icon("lightning-fill"), 
                 value = textOutput("team_strength_of_schedule"), 
                 theme="primary"),
-      value_box(title = "Distance from EUCF",
+      value_box(title = 
+                  card_title("To EUCF",
+                             tooltip(
+                               bs_icon("info-circle"),
+                               "If positive: number of rating points needed to qualify for the EUCF.
+                               If negative: the amount of points the team can lose and still qualify for the EUCF."
+                             )),
                 showcase=bs_icon("ladder"),
                 value= textOutput("distance_from_eucf_cutoff_rating"),
                 theme = "primary")
@@ -48,7 +58,6 @@ team_nav_panel <-
       tabsetPanel(
         tabPanel(
           "Games",
-          tags$style("#team_games_table td {padding-top: 1px; padding-left:5px, padding-right:5px;padding-bottom: 1px;}"),
           DTOutput("team_games_table")
         ),
         tabPanel(
