@@ -20,7 +20,7 @@ read_all_output_data_filetype <- function(path, filetype, FUN = read_output_data
 
 # Read output data from the EUCS Algorithm
 read_output_data <- function(path){
-  read_csv(path) %>% 
+  read_csv(path, show_col_types = F) %>% 
     label_output_data(path)
 }
 
