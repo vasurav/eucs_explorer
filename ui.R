@@ -17,6 +17,8 @@ function(reqest){
         "nav-link-hover-color" = "#FC0 !important",
         base_font = font_google("Bebas Neue")
       ),
+    tags$style(".datatables td {padding-top: 1px; padding-bottom: 1px;}"),
+    tags$style(".nav-tabs .nav-link {color: #000000; font-size: 18px;}"),
     
     # Title
     title=img(

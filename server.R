@@ -67,7 +67,7 @@ function(input, output, session) {
                                   Opponent_Rating + Game_Rank_Diff_USAU, 
                                   Opponent_Rating - Game_Rank_Diff_USAU) %>% 
                round(2)) %>% 
-      mutate(Counted = ifelse(Is_Ignored_Windmill, "No", "Yes"))
+      mutate(Counted = ifelse(Is_Ignored_USAU, "No", "Yes"))
   })
   
   output$team_selector <- renderUI({
@@ -133,6 +133,8 @@ function(input, output, session) {
                   list(paging = F, 
                        info = F,
                        scrollY = scrollY,
+                       sScrollX =  "100%",
+                       scrollCollapse = T,
                        columnDefs = list(list(className = 'dt-left', targets = "_all"))
                   )
       )
