@@ -118,7 +118,7 @@ function(input, output, session) {
     team_summary_data() %>% 
       select(Tournament, Date, Opponent, Result, Score, Game_Rating, Opponent_Rating, Counted) %>% 
       arrange(desc(Date)) %>% 
-      format_DT(scrollY = "45VH")
+      format_DT(scrollY = "40VH")
   })
   
   

@@ -45,7 +45,19 @@ team_nav_panel <-
                 theme = "primary")
     ),
     
-    card(title = card_title("Games"),
-         tags$style("#team_games_table td {padding-top: 1px; padding-left:5px, padding-right:5px;padding-bottom: 1px;}"),
-         DTOutput("team_games_table"))
+    card(
+      tabsetPanel(
+        tabPanel(
+          "Games",
+          tags$style("#team_games_table td {padding-top: 1px; padding-left:5px, padding-right:5px;padding-bottom: 1px;}"),
+          DTOutput("team_games_table")
+        ),
+        tabPanel(
+          "Roster"
+        ),
+        tabPanel(
+          "Ranking Evolution"
+        )
+      )
+    )
   )
