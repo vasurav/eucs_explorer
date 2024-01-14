@@ -1,3 +1,5 @@
+source("algorithm_explainer.R")
+
 function(input, output, session) {
   # Game Data functions
   game_data_filtered <- reactive({
@@ -139,4 +141,14 @@ function(input, output, session) {
                   )
       )
   }
+  
+  
+  # Algorithm explainer functions
+  output$algo_point_diff_plot <- renderPlotly({
+    algo_point_diff_plot()
+  })
+  
+  output$weight_point_diff_plot <- renderPlotly({
+    weight_point_diff_plot()
+  })
 }

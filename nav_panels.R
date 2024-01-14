@@ -69,3 +69,34 @@ team_nav_panel <-
       )
     )
   )
+
+algo_nav_panel <- 
+  nav_panel(
+    title = "Algorithm",
+    layout_column_wrap(
+      card(
+        withMathJax(includeMarkdown("algorithm_explainer.qmd"))),
+      card(
+        navset_card_tab(
+          nav(
+            "Rating - Plot",
+            plotlyOutput("algo_point_diff_plot")
+          ),
+          nav(
+            "Rating-Table",
+            "Sample Text"
+          )
+          ),
+        navset_card_tab(
+          nav(
+            "Weight - Plot",
+            plotlyOutput("weight_point_diff_plot")
+          ),
+          nav(
+            "Weight - Table",
+            "Sample Text"
+          )
+        )
+      )
+    )
+  )

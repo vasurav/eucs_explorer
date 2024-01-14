@@ -40,6 +40,7 @@ function(reqest){
     # Actual Content
     season_nav_panel,
     team_nav_panel,
+    algo_nav_panel,
     
     # This spacer puts the socials on the right side of the screen
     nav_spacer(),
