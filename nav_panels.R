@@ -44,8 +44,6 @@ team_nav_panel <-
                 value= textOutput("distance_from_eucf_cutoff_rating"),
                 theme = "primary")
     ),
-    
-<<<<<<< HEAD
     card(
       tabsetPanel(
         tabPanel(
@@ -61,9 +59,4 @@ team_nav_panel <-
         )
       )
     )
-=======
-    card(title = card_title("Games"),
-         #tags$style("#team_games_table td {padding-top: 1px; padding-left:5px, padding-right:5px;padding-bottom: 1px;}"),
-         DTOutput("team_games_table"))
->>>>>>> ceda38ff562506a04937b6655eb70ebd6af55f74
   )
