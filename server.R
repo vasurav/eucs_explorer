@@ -103,19 +103,30 @@ function(input, output, session) {
     eucf_cutoff_rating() - ranking_row()$Rating_USAU
   })
   
-  output$team_rank <- renderText(ranking_row()$Ranking)
-  output$team_rating <- renderText(ranking_row()$Rating_USAU)
+  output$team_rank <- renderText({
+    req(input$team)
+    ranking_row()$Ranking
+    })
+  output$team_rating <- renderText({
+    req(input$team)
+    ranking_row()$Rating_USAU
+    })
   output$team_record <- renderText({
+    req(input$team)
     paste0(ranking_row()$Wins, " - ", ranking_row()$Losses)
   })
   output$team_strength_of_schedule <- renderText({
+    req(input$team)
     team_summary_data() %>% 
       filter(Counted == "Yes") %>% 
       pull(Opponent_Rating) %>% 
       mean() %>% round(2)
   })
   output$distance_from_eucf_cutoff_rating <- 
-    renderText(team_distance_from_eucf_cutoff_rating())
+    renderText({
+      req(input$team)
+      team_distance_from_eucf_cutoff_rating()
+      })
   
   output$team_games_table <- renderDT({
     req(input$team)
