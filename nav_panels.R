@@ -78,23 +78,25 @@ algo_nav_panel <-
         withMathJax(includeMarkdown("algorithm_explainer.qmd"))),
       card(
         navset_card_tab(
-          nav(
+          full_screen = T,
+          nav_panel(
             "Rating - Plot",
-            plotlyOutput("algo_point_diff_plot")
+            plotlyOutput("rating_point_diff_plot")
           ),
-          nav(
+          nav_panel(
             "Rating-Table",
-            "Sample Text"
+            DTOutput("rating_point_diff_dt")
           )
           ),
         navset_card_tab(
-          nav(
+          full_screen = T,
+          nav_panel(
             "Weight - Plot",
             plotlyOutput("weight_point_diff_plot")
           ),
-          nav(
+          nav_panel(
             "Weight - Table",
-            "Sample Text"
+            DTOutput("weight_point_diff_dt")
           )
         )
       )

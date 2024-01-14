@@ -123,11 +123,8 @@ function(input, output, session) {
       format_DT(scrollY = "40VH")
   })
   
-  
-  
-  
   # General Formatting Functions
-  format_DT <- function(table, scrollY = "60VH", rownames = F)
+  format_DT <- function(table, scrollY = "60VH", rownames = F, searching=T)
   {
     table %>% 
       datatable(rownames = rownames,
@@ -136,6 +133,7 @@ function(input, output, session) {
                        info = F,
                        scrollY = scrollY,
                        sScrollX =  "100%",
+                       searching = searching,
                        scrollCollapse = T,
                        columnDefs = list(list(className = 'dt-left', targets = "_all"))
                   )
@@ -144,11 +142,21 @@ function(input, output, session) {
   
   
   # Algorithm explainer functions
-  output$algo_point_diff_plot <- renderPlotly({
-    algo_point_diff_plot()
+  output$rating_point_diff_plot <- renderPlotly({
+    rating_point_diff_plot()
   })
   
   output$weight_point_diff_plot <- renderPlotly({
     weight_point_diff_plot()
+  })
+  
+  output$rating_point_diff_dt <- renderDT({
+    rating_point_diff() %>%  select(-score_difference) %>% 
+      format_DT(scrollY = "20VH", searching=F)
+  })
+  
+  output$weight_point_diff_dt <- renderDT({
+    weight_point_diff() %>% select(-score_difference) %>% 
+      format_DT(scrollY = "20VH", searching=F)
   })
 }

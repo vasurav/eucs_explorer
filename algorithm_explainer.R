@@ -1,28 +1,52 @@
-calc_ranking <- function(score_winner, score_loser)
+# Create the scoring Tibble
+create_score_tibble <- function(score_winner = 15:2, score_loser = 14:0)
+{
+  expand_grid(score_winner = score_winner, score_loser = score_loser) %>% 
+    filter(score_winner > score_loser) %>% 
+    mutate(score_difference = score_winner - score_loser)
+}
+
+# Plot something based on Point Diff
+point_diff_plot <- function(df,
+                            x_variable = "score_difference", 
+                            y_variable = "rating_difference", 
+                            color_variable = "score_winner",
+                            label_variable = "score_loser")
+{
+  df %>% 
+    ggplot(aes(x=!!sym(x_variable), 
+               y=!!sym(y_variable), 
+               color=!!sym(color_variable),
+               label = !!sym(label_variable))) +
+    geom_point() + 
+    geom_line()
+}
+
+
+# Functions for the Rating
+calc_rating <- function(score_winner, score_loser)
 {
   r <- score_loser/(score_winner - 1)
   
   round(125 + 475*(sin(min(1, (1-r)*2)*0.4*pi))/sin(0.4*pi),2)
 }
 
-algo_point_diff_plot <- function()
+rating_point_diff <- function()
 {
-  expand_grid(score_winner = c(15,13,11,9), score_loser = 14:0) %>% 
-    filter(score_winner > score_loser) %>% 
-    mutate(score_difference = score_winner - score_loser,
-           rating_difference = mapply(calc_ranking, 
-                                    score_winner = score_winner, 
-                                    score_loser = score_loser)) %>% 
-    mutate(score_winner = as_factor(score_winner)) %>% 
-    ggplot(aes(x=score_difference, 
-               y=rating_difference, 
-               color=score_winner,
-               label = score_loser)) +
-    geom_point() + 
-    geom_line()
+  create_score_tibble() %>% 
+    mutate(rating_difference = mapply(calc_rating, 
+                                      score_winner = score_winner, 
+                                      score_loser = score_loser))
 }
 
+rating_point_diff_plot <- function()
+{
+  rating_point_diff() %>% 
+    mutate(score_winner = as_factor(score_winner)) %>% 
+    point_diff_plot()
+}
 
+# Functions for the Weight
 calc_weight <- function(score_winner, score_loser)
 {
   min(
@@ -37,19 +61,17 @@ calc_weight <- function(score_winner, score_loser)
     round(2)
 }
 
+weight_point_diff <- function()
+{
+  create_score_tibble() %>% 
+    mutate(weight = mapply(calc_weight, 
+                           score_winner = score_winner, 
+                           score_loser = score_loser))
+}
+
 weight_point_diff_plot <- function()
 {
-  expand_grid(score_winner = c(15:5), score_loser = 14:0) %>% 
-    filter(score_winner > score_loser) %>% 
-    mutate(score_difference = score_winner - score_loser,
-           weight = mapply(calc_weight, 
-                           score_winner = score_winner, 
-                           score_loser = score_loser)) %>% 
+  weight_point_diff() %>% 
     mutate(score_winner = as_factor(score_winner)) %>% 
-    ggplot(aes(x=score_difference, 
-               y=weight, 
-               color=score_winner,
-               label = score_loser)) +
-    geom_point() + 
-    geom_line()
+    point_diff_plot(y_variable = "weight")
 }
