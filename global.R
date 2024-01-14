@@ -6,6 +6,7 @@ library(thematic)
 library(DT)
 library(bslib)
 library(bsicons)
+library(markdown)
 theme_set(theme_minimal())
 source("read_data.R")
 
