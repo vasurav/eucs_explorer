@@ -14,5 +14,5 @@ thematic_shiny(font = "auto")
 enableBookmarking("url")
 
 # Read Data
-game_data <- read_all_game_data("demo_data/output_3/")
-summary_data <- read_all_summary_data("demo_data/output_3/")
+game_data <- read_all_game_data("demo_data/output_demo_2023/")
+summary_data <- read_all_summary_data("demo_data/output_demo_2023/")
