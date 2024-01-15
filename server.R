@@ -130,6 +130,7 @@ function(input, output, session) {
   {
     table %>% 
       datatable(rownames = rownames,
+                selection = "single",
                 options = 
                   list(paging = F, 
                        info = F,
