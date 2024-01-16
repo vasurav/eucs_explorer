@@ -2,12 +2,12 @@ season_nav_panel <-
   nav_panel(
     title = "Season",
     card(
-      tabsetPanel(
-        tabPanel(
+      navset_card_tab(
+        nav_panel(
           title = "Ranking",
           DTOutput("season_ranking_table")
         ),
-        tabPanel(
+        nav_panel(
           title = "Games",
           DTOutput("season_games_table")
         )
@@ -55,15 +55,15 @@ team_nav_panel <-
                 theme = "primary")
     ),
     card(
-      tabsetPanel(
-        tabPanel(
+      navset_card_tab(
+        nav_panel(
           "Games",
           DTOutput("team_games_table")
         ),
-        tabPanel(
+        nav_panel(
           "Roster"
         ),
-        tabPanel(
+        nav_panel(
           "Ranking Evolution"
         )
       )
