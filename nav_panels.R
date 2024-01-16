@@ -1,16 +1,14 @@
 season_nav_panel <- 
   nav_panel(
     title = "Season",
-    card(
-      navset_card_tab(
-        nav_panel(
-          title = "Ranking",
-          DTOutput("season_ranking_table")
-        ),
-        nav_panel(
-          title = "Games",
-          DTOutput("season_games_table")
-        )
+    navset_card_tab(
+      nav_panel(
+        title = "Ranking",
+        DTOutput("season_ranking_table")
+      ),
+      nav_panel(
+        title = "Games",
+        DTOutput("season_games_table")
       )
     )
   )
@@ -54,18 +52,16 @@ team_nav_panel <-
                 value= textOutput("distance_from_eucf_cutoff_rating"),
                 theme = "primary")
     ),
-    card(
-      navset_card_tab(
-        nav_panel(
-          "Games",
-          DTOutput("team_games_table")
-        ),
-        nav_panel(
-          "Roster"
-        ),
-        nav_panel(
-          "Ranking Evolution"
-        )
+    navset_card_tab(
+      nav_panel(
+        "Games",
+        DTOutput("team_games_table")
+      ),
+      nav_panel(
+        "Roster"
+      ),
+      nav_panel(
+        "Ranking Evolution"
       )
     )
   )
@@ -79,23 +75,25 @@ algo_nav_panel <-
       card(
         navset_card_tab(
           full_screen = T,
+          title = "Rating",
           nav_panel(
-            "Rating - Plot",
+            "Plot",
             plotlyOutput("rating_point_diff_plot")
           ),
           nav_panel(
-            "Rating-Table",
+            "Table",
             DTOutput("rating_point_diff_dt")
           )
           ),
         navset_card_tab(
           full_screen = T,
+          title = "Weight",
           nav_panel(
-            "Weight - Plot",
+            "Plot",
             plotlyOutput("weight_point_diff_plot")
           ),
           nav_panel(
-            "Weight - Table",
+            "Table",
             DTOutput("weight_point_diff_dt")
           )
         )
