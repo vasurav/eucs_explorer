@@ -62,7 +62,9 @@ function(input, output, session) {
              Opponent          = if_else(Team_1 == input$team, Team_2, Team_1),
              Score_Opponent    = if_else(Team_1 == input$team, Score_2, Score_1),
              Score             = paste0(Score_Team, " - ", Score_Opponent),
-             Result            = if_else(Score_Team >= Score_Opponent, "Win", "Loss")) %>% 
+             Result            = case_when(Score_Team > Score_Opponent ~ "Win", 
+                                           Score_Team < Score_Opponent ~ "Loss",
+                                           Score_Team == Score_Opponent ~ "Draw")) %>% 
       left_join(summary_data_filtered() %>% 
                   select(Team, Rating_USAU),
                 by = c("Opponent"="Team")) %>% 
