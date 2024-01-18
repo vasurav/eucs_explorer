@@ -66,6 +66,15 @@ team_nav_panel <-
     )
   )
 
+matchup_nav_panel <- 
+  nav_panel(
+    title = "Matchup",
+    layout_column_wrap(
+      uiOutput("matchup_team_1"),
+      uiOutput("matchup_team_2")
+    )
+  )
+
 algo_nav_panel <- 
   nav_panel(
     title = "Algorithm",

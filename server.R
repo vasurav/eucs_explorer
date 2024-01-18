@@ -52,7 +52,6 @@ function(input, output, session) {
   })
   
   #Functions for Team Tab
-  
   team_summary_data <- reactive({
     req(input$team)
     game_data_filtered() %>% 
@@ -136,6 +135,27 @@ function(input, output, session) {
       arrange(desc(Date)) %>% 
       format_DT(scrollY = "40VH")
   })
+  
+  # Functions for Matchup Tab
+  output$matchup_team_1 <- renderUI({
+    select_matchup_team(1)
+  })
+  
+  output$matchup_team_2 <- renderUI({
+    select_matchup_team(2)
+  })
+  
+  select_matchup_team <- function(team_number)
+  {
+    teams <- summary_data_filtered() %>% 
+      pull(Team) %>% sort()
+    
+    selectInput(paste0("matchup_team_",team_number), 
+                label = paste0("Team ",team_number),
+                choices = teams, 
+                selected = teams[team_number],
+                width="100%")
+  }
   
   # General Formatting Functions
   format_DT <- function(table, scrollY = "60VH", rownames = F, searching=T)
