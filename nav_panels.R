@@ -90,6 +90,7 @@ matchup_nav_panel <-
                 theme = "primary"),
       ),
     card(
+      card_title("Mutual Games"),
       DTOutput("matchup_mutual_games")
     )
   )
