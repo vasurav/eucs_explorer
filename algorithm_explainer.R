@@ -31,6 +31,26 @@ calc_rating <- function(score_winner, score_loser)
   round(125 + 475*(sin(min(1, (1-r)*2)*0.4*pi))/sin(0.4*pi),2)
 }
 
+calc_rating_score_diff <- function(score_diff, score_winner = 15)
+{
+  calc_rating(score_winner, score_winner - score_diff)
+}
+
+calc_score_diff_rating_diff <- function(rating_diff, score_winner = 15)
+{
+  rating_point_diff() %>% 
+    filter(score_winner == 15) %>% 
+    filter(score_difference <= 8) %>%
+    add_row(score_difference = 0, rating_difference = 0) %>% 
+    add_row(rating_difference = abs(rating_diff)) %>% 
+    mutate(score_diff_predict = coalesce(score_difference, 
+                                         predict(lm(score_difference~rating_difference),
+                                                 across(score_difference)))) %>% 
+    filter(rating_difference == abs(rating_diff)) %>% 
+    pull(score_diff_predict) %>% 
+    `[[`(1)
+}
+
 rating_point_diff <- function()
 {
   create_score_tibble() %>% 

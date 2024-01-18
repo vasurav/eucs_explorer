@@ -69,9 +69,28 @@ team_nav_panel <-
 matchup_nav_panel <- 
   nav_panel(
     title = "Matchup",
-    layout_column_wrap(
+    layout_columns(
+      fill = F, fillable = F,
       uiOutput("matchup_team_1"),
       uiOutput("matchup_team_2")
+    ),
+    layout_columns(
+      widths = 1/2,
+      fill = F, fillable = F,
+      value_box(title = card_title("Rating Difference"),
+                value = textOutput("matchup_rating_diff"),
+                showcase = bs_icon("clipboard-heart"),
+                theme = "primary"),
+      value_box(title = card_title("Expected Score",
+                                   tooltip(bs_icon("info-circle"),
+                                           "Games of 15-7 to 15-0 are counted equally in the algorithm. 
+                                           Therefore, any time there is a rating difference of more than 600, the expected outcome is a blowout, but the exact score cannot be predicted.")),
+                value = textOutput("matchup_expected_score"),
+                showcase = bs_icon("clipboard-data"),
+                theme = "primary"),
+      ),
+    card(
+      DTOutput("matchup_mutual_games")
     )
   )
 

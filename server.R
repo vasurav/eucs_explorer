@@ -151,10 +151,59 @@ function(input, output, session) {
       pull(Team) %>% sort()
     
     selectInput(paste0("matchup_team_",team_number), 
-                label = paste0("Team ",team_number),
+                label = NULL,
                 choices = teams, 
                 selected = teams[team_number],
                 width="100%")
+  }
+  
+  output$matchup_rating_diff <- renderText({
+    req(input$matchup_team_1, input$matchup_team_2)
+    
+    matchup_rating_diff()
+  })
+  
+  output$matchup_expected_score <- renderText({
+    req(input$matchup_team_1, input$matchup_team_2)
+    
+    rating_diff <- matchup_rating_diff()
+    
+    score_diff = calc_score_diff_rating_diff(rating_diff) %>% 
+      round(2)
+    
+    case_when(
+      abs(rating_diff) > 600 ~ "Blowout",
+      rating_diff == 0 ~ "Draw",
+      rating_diff < 0 ~ paste0((15 - score_diff), " - 15"),
+      .default = paste0("15 - ", (15 - score_diff))
+    )
+  })
+  
+  output$matchup_mutual_games <- renderDT({
+    req(input$matchup_team_1, input$matchup_team_2)
+    game_data_filtered() %>% 
+      filter(
+        (Team_1 == input$matchup_team_1 & Team_2 == input$matchup_team_2) | 
+          (Team_1 == input$matchup_team_2 & Team_2 == input$matchup_team_1)
+      ) %>%  
+      mutate(Score = ifelse(Team_1 == input$matchup_team_1,
+                            paste0(Score_1, " - ", Score_2),
+                            paste0(Score_2, " - ", Score_1))) %>% 
+      mutate(Rating_Difference = Game_Rank_Diff_USAU %>% round(2)) %>% 
+      mutate(Counted = ifelse(Is_Ignored_USAU, "No", "Yes")) %>% 
+      select(Tournament, Date, Score, Rating_Difference, Counted) %>% 
+      format_DT
+  })
+  
+  
+  matchup_rating_diff <- function()
+  {
+    (summary_data %>% 
+      filter(Team == input$matchup_team_1) %>% 
+      pull(Rating_USAU)) - 
+      (summary_data %>% 
+      filter(Team == input$matchup_team_2) %>% 
+      pull(Rating_USAU))
   }
   
   # General Formatting Functions
