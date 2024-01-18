@@ -8,7 +8,7 @@ This explanation is based on these sources:
 There are two major differences in the EUCS implementation of the USAU algorithm.
 
 1.  USAU includes a recency bias, which weighs games at the end of the season more than games at the beginning of the season. In the EUCS implementation, weighting does not consider recency, so games are weighed equally regardless of when they occur.
-1.  USAU starts everyone with a rating of 1000, so scores are typically between 0 and 2000. In the EUCS implementation everyone starts with a score of 0, so typical scores are between -1000 and 1000. If you want an equivalent USAU rating, add 1000 to the ranting here.
+1.  USAU starts everyone with a rating of 1000, so scores are typically between 0 and 2000. In the EUCS implementation everyone starts with a score of 0, so typical scores are between -1000 and 1000. If you want an equivalent USAU rating, add 1000 to the rating here.
 
 ## The Algorithm
 
@@ -18,7 +18,7 @@ Each game played earns the team a rating. The rating of a team is the average ra
 
 The rating is calculated by taking the rating of the opponent and then adding or subtracting a differential based on the score difference of the game. You add the differential if you win the game and subtract the differential if you lose the game. The rating for the score difference is calculated below:
 
-$$\small 125+475\frac{\sin{\left(\min{\left(1, \frac{1-r}{0.5}\right)}\cdot 0.4 \pi\right)} }{\sin{\left(0.4 \pi\right)}}$$
+$$125+475\frac{\sin{\left(\min{\left(1, \frac{1-r}{0.5}\right)}\cdot 0.4 \pi\right)} }{\sin{\left(0.4 \pi\right)}}$$
 
 $$r=\frac{losing score}{winning score-1} $$
 
@@ -29,13 +29,13 @@ This the following important properties:
 1.  The maximum a differential can be is 600.
 1.  A game earns the maximum differential if and only if the winning score is more than twice the losing score.
 
-See plot and tables showing the rating difference below.
+Plots and tables of this rating are given on this page.
 
-So as an example if you beat a team with a rating of 302 15-14, you would earn a game rating for that game of 302 + 125 = 427. If you would lose to the same team 14-15 you would earn a game rating of 302 - 125 = 177.
+As an example if you beat a team with a rating of 302 with a score of 15-14, you would earn a game rating for that game of 302 + 125 = 427. If you would lose to the same team with a score of 14-15 you would earn a game rating of 302 - 125 = 177.
 
 ### Game Weight
 
-Low scoring games are considered to be less representative than full games to 15. So games where the score doesn't reach a high value (usually due to extremely windy conditions) are weighted less.
+Low scoring games are considered to be less representative than full games to 15. So games where the score doesn't reach a high value (usually due to extreme weather conditions) are weighed less.
 
 The weight function is given below:
 
@@ -47,7 +47,7 @@ $$\min{\left( 1, \sqrt{\frac{W + \max{\left( L, \left| \left(W-1 \right)/2 \righ
 
 ### Iterative Calculation
 
-The calculion for the rating of a team is done iteratively. Every team starts with a rating of 0. Then every game is run and an average is computed. This gives a new rating. The ranking is then done again with the new ratings as starting values for each team. This is done over and over again until there is convergence (this can take thousands of iterations!)
+The calculation for the rating of a team is done iteratively. Every team starts with a rating of 0. Then every game is run and an average is computed. This gives a new rating. The ranking is then done again with the new ratings as starting values for each team. This is done over and over again until there is convergence (this can take thousands of iterations!)
 
 ### Blowout Rule
 
@@ -55,13 +55,15 @@ The maximum rating difference that can be achieved is 600 points. So what happen
 
 Yes this is true, to deal with this there is a blowout rule. blowout games are not counted for either the winning or losing team if ***ALL*** of the following conditions are met:
 
-1. The winning team is has a rating of 600 or more points higher than the losing team
-1. The winning team wins by ***more than*** twice the score of the losing team + 1
-1. The winning team has at least 5 other results where results are not being ignored. If removing multiple games would bring the winning team below 5 games (for example, 5 blowout elgible wins in 8 total games), then the first games removed are the ones that hurt the winning team the most.
+1. The winning team is has a rating of 600 or more points higher than the losing team.
+1. The winning team wins by ***more than*** twice the score of the losing team + 1.
+1. The winning team has at least 5 other results where results are not being ignored. 
+
+*Note: If removing multiple games would bring the winning team below 5 games (for example, 5 blowout elgible wins in 8 total games), then the first games removed are the ones that hurt the winning team the most.*
 
 ### Source Code
 
-To be completely transparent, the source code for the ranking calculation and producing the visualizations on this webpage are avialable to the public:
+To be completely transparent, the source code for the ranking calculation and producing the visualizations on this webpage are available to the public:
 
 -   [Ranking Algorithm](https://github.com/Berenito/Ranking)
 -   [Visualization Webpage](https://github.com/vasurav/eucs_explorer)
