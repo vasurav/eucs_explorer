@@ -44,9 +44,9 @@ team_nav_panel <-
       value_box(title = 
                   card_title("To EUCF",
                              tooltip(
-                               bs_icon("info-circle"),
-                               "If positive: number of rating points needed to qualify for the EUCF.
-                               If negative: the amount of points the team can lose and still qualify for the EUCF."
+                               bs_icon("info-circle"), options = list(html = T),
+                               HTML("If positive: number of rating points needed to qualify for the EUCF. <br>
+                               If negative: the amount of points the team can lose and still qualify for the EUCF.")
                              )),
                 showcase=bs_icon("ladder"),
                 value= textOutput("distance_from_eucf_cutoff_rating"),
@@ -82,15 +82,16 @@ matchup_nav_panel <-
                 showcase = bs_icon("clipboard-heart"),
                 theme = "primary"),
       value_box(title = card_title("Expected Score",
-                                   tooltip(bs_icon("info-circle"),
-                                           "Games of 15-7 to 15-0 are counted equally in the algorithm. 
-                                           Therefore, any time there is a rating difference of more than 600, the expected outcome is a blowout, but the exact score cannot be predicted.")),
+                                   tooltip(bs_icon("info-circle"),options = list(html = T),
+                                           HTML("Games of 15-7 to 15-0 are counted as 600 in the algorithm. <br>
+                                           Therefore, any time there is a rating difference of more than 600, the score cannot be predicted, and is labeled blowout. <br>
+                                           <br>Any teams that are within 45 points of eachother are so close that the algorithm predicts a draw between the two teams."))),
                 value = textOutput("matchup_expected_score"),
                 showcase = bs_icon("clipboard-data"),
                 theme = "primary"),
       ),
     card(
-      card_title("Mutual Games"),
+      card_title("Game History"),
       DTOutput("matchup_mutual_games")
     )
   )
