@@ -35,7 +35,7 @@ team_nav_panel <-
                 value = textOutput("team_record"), 
                 theme="primary"),
       value_box(title = 
-                  card_title("Strenght of Schedule",
+                  card_title("Strength of Schedule",
                              tooltip(bs_icon("info-circle"),
                                      "Average rating of opponent.")), 
                 showcase=bs_icon("lightning-fill"), 
