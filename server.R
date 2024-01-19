@@ -166,18 +166,22 @@ function(input, output, session) {
   output$matchup_expected_score <- renderText({
     req(input$matchup_team_1, input$matchup_team_2)
     
-    rating_diff <- matchup_rating_diff()
-    
+    matchup_expected_score_string(matchup_rating_diff())
+  })
+  
+  matchup_expected_score_string <- function(rating_diff)
+  {
     score_diff = calc_score_diff_rating_diff(rating_diff) %>% 
       round(2)
     
     case_when(
       abs(rating_diff) > 600 ~ "Blowout",
-      rating_diff == 0 ~ "Draw",
+      abs(rating_diff) <= 45 ~ "Draw",
       rating_diff < 0 ~ paste0((15 - score_diff), " - 15"),
       .default = paste0("15 - ", (15 - score_diff))
     )
-  })
+  }
+  
   
   output$matchup_mutual_games <- renderDT({
     req(input$matchup_team_1, input$matchup_team_2)
