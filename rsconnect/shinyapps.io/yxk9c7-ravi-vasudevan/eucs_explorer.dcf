@@ -5,7 +5,7 @@ account: yxk9c7-ravi-vasudevan
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 10878837
-bundleId: 8159021
+bundleId: 8159792
 url: https://yxk9c7-ravi-vasudevan.shinyapps.io/eucs_explorer/
 version: 1
 asMultiple: FALSE
