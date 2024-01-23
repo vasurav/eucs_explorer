@@ -7,6 +7,7 @@ library(DT)
 library(bslib)
 library(bsicons)
 library(markdown)
+library(networkD3)
 theme_set(theme_minimal())
 source("read_data.R")
 

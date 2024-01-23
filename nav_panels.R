@@ -9,6 +9,10 @@ season_nav_panel <-
       nav_panel(
         title = "Games",
         DTOutput("season_games_table")
+      ),
+      nav_panel(
+        title = "Connections",
+        simpleNetworkOutput("season_network")
       )
     )
   )

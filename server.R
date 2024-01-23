@@ -51,6 +51,12 @@ function(input, output, session) {
     
   })
   
+  output$season_network <- renderSimpleNetwork({
+    game_data_filtered() %>% 
+      simpleNetwork("Team_1", "Team_2", nodeColour = "#DA0", zoom=T, 
+                    fontFamily = font_google("Bebas Neue"))
+  })
+  
   #Functions for Team Tab
   team_summary_data <- reactive({
     req(input$team)
