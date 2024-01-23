@@ -15,13 +15,15 @@ function(reqest){
         "nav-link-font-weight" = "normal",
         "nav-text-color" = "#fc0 !important",
         "nav-link-hover-color" = "#fc0 !important",
-        base_font = font_google("Bebas Neue")
+        base_font = font_google("Bebas Neue"),
+        # heading_font = font_google("Bebas Neue")
       ),
     tags$style(".datatables td {padding-top: 1px; padding-bottom: 1px;}"),
     tags$style(".nav-tabs .nav-link {color: #000000; font-size: 18px;}",
                ".nav-tabs .nav-link:hover {color: #ddaa00; font-size: 18px;}"),
     tags$style(".card-body a {color: #000000}",
                ".card-body a:hover {color: #ddaa00}"),
+    tags$style('.card-body p, ol {font-family: "Helvetica Neue",Arial,sans-serif !important}'),
     
     # Title
     title=img(
@@ -43,6 +45,7 @@ function(reqest){
     # Actual Content
     season_nav_panel,
     team_nav_panel,
+    matchup_nav_panel,
     algo_nav_panel,
     
     # This spacer puts the socials on the right side of the screen

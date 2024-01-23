@@ -52,7 +52,6 @@ function(input, output, session) {
   })
   
   #Functions for Team Tab
-  
   team_summary_data <- reactive({
     req(input$team)
     game_data_filtered() %>% 
@@ -62,7 +61,9 @@ function(input, output, session) {
              Opponent          = if_else(Team_1 == input$team, Team_2, Team_1),
              Score_Opponent    = if_else(Team_1 == input$team, Score_2, Score_1),
              Score             = paste0(Score_Team, " - ", Score_Opponent),
-             Result            = if_else(Score_Team >= Score_Opponent, "Win", "Loss")) %>% 
+             Result            = case_when(Score_Team > Score_Opponent ~ "Win", 
+                                           Score_Team < Score_Opponent ~ "Loss",
+                                           Score_Team == Score_Opponent ~ "Draw")) %>% 
       left_join(summary_data_filtered() %>% 
                   select(Team, Rating_USAU),
                 by = c("Opponent"="Team")) %>% 
@@ -106,11 +107,12 @@ function(input, output, session) {
   output$team_rank <- renderText({
     req(input$team)
     ranking_row()$Ranking
-    })
+  })
   output$team_rating <- renderText({
     req(input$team)
     ranking_row()$Rating_USAU
-    })
+  })
+
   output$team_record <- renderText({
     req(input$team)
     paste0(ranking_row()$Wins, " - ", ranking_row()$Losses)
@@ -122,11 +124,10 @@ function(input, output, session) {
       pull(Opponent_Rating) %>% 
       mean() %>% round(2)
   })
-  output$distance_from_eucf_cutoff_rating <- 
-    renderText({
-      req(input$team)
-      team_distance_from_eucf_cutoff_rating()
-      })
+  output$distance_from_eucf_cutoff_rating <- renderText({
+    req(input$team)
+    team_distance_from_eucf_cutoff_rating()
+  })
   
   output$team_games_table <- renderDT({
     req(input$team)
@@ -136,11 +137,86 @@ function(input, output, session) {
       format_DT(scrollY = "40VH")
   })
   
+  # Functions for Matchup Tab
+  output$matchup_team_1 <- renderUI({
+    select_matchup_team(1)
+  })
+  
+  output$matchup_team_2 <- renderUI({
+    select_matchup_team(2)
+  })
+  
+  select_matchup_team <- function(team_number)
+  {
+    teams <- summary_data_filtered() %>% 
+      pull(Team) %>% sort()
+    
+    selectInput(paste0("matchup_team_",team_number), 
+                label = NULL,
+                choices = teams, 
+                selected = teams[team_number],
+                width="100%")
+  }
+  
+  output$matchup_rating_diff <- renderText({
+    req(input$matchup_team_1, input$matchup_team_2)
+    
+    matchup_rating_diff()
+  })
+  
+  output$matchup_expected_score <- renderText({
+    req(input$matchup_team_1, input$matchup_team_2)
+    
+    matchup_expected_score_string(matchup_rating_diff())
+  })
+  
+  matchup_expected_score_string <- function(rating_diff)
+  {
+    score_diff = calc_score_diff_rating_diff(rating_diff) %>% 
+      round(2)
+    
+    case_when(
+      abs(rating_diff) > 600 ~ "Blowout",
+      abs(rating_diff) <= 45 ~ "Draw",
+      rating_diff < 0 ~ paste0((15 - score_diff), " - 15"),
+      .default = paste0("15 - ", (15 - score_diff))
+    )
+  }
+  
+  
+  output$matchup_mutual_games <- renderDT({
+    req(input$matchup_team_1, input$matchup_team_2)
+    game_data_filtered() %>% 
+      filter(
+        (Team_1 == input$matchup_team_1 & Team_2 == input$matchup_team_2) | 
+          (Team_1 == input$matchup_team_2 & Team_2 == input$matchup_team_1)
+      ) %>%  
+      mutate(Score = ifelse(Team_1 == input$matchup_team_1,
+                            paste0(Score_1, " - ", Score_2),
+                            paste0(Score_2, " - ", Score_1))) %>% 
+      mutate(Rating_Difference = Game_Rank_Diff_USAU %>% round(2)) %>% 
+      mutate(Counted = ifelse(Is_Ignored_USAU, "No", "Yes")) %>% 
+      select(Tournament, Date, Score, Rating_Difference, Counted) %>% 
+      format_DT
+  })
+  
+  
+  matchup_rating_diff <- function()
+  {
+    (summary_data %>% 
+      filter(Team == input$matchup_team_1) %>% 
+      pull(Rating_USAU)) - 
+      (summary_data %>% 
+      filter(Team == input$matchup_team_2) %>% 
+      pull(Rating_USAU))
+  }
+  
   # General Formatting Functions
   format_DT <- function(table, scrollY = "60VH", rownames = F, searching=T)
   {
     table %>% 
       datatable(rownames = rownames,
+                selection = "single",
                 options = 
                   list(paging = F, 
                        info = F,
