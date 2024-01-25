@@ -55,8 +55,11 @@ function(input, output, session) {
   
   output$season_network <- renderSimpleNetwork({
     game_data_filtered() %>% 
-      simpleNetwork("Team_1", "Team_2", nodeColour = "#DA0", zoom=T, 
-                    fontFamily = font_google("Bebas Neue"))
+      simpleNetwork("Team_1", "Team_2", 
+                    linkColour = "#DA0", nodeColour = "#000", 
+                    zoom=T, 
+                    fontFamily = font_google("Bebas Neue"),
+                    linkDistance = 250)
   })
   
   #Functions for Team Tab
