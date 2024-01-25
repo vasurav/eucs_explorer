@@ -217,10 +217,10 @@ function(input, output, session) {
   
   matchup_rating_diff <- function()
   {
-    (summary_data %>% 
+    (summary_data_filtered() %>% 
       filter(Team == input$matchup_team_1) %>% 
       pull(Rating_USAU)) - 
-      (summary_data %>% 
+      (summary_data_filtered() %>% 
       filter(Team == input$matchup_team_2) %>% 
       pull(Rating_USAU))
   }
