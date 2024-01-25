@@ -12,7 +12,8 @@ function(input, output, session) {
   
   summary_data_filtered_eligible <- reactive({
     summary_data_filtered() %>% 
-      filter(Games >= 10) %>% 
+      filter(if(input$eligible_only == "10+ Games Only") Games >= 10 
+             else T) %>% 
       mutate(Ranking = rank(-Rating_USAU))
   })
   
@@ -25,12 +26,12 @@ function(input, output, session) {
   # Functions for Season Tab
   output$season_ranking_table <- renderDT({
     
-    if(input$eligible_only == "10+ Games Only")
-      ranking_data = summary_data_filtered_eligible()
-    else
-      ranking_data = summary_data_filtered()
+    # if(input$eligible_only == "10+ Games Only")
+    #   ranking_data = summary_data_filtered_eligible()
+    # else
+    #   ranking_data = summary_data_filtered()
     
-    ranking_data %>% 
+    summary_data_filtered_eligible() %>% 
       arrange(Ranking) %>% 
       select(Ranking, Team, Rating_USAU, Tournaments, Games) %>% 
       dplyr::rename(Rating = Rating_USAU) %>% 
@@ -92,14 +93,18 @@ function(input, output, session) {
     summary_data_filtered() %>% filter(Team == input$team)
   })
   
+  ranking_row_eligible <- reactive({
+    summary_data_filtered_eligible() %>% filter(Team == input$team)
+  })
+  
   eucf_cutoff_rating <- reactive({
-    if(input$eligible_only == "10+ Games Only")
-      ranking_data = summary_data_filtered_eligible()
-    else
-      ranking_data = summary_data_filtered()
+    # if(input$eligible_only == "10+ Games Only")
+    #   ranking_data = summary_data_filtered_eligible()
+    # else
+    #   ranking_data = summary_data_filtered()
     
     rating_list <- 
-      ranking_data %>% 
+      summary_data_filtered_eligible() %>% 
         arrange(Ranking) %>% 
         pull(Rating_USAU)
     
@@ -112,7 +117,10 @@ function(input, output, session) {
   
   output$team_rank <- renderText({
     req(input$team)
-    ranking_row()$Ranking
+    ifelse(count(ranking_row_eligible()) == 0, 
+            "Not Enough Games",
+            ranking_row_eligible()$Ranking
+            )
   })
   output$team_rating <- renderText({
     req(input$team)
