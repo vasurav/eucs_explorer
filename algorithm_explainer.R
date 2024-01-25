@@ -3,7 +3,7 @@ create_score_tibble <- function(score_winner = 15:2, score_loser = 14:0)
 {
   expand_grid(score_winner = score_winner, score_loser = score_loser) %>% 
     filter(score_winner > score_loser) %>% 
-    mutate(score_difference = score_winner - score_loser)
+    mutate(score_difference = score_winner - score_loser) %>% data.table()
 }
 
 # Plot something based on Point Diff

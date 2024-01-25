@@ -1,4 +1,6 @@
 library(tidyverse)
+library(data.table)
+library(dtplyr)
 library(plotly)
 library(shiny)
 library(shinyWidgets)
