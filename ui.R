@@ -38,7 +38,7 @@ function(reqest){
       selectInput(inputId = "division", "Division:",
                   choices = c("Mixed", "Open", "Women"), selected = "Mixed"),
       selectInput(inputId = "eligible_only", "Which Teams in Ranking?",
-                  choices = c("All Teams", "10+ Games Only"))
+                  choices = c("All Teams", ">10 Games Only"))
     ),
     
     # Actual Content

@@ -12,7 +12,7 @@ function(input, output, session) {
   
   summary_data_filtered_eligible <- reactive({
     summary_data_filtered() %>% 
-      filter(if(input$eligible_only == "10+ Games Only") Games >= 10 
+      filter(if(input$eligible_only == ">10 Games Only") Games >= 10 
              else T) %>% 
       mutate(Ranking = rank(-Rating_USAU))
   })
@@ -41,7 +41,7 @@ function(input, output, session) {
   
   output$season_games_table <- renderDT({
     game_data_filtered() %>% 
-      mutate(Game = paste0(Team_1, " vs. ", Team_2, " : ", 
+      mutate(Game = paste0(str_to_url_link(Team_1, input = input), " vs. ", str_to_url_link(Team_2, input = input), " : ", 
                            Score_1, "-", Score_2)) %>% 
       mutate(Game_Rating_Diff = Game_Rank_Diff_USAU %>% round(2),
              Team_Rating_Diff = Team_Rank_Diff_USAU %>% round(2)) %>% 
