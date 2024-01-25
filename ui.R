@@ -2,6 +2,7 @@ source("nav_panels.R")
 
 function(reqest){
   page_navbar(
+    id = "main_tab",
     # Theming
     theme = 
       bs_theme(
