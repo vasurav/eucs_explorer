@@ -34,6 +34,7 @@ function(input, output, session) {
     summary_data_filtered_eligible() %>% 
       arrange(Ranking) %>% 
       select(Ranking, Team, Rating_USAU, Tournaments, Games) %>% 
+      mutate(Team = str_to_url_link(Team, input = input)) %>% 
       dplyr::rename(Rating = Rating_USAU) %>% 
       format_DT
   })
@@ -87,6 +88,10 @@ function(input, output, session) {
                 choices = summary_data_filtered() %>% 
                   arrange(Team) %>% 
                   pull(Team))
+  })
+  
+  observeEvent(input$team, {
+    updateSelectInput(session, "team", selected=input$team)
   })
   
   ranking_row <- reactive({
@@ -148,6 +153,7 @@ function(input, output, session) {
     team_summary_data() %>% 
       select(Tournament, Date, Opponent, Result, Score, Game_Rating, Opponent_Rating, Counted) %>% 
       arrange(desc(Date)) %>% 
+      mutate(Opponent = str_to_input_link(Opponent)) %>% 
       format_DT(scrollY = "40VH")
   })
   
@@ -231,14 +237,16 @@ function(input, output, session) {
     table %>% 
       datatable(rownames = rownames,
                 selection = "single",
+                escape = F,
                 options = 
-                  list(paging = F, 
-                       info = F,
-                       scrollY = scrollY,
-                       sScrollX =  "100%",
-                       searching = searching,
-                       scrollCollapse = T,
-                       columnDefs = list(list(className = 'dt-left', targets = "_all"))
+                  list(
+                    paging = F, 
+                    info = F,
+                    scrollY = scrollY,
+                    sScrollX =  "100%",
+                    searching = searching,
+                    scrollCollapse = T,
+                    columnDefs = list(list(className = 'dt-left', targets = "_all"))
                   )
       )
   }
