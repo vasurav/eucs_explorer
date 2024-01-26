@@ -16,7 +16,17 @@ function(reqest){
         "nav-text-color" = "#fc0 !important",
         "nav-link-hover-color" = "#fc0 !important",
         base_font = font_google("Bebas Neue"),
-      ),
+      ), # %>%
+      # bs_add_rules(
+      #   list(
+      #     ".datatables {td {padding-top: 1px; padding-bottom: 1px;}}",
+      #     ".nav-tabs .nav-link {color: #000000; font-size: 18px;}",
+      #     ".nav-tabs .nav-link:hover {color:  #ddaa00; font-size: 18px;}",
+      #     ".card-body a {color: red}",
+      #     ".card-body a:hover {color: #ddaa00}",
+      #     '.card-body p, ol {font-family: "Helvetica Neue",Arial,sans-serif !important}'
+      #   )
+      # ),
     tags$style(".datatables td {padding-top: 1px; padding-bottom: 1px;}"),
     tags$style(".nav-tabs .nav-link {color: #000000; font-size: 18px;}",
                ".nav-tabs .nav-link:hover {color: #ddaa00; font-size: 18px;}"),
