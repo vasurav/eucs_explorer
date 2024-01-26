@@ -61,6 +61,10 @@ team_nav_panel <-
         "Games",
         DTOutput("team_games_table")
       ),
+      nav_panel(
+        "Plot",
+        plotlyOutput("team_games_plot")
+      )
       # nav_panel(
       #   "Roster"
       # ),

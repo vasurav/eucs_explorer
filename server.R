@@ -169,6 +169,34 @@ function(input, output, session) {
       format_DT(scrollY = "40VH")
   })
   
+  output$team_games_plot <- renderPlotly({
+    req(input$team)
+    
+    tournament_order <- team_summary_data() %>% 
+      arrange(Date) %>% pull(Tournament) %>% unique()
+    
+    `Mean Rating (Counted Games Only)` = mean(team_summary_data() %>% 
+                           filter(Counted == "Yes") %>% 
+                           pull(Game_Rating))
+    `EUCF Cutoff` = eucf_cutoff_rating()
+    
+    (team_summary_data() %>% 
+        mutate(Tournament = factor(Tournament, levels = tournament_order)) %>% 
+        mutate(Counted = factor(Counted, levels = c("Yes", "No"))) %>% 
+        ggplot(aes(x=Tournament, y=Game_Rating, color=Tournament,
+                   label = Date,
+                   label1 = Opponent,
+                   label2 = Score)) + 
+        geom_boxplot() +
+        geom_jitter(aes(shape = Counted), alpha = 0.5, size=2.5) +
+        scale_shape_manual(values = c(19, 4)) +
+        geom_hline(yintercept = 0) + 
+        geom_hline(aes(yintercept = `Mean Rating (Counted Games Only)`, linetype = "Mean Rating")) +
+        geom_hline(aes(yintercept = `EUCF Cutoff`, linetype = "EUCF Cutoff")) +
+        scale_linetype_manual(name="Horizontal Lines", values = c(3, 2))) %>% 
+      ggplotly(tooltip = c("shape", "x", "y", "label", "label1", "label2", "yintercept")) %>% hide_legend()
+  })
+  
   # Functions for Matchup Tab
   output$matchup_team_1 <- renderUI({
     select_matchup_team(1)
