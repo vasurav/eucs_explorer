@@ -28,6 +28,7 @@ function(input, output, session) {
     table %>% 
       datatable(rownames = rownames,
                 selection = "single",
+                style = "bootstrap",
                 escape = F,
                 options = 
                   list(
