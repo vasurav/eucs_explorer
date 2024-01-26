@@ -61,12 +61,12 @@ team_nav_panel <-
         "Games",
         DTOutput("team_games_table")
       ),
-      nav_panel(
-        "Roster"
-      ),
-      nav_panel(
-        "Ranking Evolution"
-      )
+      # nav_panel(
+      #   "Roster"
+      # ),
+      # nav_panel(
+      #   "Ranking Evolution"
+      # )
     )
   )
 
