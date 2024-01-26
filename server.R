@@ -1,7 +1,7 @@
 source("algorithm_explainer.R")
 
 function(input, output, session) {
-  # Game Data functions
+  # Functions for Wrangling Data
   game_data_filtered <- reactive({
     game_data %>% filter_output_data
   })
@@ -22,6 +22,25 @@ function(input, output, session) {
                   Season == input$season)
   }
   
+  # Formatting Functions
+  format_DT <- function(table, scrollY = "60VH", rownames = F, searching=T)
+  {
+    table %>% 
+      datatable(rownames = rownames,
+                selection = "single",
+                escape = F,
+                options = 
+                  list(
+                    paging = F, 
+                    info = F,
+                    scrollY = scrollY,
+                    sScrollX =  "100%",
+                    searching = searching,
+                    scrollCollapse = T,
+                    columnDefs = list(list(className = 'dt-left', targets = "_all"))
+                  )
+      )
+  }
   
   # Functions for Season Tab
   output$season_ranking_table <- renderDT({
@@ -56,7 +75,7 @@ function(input, output, session) {
                     linkDistance = 250)
   })
   
-  #Functions for Team Tab
+  # Functions for Team Tab
   team_summary_data <- reactive({
     req(input$team)
     game_data_filtered() %>% 
@@ -212,7 +231,6 @@ function(input, output, session) {
       format_DT
   })
   
-  
   matchup_rating_diff <- function()
   {
     (summary_data_filtered() %>% 
@@ -223,28 +241,7 @@ function(input, output, session) {
       pull(Rating_USAU))
   }
   
-  # General Formatting Functions
-  format_DT <- function(table, scrollY = "60VH", rownames = F, searching=T)
-  {
-    table %>% 
-      datatable(rownames = rownames,
-                selection = "single",
-                escape = F,
-                options = 
-                  list(
-                    paging = F, 
-                    info = F,
-                    scrollY = scrollY,
-                    sScrollX =  "100%",
-                    searching = searching,
-                    scrollCollapse = T,
-                    columnDefs = list(list(className = 'dt-left', targets = "_all"))
-                  )
-      )
-  }
-  
-  
-  # Algorithm explainer functions
+  # Functions for Algorithm Tab
   output$rating_point_diff_plot <- renderPlotly({
     rating_point_diff_plot()
   })
