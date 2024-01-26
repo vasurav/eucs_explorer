@@ -25,12 +25,6 @@ function(input, output, session) {
   
   # Functions for Season Tab
   output$season_ranking_table <- renderDT({
-    
-    # if(input$eligible_only == "10+ Games Only")
-    #   ranking_data = summary_data_filtered_eligible()
-    # else
-    #   ranking_data = summary_data_filtered()
-    
     summary_data_filtered_eligible() %>% 
       arrange(Ranking) %>% 
       select(Ranking, Team, Rating_USAU, Tournaments, Games) %>% 
@@ -106,11 +100,6 @@ function(input, output, session) {
   })
   
   eucf_cutoff_rating <- reactive({
-    # if(input$eligible_only == "10+ Games Only")
-    #   ranking_data = summary_data_filtered_eligible()
-    # else
-    #   ranking_data = summary_data_filtered()
-    
     rating_list <- 
       summary_data_filtered_eligible() %>% 
         arrange(Ranking) %>% 
