@@ -9,19 +9,34 @@ function(input, output, session) {
   })
   
   summary_data_filtered <- reactive({
-    summary_data %>% filter_output_data
+    summary_data %>% 
+      filter_output_data %>% 
+      add_wildcard_to_summary
   })
   
   summary_data_filtered_eligible <- reactive({
     summary_data_filtered() %>% 
-      filter(if(input$eligible_only == ">10 Games Only") Games >= 10 
-             else T) %>% 
+      filter(
+        if(input$eligible_only == ">10 Games Only") 
+          Games >= 10 
+        else T
+      ) %>% 
+      filter(
+        if(!input$include_wildcard) 
+          !Wildcard
+        else T
+      ) %>% 
       mutate(Ranking = rank(-Rating_USAU))
   })
   
   filter_output_data <- function(df) {
     df %>% filter(Division == input$division,
                   Season == input$season)
+  }
+  
+  add_wildcard_to_summary <- function(df) {
+    df %>% left_join(wildcard_data, by=c("Team", "Division", "Season")) %>% 
+      mutate(Wildcard = !is.na(Wildcard_Event))
   }
   
   # Formatting Functions
@@ -49,9 +64,10 @@ function(input, output, session) {
   output$season_ranking_table <- renderDT({
     summary_data_filtered_eligible() %>% 
       arrange(Ranking) %>% 
-      select(Ranking, Team, Rating_USAU, Tournaments, Games) %>% 
+      mutate(Wildcard = if_else(Wildcard, Wildcard_Event, "")) %>% 
+      select(Ranking, Team, Rating_USAU, Tournaments, Games, Wildcard) %>% 
       mutate(Team = str_to_url_link(Team, input = input)) %>% 
-      dplyr::rename(Rating = Rating_USAU) %>% 
+      dplyr::rename(Rating = Rating_USAU) %>%
       format_DT
   })
   
@@ -128,7 +144,7 @@ function(input, output, session) {
         arrange(Ranking) %>% 
         pull(Rating_USAU)
     
-    rating_list[16]
+    rating_list[input$eucf_cutoff]
   })
   
   team_distance_from_eucf_cutoff_rating <- reactive({
@@ -138,7 +154,9 @@ function(input, output, session) {
   output$team_rank <- renderText({
     req(input$team)
     ifelse(count(ranking_row_eligible()) == 0, 
-            "Not Enough Games",
+            ifelse(ranking_row()$Wildcard,
+                   "Wildcard",
+                   "Not Enough Games"),
             ranking_row_eligible()$Ranking
             )
   })

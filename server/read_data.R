@@ -10,6 +10,11 @@ read_all_summary_data <- function(path) {
   read_all_output_data_filetype(path, "summary", read_summary_data) 
 }
 
+#Read all wildcard data
+read_all_wildcard_data <- function(path) {
+  read_all_output_data_filetype(path, "wildcard", fread) 
+}
+
 # Read all the output data from a path for a filetype
 read_all_output_data_filetype <- function(path, filetype, FUN = read_output_data)
 {

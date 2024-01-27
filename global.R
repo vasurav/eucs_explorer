@@ -18,5 +18,8 @@ thematic_shiny(font = "auto")
 enableBookmarking("url")
 
 # Read Data
-game_data <- read_all_game_data("demo_data/output_demo_2023_eucs_only/")
-summary_data <- read_all_summary_data("demo_data/output_demo_2023_eucs_only/")
+data_path <- "demo_data/output_demo_2023_eucs_only/"
+game_data <- read_all_game_data(data_path)
+summary_data <- read_all_summary_data(data_path)
+wildcard_data <- read_all_wildcard_data(data_path) %>% 
+  mutate(Season = as.character(Season))
