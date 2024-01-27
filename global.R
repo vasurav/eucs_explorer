@@ -11,10 +11,8 @@ library(bslib)
 library(bsicons)
 library(markdown)
 library(networkD3)
-theme_set(theme_minimal())
-source("read_data.R")
-source("string_functions.R")
 
+theme_set(theme_minimal())
 thematic_shiny(font = "auto")
 
 enableBookmarking("url")

@@ -1,4 +1,6 @@
-source("algorithm_explainer.R")
+source("algorithm/algorithm_explainer.R")
+source("server/read_data.R")
+source("server/string_functions.R")
 
 function(input, output, session) {
   # Functions for Wrangling Data

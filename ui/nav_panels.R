@@ -110,7 +110,7 @@ algo_nav_panel <-
     layout_column_wrap(
       card(
         max_height = "100%",
-        withMathJax(includeMarkdown("algorithm_explainer.qmd"))),
+        withMathJax(includeMarkdown("algorithm/algorithm_explainer.qmd"))),
       card(
         max_height = "100%",
         navset_card_tab(

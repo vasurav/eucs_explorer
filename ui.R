@@ -1,4 +1,4 @@
-source("nav_panels.R")
+source("ui/nav_panels.R")
 
 function(reqest){
   page_navbar(
