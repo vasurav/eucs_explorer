@@ -59,10 +59,11 @@ function(input, output, session) {
                            Score_1, "-", Score_2)) %>% 
       mutate(Game_Rating_Diff = Game_Rank_Diff_USAU %>% round(2),
              Team_Rating_Diff = Team_Rank_Diff_USAU %>% round(2)) %>% 
+      mutate(Counted = ifelse(Is_Ignored_USAU, "No", "Yes")) %>% 
       select(Tournament, Date, 
              Game, 
              Game_Rating_Diff,
-             Team_Rating_Diff) %>% 
+             Team_Rating_Diff, Counted) %>% 
       format_DT
     
   })
