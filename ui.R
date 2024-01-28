@@ -48,15 +48,7 @@ function(reqest){
       selectInput(inputId = "division", "Division:",
                   choices = c("Mixed", "Open", "Women"), selected = "Mixed"),
       selectInput(inputId = "eligible_only", "Teams Counted in Ranking",
-                  choices = c("All Teams", ">10 Games Only")),
-      # checkboxInput(inputId = "include_wildcard", "Include Wildcards?", value = T),
-      # hr(),
-      # numericInput("eucf_cutoff", tooltip(trigger = list("EUCF Cutoff",
-      #                                                    bs_icon("info-circle")),
-      #                                     "Sets the EUCF Cutoff for calculations on the Team page. Defaults to 16."),
-      #              value = 16,
-      #              min = 1, max = 30, step = 1,
-      #              width = "100%")
+                  choices = c("All Teams", ">10 Games Only"))
     ),
     
     # Actual Content
@@ -75,8 +67,5 @@ function(reqest){
                href="https://www.facebook.com/ultimate.eu/")),
     nav_item(a(bs_icon(name = "envelope"),
                href="mailto:competition@ultimatefederation.eu"))
-              
-              
-              
   )
 }
