@@ -41,12 +41,12 @@ calc_score_diff_rating_diff <- function(rating_diff, score_winner = 15)
   rating_point_diff() %>% 
     filter(score_winner == 15) %>% 
     filter(score_difference <= 8) %>%
-    add_row(score_difference = 0, rating_difference = 0) %>% 
-    add_row(rating_difference = abs(rating_diff)) %>% 
+    add_row(score_difference = 0, game_rating_diff = 0) %>% 
+    add_row(game_rating_diff = abs(rating_diff)) %>% 
     mutate(score_diff_predict = coalesce(score_difference, 
-                                         predict(lm(score_difference~rating_difference),
+                                         predict(lm(score_difference~game_rating_diff),
                                                  across(score_difference)))) %>% 
-    filter(rating_difference == abs(rating_diff)) %>% 
+    filter(game_rating_diff == abs(rating_diff)) %>% 
     pull(score_diff_predict) %>% 
     `[[`(1)
 }
