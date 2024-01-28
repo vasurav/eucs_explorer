@@ -114,7 +114,8 @@ function(input, output, session) {
     summary_data_filtered_eligible() %>% 
       arrange(Ranking) %>% 
       mutate(Wildcard = if_else(Wildcard, Wildcard_Event, "")) %>% 
-      select(Ranking, Ranking_No_Wildcard, Team, Rating_USAU, Tournaments, Games, Wildcard) %>% 
+      mutate(`Record (W-L)` = paste0(Wins, " - ", Losses)) %>% 
+      select(Ranking, Ranking_No_Wildcard, Team, Rating_USAU, `Record (W-L)`, Tournaments, Wildcard) %>% 
       mutate(Team = str_to_url_link(Team, input = input)) %>% 
       dplyr::rename(Rating = Rating_USAU) %>%
       format_DT(options = DT_options(hidden_rows = c("Ranking_No_Wildcard"))) %>% 
