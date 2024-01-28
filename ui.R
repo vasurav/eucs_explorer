@@ -47,7 +47,10 @@ function(reqest){
                   choices = game_data %>% pull(Season) %>% unique),
       selectInput(inputId = "division", "Division:",
                   choices = c("Mixed", "Open", "Women"), selected = "Mixed"),
-      selectInput(inputId = "eligible_only", "Teams Counted in Ranking",
+      selectInput(inputId = "eligible_only", 
+                  tooltip(trigger = list("Teams Counted in Ranking:",
+                                         bs_icon("info-circle")),
+                          "Only teams with 10 games or more are eligible to qualify for the EUCF. However, by default, all teams are shown in the ranking here."),
                   choices = c("All Teams", ">10 Games Only"))
     ),
     
