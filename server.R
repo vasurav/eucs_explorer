@@ -142,8 +142,12 @@ function(input, output, session) {
       formatStyle(
         'Wildcard',
         target='row',
-        backgroundColor = styleEqual("Elite Invite", '#FC0')
+        backgroundColor = styleEqual(wildcard_events(), '#FC0')
       )
+  })
+  
+  wildcard_events <- reactive({
+    wildcard_data %>% pull(Wildcard_Event)
   })
   
   output$season_games_table <- renderDT({
