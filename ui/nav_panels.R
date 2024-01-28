@@ -3,7 +3,9 @@ season_nav_panel <-
     title = "Season",
     layout_columns(
       fill = F, fillable = F,
-      value_box(title = card_title("Wildcards Awarded"),
+      value_box(title = card_title("Wildcards Awarded",
+                                   tooltip(bs_icon("info-circle"),
+                                           "Wildcard bids are awarded to teams who win Elite Invite and Summer Tour events regardless of ranking position.")),
                 value = textOutput("wildcard_count"),
                 showcase = bs_icon("suit-spade-fill"),
                 theme = "primary"),
