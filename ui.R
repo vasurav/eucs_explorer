@@ -33,6 +33,7 @@ function(reqest){
     tags$style(".card-body a {color: #000000}",
                ".card-body a:hover {color: #ddaa00}"),
     tags$style('.card-body p, ol {font-family: "Helvetica Neue",Arial,sans-serif !important}'),
+    tags$style('.tooltip {font-family: "Helvetica Neue",Arial,sans-serif !important}'),
     
     # Title
     title=img(
