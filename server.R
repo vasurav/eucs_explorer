@@ -203,13 +203,24 @@ function(input, output, session) {
   })
   
   eucf_cutoff_rating_guaranteed <- reactive({
-    rating_list_no_wildcard()[eucf_ranking_spots_guaranteed()]
+    req(input$team)
+    
+    last_rating <- rating_list_no_wildcard()[eucf_ranking_spots_guaranteed()]
+    ifelse(ranking_row()$Rating_USAU < last_rating,
+           last_rating,
+           rating_list_no_wildcard()[eucf_ranking_spots_guaranteed() + 1])
   })
   
   output$eucf_cutoff_rating_guaranteed <- renderText(eucf_cutoff_rating_guaranteed())
   
   eucf_cutoff_rating_probable <- reactive({
-    rating_list_no_wildcard()[eucf_ranking_spots_probable()]
+    req(input$team)
+    
+    last_rating <- rating_list_no_wildcard()[eucf_ranking_spots_probable()]
+    
+    ifelse(ranking_row()$Rating_USAU < last_rating,
+           last_rating,
+           rating_list_no_wildcard()[eucf_ranking_spots_probable() + 1])
   })
   
   output$eucf_cutoff_rating_probable <- renderText(eucf_cutoff_rating_probable())
@@ -310,7 +321,7 @@ function(input, output, session) {
         geom_hline(aes(yintercept = `Likely EUCF Cutoff`, 
                        linetype = "Likely EUCF Cutoff"),
                    color = color_eucf_probable) +
-        scale_linetype_manual(name="Horizontal Lines", values = c(3, 3, 2))) %>% 
+        scale_linetype_manual(name="Horizontal Lines", values = c(2, 2, 3))) %>% 
       ggplotly(tooltip = c("shape", "x", "y", "label", "label1", "label2", "yintercept")) %>% hide_legend()
   })
   
