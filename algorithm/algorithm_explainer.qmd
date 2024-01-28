@@ -14,10 +14,10 @@ There are two major differences in the EUCS implementation of the USAU algorithm
 
 Each game played earns the team a rating. The rating of a team is the average rating of all the games played.
 
-### How to Calculate a Rating for a Game (Game_Rating_Diff)
-The rating is calculated by taking the rating of the opponent and then adding or subtracting a differential based on the score difference of the game. You add the differential if you win the game and subtract the differential if you lose the game. The rating difference is calculated with this formula:
+### How to Calculate a Rating for a Game
+The rating is calculated by taking the rating of the opponent and then adding or subtracting a differential based on the score difference of the game. You add the differential if you win the game and subtract the differential if you lose the game. The rating difference (Game_Rating_Diff) is calculated with this formula:
 
-$$Game\_Rating\_Diff = 125+475\frac{\sin{\left(\min{\left(1, \frac{1-r}{0.5}\right)}\cdot 0.4 \pi\right)} }{\sin{\left(0.4 \pi\right)}}$$
+$$125+475\frac{\sin{\left(\min{\left(1, \frac{1-r}{0.5}\right)}\cdot 0.4 \pi\right)} }{\sin{\left(0.4 \pi\right)}}$$
 
 $$r=\frac{losing score}{winning score-1} $$
 
