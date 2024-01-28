@@ -410,11 +410,11 @@ function(input, output, session) {
   
   output$rating_point_diff_dt <- renderDT({
     rating_point_diff() %>%  select(-score_difference) %>% 
-      format_DT(scrollY = "20VH", searching=F)
+      format_DT(DT_options(scrollY = "20VH", searching=F))
   })
   
   output$weight_point_diff_dt <- renderDT({
     weight_point_diff() %>% select(-score_difference) %>% 
-      format_DT(scrollY = "20VH", searching=F)
+      format_DT(DT_options(scrollY = "20VH", searching=F))
   })
 }
