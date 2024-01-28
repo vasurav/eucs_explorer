@@ -11,6 +11,7 @@ library(bslib)
 library(bsicons)
 library(markdown)
 library(networkD3)
+source("server/read_data.R")
 
 theme_set(theme_minimal())
 thematic_shiny(font = "auto")
