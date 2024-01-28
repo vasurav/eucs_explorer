@@ -128,9 +128,11 @@ matchup_nav_panel <-
                 showcase = bs_icon("clipboard-data"),
                 theme = "primary"),
       ),
-    card(
-      card_title("Game History"),
+    navset_card_tab(
+      nav_panel(
+      "Game History",
       DTOutput("matchup_mutual_games")
+      )
     )
   )
 
