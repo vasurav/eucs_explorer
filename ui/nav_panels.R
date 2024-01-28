@@ -9,15 +9,15 @@ season_nav_panel <-
                 value = textOutput("wildcard_count"),
                 showcase = bs_icon("suit-spade-fill"),
                 theme = "primary"),
-      value_box(title = card_title("Guaranteed EUCF Ranking Spots",
+      value_box(title = card_title("Ranking Bids",
                                    tooltip(bs_icon("info-circle"),
                                            "Number of ranking spots that are guaranteed to get EUCF spots.")),
                 value = textOutput("eucf_ranking_spots_guaranteed"),
                 showcase = bs_icon("shield-fill-check"),
                 theme = value_box_theme(bg = color_eucf_guaranteed)),
-      value_box(title = card_title("Likely EUCF Ranking Spots",
+      value_box(title = card_title("Unassigned Wildcards",
                                    tooltip(bs_icon("info-circle"),
-                                           "Number of ranking spots that are likely to get EUCF spots. 
+                                           "Ranking spots that are likely to get EUCF spots. 
                                            If wildcards are awarded to teams outside the top 16, 
                                            these spots will no longer qualify teams to the EUCF.")),
                 value = textOutput("eucf_ranking_spots_likely"),

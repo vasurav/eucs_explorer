@@ -122,12 +122,22 @@ function(input, output, session) {
       formatStyle(
         'Ranking_No_Wildcard',
         target='row',
-        backgroundColor = styleEqual(1:(eucf_ranking_spots_likely()), color_eucf_likely)
+        backgroundColor = styleEqual(1:(eucf_ranking_spots_likely()), color_eucf_likely_light)
       ) %>% 
       formatStyle(
         'Ranking_No_Wildcard',
         target='row',
-        backgroundColor = styleEqual(1:(eucf_ranking_spots_guaranteed()), color_eucf_guaranteed)
+        backgroundColor = styleEqual(1:(eucf_ranking_spots_guaranteed()), color_eucf_guaranteed_light)
+      ) %>% 
+      formatStyle(
+        'Ranking',
+        'Ranking_No_Wildcard',
+        backgroundColor = styleEqual(1:(eucf_ranking_spots_likely()), color_eucf_likely_dark)
+      ) %>% 
+      formatStyle(
+        'Ranking',
+        'Ranking_No_Wildcard',
+        backgroundColor = styleEqual(1:(eucf_ranking_spots_guaranteed()), color_eucf_guaranteed_dark)
       ) %>% 
       formatStyle(
         'Wildcard',
@@ -271,8 +281,8 @@ function(input, output, session) {
   
   output$color_distance_from_eucf_cutoff <- reactive({
     ifelse(input$team_eucf_cutoff_type == "Likely",
-           color_eucf_likely,
-           color_eucf_guarnteed)
+           color_eucf_likely_dark,
+           color_eucf_guarnteed_dark)
   })
   
   output$team_games_table <- renderDT({
@@ -318,10 +328,10 @@ function(input, output, session) {
                        linetype = "Mean Rating"), color = color_data) +
         geom_hline(aes(yintercept = `Guaranteed EUCF Cutoff`, 
                        linetype = "Guaranteed EUCF Cutoff"),
-                   color = color_eucf_guaranteed) +
+                   color = color_eucf_guaranteed_dark) +
         geom_hline(aes(yintercept = `Likely EUCF Cutoff`, 
                        linetype = "Likely EUCF Cutoff"),
-                   color = color_eucf_likely) +
+                   color = color_eucf_likely_dark) +
         scale_linetype_manual(name="Horizontal Lines", values = c(2, 2, 3))) %>% 
       ggplotly(tooltip = c("shape", "x", "y", "label", "label1", "label2", "yintercept")) %>% hide_legend()
   })

@@ -27,7 +27,9 @@ wildcard_data <- read_all_wildcard_data(data_path) %>%
 
 
 # Color Schemes
-color_eucf_guaranteed <- "#88CC99"
-color_eucf_likely <- "#7799FF"
+color_eucf_guaranteed_dark <- "#88CC99"
+color_eucf_guaranteed_light <- "#DDEEDD"
+color_eucf_likely_dark <- "#7799FF"
+color_eucf_likely_light <- "#CCDDFF"
 color_primary_light <- '#FFCC00'
 color_primary_dark <- "#DDAA00"
