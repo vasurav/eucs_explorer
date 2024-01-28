@@ -18,9 +18,9 @@ season_nav_panel <-
                                            "Number of ranking spots that are likely to get EUCF spots. 
                                            If wildcards are awarded to teams outside the top 16, 
                                            these spots will no longer qualify teams to the EUCF.")),
-                value = textOutput("eucf_ranking_spots_probable"),
+                value = textOutput("eucf_ranking_spots_likely"),
                 showcase = bs_icon("patch-question-fill"),
-                theme = value_box_theme(bg = color_eucf_probable))
+                theme = value_box_theme(bg = color_eucf_likely))
       
     ),
     navset_card_tab(

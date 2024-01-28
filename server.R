@@ -63,7 +63,7 @@ function(input, output, session) {
     16 - total_wildcards()
   })
   
-  eucf_ranking_spots_probable <- reactive({
+  eucf_ranking_spots_likely <- reactive({
     16 - wildcards_awarded()
   })
   
@@ -106,8 +106,8 @@ function(input, output, session) {
     eucf_ranking_spots_guaranteed()
   })
   
-  output$eucf_ranking_spots_probable <- renderText({
-    eucf_ranking_spots_probable() - eucf_ranking_spots_guaranteed()
+  output$eucf_ranking_spots_likely <- renderText({
+    eucf_ranking_spots_likely() - eucf_ranking_spots_guaranteed()
   })
   
   output$season_ranking_table <- renderDT({
@@ -121,7 +121,7 @@ function(input, output, session) {
       formatStyle(
         'Ranking_No_Wildcard',
         target='row',
-        backgroundColor = styleEqual(1:(eucf_ranking_spots_probable()), color_eucf_probable)
+        backgroundColor = styleEqual(1:(eucf_ranking_spots_likely()), color_eucf_likely)
       ) %>% 
       formatStyle(
         'Ranking_No_Wildcard',
@@ -213,17 +213,17 @@ function(input, output, session) {
   
   output$eucf_cutoff_rating_guaranteed <- renderText(eucf_cutoff_rating_guaranteed())
   
-  eucf_cutoff_rating_probable <- reactive({
+  eucf_cutoff_rating_likely <- reactive({
     req(input$team)
     
-    last_rating <- rating_list_no_wildcard()[eucf_ranking_spots_probable()]
+    last_rating <- rating_list_no_wildcard()[eucf_ranking_spots_likely()]
     
     ifelse(ranking_row()$Rating_USAU < last_rating,
            last_rating,
-           rating_list_no_wildcard()[eucf_ranking_spots_probable() + 1])
+           rating_list_no_wildcard()[eucf_ranking_spots_likely() + 1])
   })
   
-  output$eucf_cutoff_rating_probable <- renderText(eucf_cutoff_rating_probable())
+  output$eucf_cutoff_rating_likely <- renderText(eucf_cutoff_rating_likely())
   
   rating_list_no_wildcard <- reactive({
     summary_data_filtered_eligible() %>% 
@@ -233,7 +233,7 @@ function(input, output, session) {
   
   team_distance_from_eucf_cutoff_rating <- reactive({
     ifelse(input$team_eucf_cutoff_type == "Likely",
-           eucf_cutoff_rating_probable() - ranking_row()$Rating_USAU,
+           eucf_cutoff_rating_likely() - ranking_row()$Rating_USAU,
            eucf_cutoff_rating_guaranteed() - ranking_row()$Rating_USAU
            )
   })
@@ -270,7 +270,7 @@ function(input, output, session) {
   
   output$color_distance_from_eucf_cutoff <- reactive({
     ifelse(input$team_eucf_cutoff_type == "Likely",
-           color_eucf_probable,
+           color_eucf_likely,
            color_eucf_guarnteed)
   })
   
@@ -293,7 +293,7 @@ function(input, output, session) {
                            filter(Counted == "Yes") %>% 
                            pull(Game_Rating))
     `Guaranteed EUCF Cutoff` = eucf_cutoff_rating_guaranteed()
-    `Likely EUCF Cutoff` = eucf_cutoff_rating_probable()
+    `Likely EUCF Cutoff` = eucf_cutoff_rating_likely()
     
     color_data <- color_primary_dark
     
@@ -320,7 +320,7 @@ function(input, output, session) {
                    color = color_eucf_guaranteed) +
         geom_hline(aes(yintercept = `Likely EUCF Cutoff`, 
                        linetype = "Likely EUCF Cutoff"),
-                   color = color_eucf_probable) +
+                   color = color_eucf_likely) +
         scale_linetype_manual(name="Horizontal Lines", values = c(2, 2, 3))) %>% 
       ggplotly(tooltip = c("shape", "x", "y", "label", "label1", "label2", "yintercept")) %>% hide_legend()
   })
