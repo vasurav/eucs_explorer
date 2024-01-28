@@ -21,12 +21,13 @@ function(input, output, session) {
           Games >= 10 
         else T
       ) %>% 
-      filter(
-        if(!input$include_wildcard) 
-          !Wildcard
-        else T
-      ) %>% 
-      mutate(Ranking = rank(-Rating_USAU))
+      # filter(
+      #   if(!input$include_wildcard) 
+      #     !Wildcard
+      #   else T
+      # ) %>% 
+      mutate(Ranking = rank(-Rating_USAU)) %>% 
+      add_ranking_no_wildcard
   })
   
   filter_output_data <- function(df) {
@@ -36,39 +37,102 @@ function(input, output, session) {
   
   add_wildcard_to_summary <- function(df) {
     df %>% left_join(wildcard_data, by=c("Team", "Division", "Season")) %>% 
-      mutate(Wildcard = !is.na(Wildcard_Event))
+      mutate(Wildcard = !is.na(Wildcard_Event)) %>% 
+      add_ranking_no_wildcard
+      
   }
   
+  add_ranking_no_wildcard <- function(df) {
+    df %>% 
+      group_by(Wildcard) %>% 
+      mutate(Ranking_No_Wildcard = if_else(Wildcard, NA, rank(-Rating_USAU))) %>% 
+      ungroup()
+  }
+  
+  total_wildcards <- reactive({
+    wildcard_data %>% 
+      filter(Division == input$division) %>% 
+      nrow
+  })
+  
+  wildcards_awarded <- reactive({
+    summary_data_filtered() %>% filter(Wildcard == T) %>% nrow
+  })
+  
+  eucf_ranking_spots_guaranteed <- reactive({
+    16 - total_wildcards()
+  })
+  
+  eucf_ranking_spots_probable <- reactive({
+    16 - wildcards_awarded()
+  })
+  
   # Formatting Functions
-  format_DT <- function(table, scrollY = "60VH", rownames = F, searching=T)
+  
+  DT_options <- function(scrollY = "100%", searching=T, hidden_rows = c()){
+    list(
+      paging = F, 
+      info = F,
+      scrollY = scrollY,
+      sScrollX =  "100%",
+      searching = searching,
+      scrollCollapse = T,
+      columnDefs = list(
+        list(className = 'dt-left', targets = "_all"),
+        list(visible=FALSE, targets=hidden_rows)
+      )
+    )
+  }
+  
+  format_DT <- function(table, rownames = F,  options = DT_options)
   {
     table %>% 
       datatable(rownames = rownames,
                 selection = "single",
-                style = "bootstrap",
+                style = "default",
                 escape = F,
-                options = 
-                  list(
-                    paging = F, 
-                    info = F,
-                    scrollY = scrollY,
-                    sScrollX =  "100%",
-                    searching = searching,
-                    scrollCollapse = T,
-                    columnDefs = list(list(className = 'dt-left', targets = "_all"))
-                  )
+                options = options
+                    #columnDefs = list(list(visible=FALSE, targets=c("Ranking_No_Wildcard")))
+                    #columnDefs = list(list(className = 'dt-left', targets = "_all"))
       )
   }
   
   # Functions for Season Tab
+  output$wildcard_count <- renderText({
+    paste0(wildcards_awarded(), " of ", total_wildcards())
+  })
+  
+  output$eucf_ranking_spots_guaranteed <- renderText({
+    eucf_ranking_spots_guaranteed()
+  })
+  
+  output$eucf_ranking_spots_probable <- renderText({
+    eucf_ranking_spots_probable() - eucf_ranking_spots_guaranteed()
+  })
+  
   output$season_ranking_table <- renderDT({
     summary_data_filtered_eligible() %>% 
       arrange(Ranking) %>% 
       mutate(Wildcard = if_else(Wildcard, Wildcard_Event, "")) %>% 
-      select(Ranking, Team, Rating_USAU, Tournaments, Games, Wildcard) %>% 
+      select(Ranking, Ranking_No_Wildcard, Team, Rating_USAU, Tournaments, Games, Wildcard) %>% 
       mutate(Team = str_to_url_link(Team, input = input)) %>% 
       dplyr::rename(Rating = Rating_USAU) %>%
-      format_DT
+      format_DT(options = DT_options(hidden_rows = c("Ranking_No_Wildcard"))) %>% 
+      formatStyle(
+        'Ranking_No_Wildcard',
+        target='row',
+        backgroundColor = styleEqual(1:(eucf_ranking_spots_probable()), color_eucf_probable)
+      ) %>% 
+      formatStyle(
+        'Ranking_No_Wildcard',
+        target='row',
+        backgroundColor = styleEqual(1:(eucf_ranking_spots_guaranteed()), color_eucf_guaranteed)
+      ) %>% 
+      formatStyle(
+        'Wildcard',
+        target='row',
+        backgroundColor = styleEqual("Elite Invite", '#FC0')
+      )
   })
   
   output$season_games_table <- renderDT({
@@ -138,17 +202,29 @@ function(input, output, session) {
     summary_data_filtered_eligible() %>% filter(Team == input$team)
   })
   
-  eucf_cutoff_rating <- reactive({
-    rating_list <- 
-      summary_data_filtered_eligible() %>% 
-        arrange(Ranking) %>% 
-        pull(Rating_USAU)
-    
-    rating_list[input$eucf_cutoff]
+  eucf_cutoff_rating_guaranteed <- reactive({
+    rating_list_no_wildcard()[eucf_ranking_spots_guaranteed()]
+  })
+  
+  output$eucf_cutoff_rating_guaranteed <- renderText(eucf_cutoff_rating_guaranteed())
+  
+  eucf_cutoff_rating_probable <- reactive({
+    rating_list_no_wildcard()[eucf_ranking_spots_probable()]
+  })
+  
+  output$eucf_cutoff_rating_probable <- renderText(eucf_cutoff_rating_probable())
+  
+  rating_list_no_wildcard <- reactive({
+    summary_data_filtered_eligible() %>% 
+      arrange(Ranking_No_Wildcard) %>% 
+      pull(Rating_USAU)
   })
   
   team_distance_from_eucf_cutoff_rating <- reactive({
-    eucf_cutoff_rating() - ranking_row()$Rating_USAU
+    ifelse(input$team_eucf_cutoff_type == "Likely",
+           eucf_cutoff_rating_probable() - ranking_row()$Rating_USAU,
+           eucf_cutoff_rating_guaranteed() - ranking_row()$Rating_USAU
+           )
   })
   
   output$team_rank <- renderText({
@@ -181,13 +257,19 @@ function(input, output, session) {
     team_distance_from_eucf_cutoff_rating()
   })
   
+  output$color_distance_from_eucf_cutoff <- reactive({
+    ifelse(input$team_eucf_cutoff_type == "Likely",
+           color_eucf_probable,
+           color_eucf_guarnteed)
+  })
+  
   output$team_games_table <- renderDT({
     req(input$team)
     team_summary_data() %>% 
       select(Tournament, Date, Opponent, Result, Score, Game_Rating, Opponent_Rating, Counted) %>% 
       arrange(desc(Date)) %>% 
       mutate(Opponent = str_to_input_link(Opponent)) %>% 
-      format_DT(scrollY = "40VH")
+      format_DT(options = DT_options(scrollY = "40VH"))
   })
   
   output$team_games_plot <- renderPlotly({
@@ -199,22 +281,36 @@ function(input, output, session) {
     `Mean Rating (Counted Games Only)` = mean(team_summary_data() %>% 
                            filter(Counted == "Yes") %>% 
                            pull(Game_Rating))
-    `EUCF Cutoff` = eucf_cutoff_rating()
+    `Guaranteed EUCF Cutoff` = eucf_cutoff_rating_guaranteed()
+    `Likely EUCF Cutoff` = eucf_cutoff_rating_probable()
+    
+    color_data <- color_primary_dark
     
     (team_summary_data() %>% 
         mutate(Tournament = factor(Tournament, levels = tournament_order)) %>% 
         mutate(Counted = factor(Counted, levels = c("Yes", "No"))) %>% 
-        ggplot(aes(x=Tournament, y=Game_Rating, color=Tournament,
+        ggplot(aes(x=Tournament, y=Game_Rating,
                    label = Date,
                    label1 = Opponent,
                    label2 = Score)) + 
-        geom_boxplot() +
-        geom_jitter(aes(shape = Counted), alpha = 0.5, size=2.5) +
+        geom_boxplot(color = color_data,
+                     outlier.shape = NA) +
+        geom_jitter(aes(shape = Counted), 
+                    alpha = 0.5, 
+                    size=2.5, 
+                    color = color_data,
+                    width = 0.05) +
         scale_shape_manual(values = c(19, 4)) +
         geom_hline(yintercept = 0) + 
-        geom_hline(aes(yintercept = `Mean Rating (Counted Games Only)`, linetype = "Mean Rating")) +
-        geom_hline(aes(yintercept = `EUCF Cutoff`, linetype = "EUCF Cutoff")) +
-        scale_linetype_manual(name="Horizontal Lines", values = c(3, 2))) %>% 
+        geom_hline(aes(yintercept = `Mean Rating (Counted Games Only)`, 
+                       linetype = "Mean Rating"), color = color_data) +
+        geom_hline(aes(yintercept = `Guaranteed EUCF Cutoff`, 
+                       linetype = "Guaranteed EUCF Cutoff"),
+                   color = color_eucf_guaranteed) +
+        geom_hline(aes(yintercept = `Likely EUCF Cutoff`, 
+                       linetype = "Likely EUCF Cutoff"),
+                   color = color_eucf_probable) +
+        scale_linetype_manual(name="Horizontal Lines", values = c(3, 3, 2))) %>% 
       ggplotly(tooltip = c("shape", "x", "y", "label", "label1", "label2", "yintercept")) %>% hide_legend()
   })
   

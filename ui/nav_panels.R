@@ -1,6 +1,28 @@
 season_nav_panel <- 
   nav_panel(
     title = "Season",
+    layout_columns(
+      fill = F, fillable = F,
+      value_box(title = card_title("Wildcards Awarded"),
+                value = textOutput("wildcard_count"),
+                showcase = bs_icon("suit-spade-fill"),
+                theme = "primary"),
+      value_box(title = card_title("Guaranteed EUCF Ranking Spots",
+                                   tooltip(bs_icon("info-circle"),
+                                           "Number of ranking spots that are guaranteed to get EUCF spots.")),
+                value = textOutput("eucf_ranking_spots_guaranteed"),
+                showcase = bs_icon("shield-fill-check"),
+                theme = value_box_theme(bg = color_eucf_guaranteed)),
+      value_box(title = card_title("Likely EUCF Ranking Spots",
+                                   tooltip(bs_icon("info-circle"),
+                                           "Number of ranking spots that are likely to get EUCF spots. 
+                                           If wildcards are awarded to teams outside the top 16, 
+                                           these spots will no longer qualify teams to the EUCF.")),
+                value = textOutput("eucf_ranking_spots_probable"),
+                showcase = bs_icon("patch-question-fill"),
+                theme = value_box_theme(bg = color_eucf_probable))
+      
+    ),
     navset_card_tab(
       nav_panel(
         title = "Ranking",
@@ -46,12 +68,18 @@ team_nav_panel <-
                 value = textOutput("team_strength_of_schedule"), 
                 theme="primary"),
       value_box(title = 
-                  card_title("To EUCF",
+                  card_title("To EUCF Cutoff",
                              tooltip(
                                bs_icon("info-circle"), options = list(html = T),
-                               HTML("If positive: number of rating points needed to qualify for the EUCF. <br>
-                               If negative: the amount of points the team can lose and still qualify for the EUCF.")
-                             )),
+                               HTML("If positive: number of rating points needed to reach the current EUCF cutoff rating. <br> <br>
+                               If negative: the amount of points the team can lose and still be above the EUCF cutoff rating.")
+                             ),
+                             popover(
+                               bs_icon("gear-fill"),
+                               selectInput("team_eucf_cutoff_type", "EUCF Cutoff Type",
+                                           choices = c("Guaranteed", "Likely"))
+                               )
+                             ),
                 showcase=bs_icon("ladder"),
                 value= textOutput("distance_from_eucf_cutoff_rating"),
                 theme = "primary")

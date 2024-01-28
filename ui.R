@@ -27,7 +27,7 @@ function(reqest){
       #     '.card-body p, ol {font-family: "Helvetica Neue",Arial,sans-serif !important}'
       #   )
       # ),
-    tags$style(".datatables td {padding-top: 1px; padding-bottom: 1px;}"),
+    tags$style(".dataTable td {padding-top: 0px; padding-bottom: 0px;} !important"),
     tags$style(".nav-tabs .nav-link {color: #000000; font-size: 18px;}",
                ".nav-tabs .nav-link:hover {color: #ddaa00; font-size: 18px;}"),
     tags$style(".card-body a {color: #000000}",
@@ -47,18 +47,16 @@ function(reqest){
                   choices = game_data %>% pull(Season) %>% unique),
       selectInput(inputId = "division", "Division:",
                   choices = c("Mixed", "Open", "Women"), selected = "Mixed"),
-      hr(),
-      h4("Ranking"),
-      selectInput(inputId = "eligible_only", "How many games?",
+      selectInput(inputId = "eligible_only", "Teams Counted in Ranking",
                   choices = c("All Teams", ">10 Games Only")),
-      checkboxInput(inputId = "include_wildcard", "Include Wildcards?", value = T),
-      hr(),
-      numericInput("eucf_cutoff", tooltip(trigger = list("EUCF Cutoff",
-                                                         bs_icon("info-circle")),
-                                          "Sets the EUCF Cutoff for calculations on the Team page. Defaults to 16."),
-                   value = 16,
-                   min = 1, max = 30, step = 1,
-                   width = "100%")
+      # checkboxInput(inputId = "include_wildcard", "Include Wildcards?", value = T),
+      # hr(),
+      # numericInput("eucf_cutoff", tooltip(trigger = list("EUCF Cutoff",
+      #                                                    bs_icon("info-circle")),
+      #                                     "Sets the EUCF Cutoff for calculations on the Team page. Defaults to 16."),
+      #              value = 16,
+      #              min = 1, max = 30, step = 1,
+      #              width = "100%")
     ),
     
     # Actual Content
