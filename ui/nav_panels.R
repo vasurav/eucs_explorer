@@ -26,6 +26,7 @@ season_nav_panel <-
       
     ),
     navset_card_tab(
+      full_screen = T,
       nav_panel(
         title = "Ranking",
         DTOutput("season_ranking_table")
@@ -87,6 +88,7 @@ team_nav_panel <-
                 theme = "primary")
     ),
     navset_card_tab(
+      full_screen = T,
       nav_panel(
         "Games",
         DTOutput("team_games_table")
@@ -129,6 +131,7 @@ matchup_nav_panel <-
                 theme = "primary"),
       ),
     navset_card_tab(
+      full_screen = T,
       nav_panel(
       "Game History",
       DTOutput("matchup_mutual_games")
