@@ -9,7 +9,7 @@ create_score_tibble <- function(score_winner = 15:2, score_loser = 14:0)
 # Plot something based on Point Diff
 point_diff_plot <- function(df,
                             x_variable = "score_difference", 
-                            y_variable = "rating_difference", 
+                            y_variable = "game_rating_diff", 
                             color_variable = "score_winner",
                             label_variable = "score_loser")
 {
@@ -54,9 +54,9 @@ calc_score_diff_rating_diff <- function(rating_diff, score_winner = 15)
 rating_point_diff <- function()
 {
   create_score_tibble() %>% 
-    mutate(rating_difference = mapply(calc_rating, 
-                                      score_winner = score_winner, 
-                                      score_loser = score_loser))
+    mutate(game_rating_diff = mapply(calc_rating, 
+                                     score_winner = score_winner, 
+                                     score_loser = score_loser))
 }
 
 rating_point_diff_plot <- function()
