@@ -79,8 +79,9 @@ team_nav_panel <-
                              ),
                              popover(
                                bs_icon("gear-fill"),
-                               selectInput("team_eucf_cutoff_type", "EUCF Cutoff Type",
-                                           choices = c("Guaranteed", "Likely"))
+                               checkboxInput("team_eucf_cutoff_type", "Include Unassigned Wildcars?",
+                                           value = F),
+                               placement = "top"
                                )
                              ),
                 showcase=bs_icon("ladder"),
