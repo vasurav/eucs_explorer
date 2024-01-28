@@ -243,7 +243,7 @@ function(input, output, session) {
   })
   
   team_distance_from_eucf_cutoff_rating <- reactive({
-    ifelse(input$team_eucf_cutoff_type == "Likely",
+    ifelse(input$team_eucf_cutoff_type,
            eucf_cutoff_rating_likely() - ranking_row()$Rating_USAU,
            eucf_cutoff_rating_guaranteed() - ranking_row()$Rating_USAU
            )
@@ -303,8 +303,8 @@ function(input, output, session) {
     `Mean Rating (Counted Games Only)` = mean(team_summary_data() %>% 
                            filter(Counted == "Yes") %>% 
                            pull(Game_Rating))
-    `Guaranteed EUCF Cutoff` = eucf_cutoff_rating_guaranteed()
-    `Likely EUCF Cutoff` = eucf_cutoff_rating_likely()
+    `EUCF Cutoff` = eucf_cutoff_rating_guaranteed()
+    `EUCF Cutoff (Including Unassigned Wildcards)` = eucf_cutoff_rating_likely()
     
     color_data <- color_primary_dark
     
@@ -326,12 +326,12 @@ function(input, output, session) {
         geom_hline(yintercept = 0) + 
         geom_hline(aes(yintercept = `Mean Rating (Counted Games Only)`, 
                        linetype = "Mean Rating"), color = color_data) +
-        geom_hline(aes(yintercept = `Guaranteed EUCF Cutoff`, 
-                       linetype = "Guaranteed EUCF Cutoff"),
-                   color = color_eucf_guaranteed_dark) +
-        geom_hline(aes(yintercept = `Likely EUCF Cutoff`, 
-                       linetype = "Likely EUCF Cutoff"),
+        geom_hline(aes(yintercept = `EUCF Cutoff (Including Unassigned Wildcards)`, 
+                       linetype = "EUCF Cutoff (Including Unassigned Wildcards)"),
                    color = color_eucf_likely_dark) +
+        geom_hline(aes(yintercept = `EUCF Cutoff`, 
+                       linetype = "EUCF Cutoff"),
+                   color = color_eucf_guaranteed_dark) +
         scale_linetype_manual(name="Horizontal Lines", values = c(2, 2, 3))) %>% 
       ggplotly(tooltip = c("shape", "x", "y", "label", "label1", "label2", "yintercept")) %>% hide_legend()
   })
