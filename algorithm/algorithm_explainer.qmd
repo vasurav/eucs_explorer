@@ -1,3 +1,13 @@
+## Algorithm Purpose
+
+The purpose of the algorithm is to rank teams and qualify them for the EUCF. The top N teams in the ranking (aside from Wildcard teams) at the end of the season qualify for the EUCF where N is 16 - the number of Wildcard bids awarded in each division. In 2024, Wildcard bids are awarded to the Elite Invite winner and the winners of the Summer Tour events in August. The number of wildcard bids for each division in 2024 are:
+
+1. Mixed: 4 Wildcards (3 Summer Tours and Elite Invite)
+1. Women: 4 Wildcards (3 Summer Tours and Elite Invite)
+1. Open: 6 Wildcards (5 Summer Tours and Elite Invite)
+
+## Short Explanation
+
 The Algorithm used for EUCS ranking is based on the USAU Ranking algorithm.
 
 This explanation is based on these sources:
@@ -10,7 +20,7 @@ There are two major differences in the EUCS implementation of the USAU algorithm
 1.  USAU includes a recency bias, which weighs games at the end of the season more than games at the beginning of the season. In the EUCS implementation, weighting does not consider recency, so games are weighed equally regardless of when they occur.
 1.  USAU starts everyone with a rating of 1000, so scores are typically between 0 and 2000. In the EUCS implementation everyone starts with a score of 0, so typical scores are between -1000 and 1000. If you want an equivalent USAU rating, add 1000 to the rating here.
 
-## The Algorithm
+## Long Explanation
 
 Each game played earns the team a rating. The rating of a team is the average rating of all the games played.
 
@@ -58,11 +68,10 @@ Yes this is true, to deal with this there is a blowout rule. blowout games are n
 1. The winning team wins by ***more than*** twice the score of the losing team + 1.
 1. The winning team has at least 5 other results where results are not being ignored. 
 
-*Note: If removing multiple games would bring the winning team below 5 games (for example, 5 blowout elgible wins in 8 total games), then the first games removed are the ones that hurt the winning team the most.*
+*Note: If removing multiple games would bring the winning team below 5 games (for example, 5 blowout eligible wins in 8 total games), then the first games removed are the ones that hurt the winning team the most.*
 
 ### Source Code
 
-To be completely transparent, the source code for the ranking calculation and producing the visualizations on this webpage are available to the public:
+To be completely transparent, the source code for the ranking calculation is given below:
 
 -   [Ranking Algorithm](https://github.com/Berenito/Ranking)
--   [Visualization Webpage](https://github.com/vasurav/eucs_explorer)
