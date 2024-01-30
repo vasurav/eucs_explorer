@@ -134,8 +134,19 @@ matchup_nav_panel <-
     navset_card_tab(
       full_screen = T,
       nav_panel(
-      "Game History",
-      DTOutput("matchup_mutual_games")
+      "Games",
+      DTOutput("matchup_game_history")
+      ),
+      nav_panel(
+        "Mutuals",
+        layout_column_wrap(
+          card(
+            DTOutput("matchup_mutual_opponents_1")
+          ),
+          card(
+            DTOutput("matchup_mutual_opponents_2")
+          ),
+        )
       )
     )
   )

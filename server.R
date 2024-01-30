@@ -177,12 +177,17 @@ function(input, output, session) {
   # Functions for Team Tab
   team_summary_data <- reactive({
     req(input$team)
+    team_summary(input$team)
+  })
+  
+  team_summary <- function(team)
+  {
     game_data_filtered() %>% 
-      filter(Team_1 == input$team | Team_2 == input$team) %>% 
-      mutate(Team              = input$team,
-             Score_Team        = if_else(Team_1 == input$team, Score_1, Score_2),
-             Opponent          = if_else(Team_1 == input$team, Team_2, Team_1),
-             Score_Opponent    = if_else(Team_1 == input$team, Score_2, Score_1),
+      filter(Team_1 == team | Team_2 == team) %>% 
+      mutate(Team              = team,
+             Score_Team        = if_else(Team_1 == team, Score_1, Score_2),
+             Opponent          = if_else(Team_1 == team, Team_2, Team_1),
+             Score_Opponent    = if_else(Team_1 == team, Score_2, Score_1),
              Score             = paste0(Score_Team, " - ", Score_Opponent),
              Result            = case_when(Score_Team > Score_Opponent ~ "Win", 
                                            Score_Team < Score_Opponent ~ "Loss",
@@ -196,7 +201,7 @@ function(input, output, session) {
                                   Opponent_Rating - Game_Rank_Diff_USAU) %>% 
                round(2)) %>% 
       mutate(Counted = ifelse(Is_Ignored_USAU, "No", "Yes"))
-  })
+  }
   
   output$team_selector <- renderUI({
     selectInput("team", label = NULL, width="100%",
@@ -387,7 +392,7 @@ function(input, output, session) {
   }
   
   
-  output$matchup_mutual_games <- renderDT({
+  output$matchup_game_history <- renderDT({
     req(input$matchup_team_1, input$matchup_team_2)
     game_data_filtered() %>% 
       filter(
@@ -412,6 +417,58 @@ function(input, output, session) {
       filter(Team == input$matchup_team_2) %>% 
       pull(Rating_USAU))
   }
+  
+  output$matchup_mutual_opponents <- renderDT({
+    req(input$matchup_team_1, input$matchup_team_2)
+    
+    opponents_1 <- team_summary(input$matchup_team_1) %>% pull(Opponent) %>% unique
+    opponents_2 <- team_summary(input$matchup_team_2) %>% pull(Opponent) %>% unique
+    
+    common_opponents <- intersect(opponents_1, opponents_2)
+    
+    team_summary(input$matchup_team_1) %>% 
+      mutate(Team = input$matchup_team_1) %>% 
+      filter(Opponent %in% common_opponents) %>% 
+      bind_rows(
+        team_summary(input$matchup_team_2) %>% 
+          mutate(Team = input$matchup_team_2) %>% 
+          filter(Opponent %in% common_opponents)
+      ) %>% 
+      select(Team, Opponent, Score, Tournament, Date) %>% 
+      format_DT
+  })
+  
+  output$matchup_mutual_opponents_1 <- renderDT({
+    req(input$matchup_team_1, input$matchup_team_2)
+    
+    opponents_1 <- team_summary(input$matchup_team_1) %>% pull(Opponent) %>% unique
+    opponents_2 <- team_summary(input$matchup_team_2) %>% pull(Opponent) %>% unique
+    
+    common_opponents <- intersect(opponents_1, opponents_2)
+    
+    team_summary(input$matchup_team_1) %>% 
+      mutate(Team = input$matchup_team_1) %>% 
+      filter(Opponent %in% common_opponents) %>% 
+      select(Team, Opponent, Score, Tournament, Date) %>% 
+      arrange(Opponent) %>% 
+      format_DT
+  })
+  
+  output$matchup_mutual_opponents_2 <- renderDT({
+    req(input$matchup_team_1, input$matchup_team_2)
+    
+    opponents_1 <- team_summary(input$matchup_team_1) %>% pull(Opponent) %>% unique
+    opponents_2 <- team_summary(input$matchup_team_2) %>% pull(Opponent) %>% unique
+    
+    common_opponents <- intersect(opponents_1, opponents_2)
+    
+    team_summary(input$matchup_team_2) %>% 
+      mutate(Team = input$matchup_team_2) %>% 
+      filter(Opponent %in% common_opponents) %>% 
+      select(Team, Opponent, Score, Tournament, Date) %>% 
+      arrange(Opponent) %>% 
+      format_DT
+  })
   
   # Functions for Algorithm Tab
   output$rating_point_diff_plot <- renderPlotly({
