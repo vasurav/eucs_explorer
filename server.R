@@ -313,7 +313,7 @@ function(input, output, session) {
                            filter(Counted == "Yes") %>% 
                            pull(Game_Rating))
     `EUCF Cutoff` = eucf_cutoff_rating_guaranteed()
-    `EUCF Cutoff (Including Unassigned Wildcards)` = eucf_cutoff_rating_likely()
+    `EUCF Cutoff (Including Potential Bids)` = eucf_cutoff_rating_likely()
     
     color_data <- color_primary_dark
     
@@ -335,7 +335,7 @@ function(input, output, session) {
         geom_hline(yintercept = 0) + 
         geom_hline(aes(yintercept = `Mean Rating (Counted Games Only)`, 
                        linetype = "Mean Rating"), color = color_data) +
-        geom_hline(aes(yintercept = `EUCF Cutoff (Including Unassigned Wildcards)`, 
+        geom_hline(aes(yintercept = `EUCF Cutoff (Including Potential Bids)`, 
                        linetype = "EUCF Cutoff (Including Unassigned Wildcards)"),
                    color = color_eucf_likely_dark) +
         geom_hline(aes(yintercept = `EUCF Cutoff`, 
