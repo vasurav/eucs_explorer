@@ -91,6 +91,7 @@ function(input, output, session) {
                 selection = "single",
                 style = "default",
                 escape = F,
+                class = "display nowrap",
                 options = options
                     #columnDefs = list(list(visible=FALSE, targets=c("Ranking_No_Wildcard")))
                     #columnDefs = list(list(className = 'dt-left', targets = "_all"))
@@ -157,8 +158,7 @@ function(input, output, session) {
       mutate(Game_Rating_Diff = Game_Rank_Diff_USAU %>% round(2),
              Team_Rating_Diff = Team_Rank_Diff_USAU %>% round(2)) %>% 
       mutate(Counted = ifelse(Is_Ignored_USAU, "No", "Yes")) %>% 
-      select(Tournament, Date, 
-             Game, 
+      select(Game, Tournament, Date, 
              Game_Rating_Diff,
              Team_Rating_Diff, Counted) %>% 
       format_DT
@@ -297,10 +297,10 @@ function(input, output, session) {
   output$team_games_table <- renderDT({
     req(input$team)
     team_summary_data() %>% 
-      select(Tournament, Date, Opponent, Result, Score, Game_Rating, Opponent_Rating, Counted) %>% 
+      select(Opponent, Result, Score, Game_Rating, Opponent_Rating, Tournament, Date,  Counted) %>% 
       arrange(desc(Date)) %>% 
       mutate(Opponent = str_to_input_link(Opponent)) %>% 
-      format_DT(options = DT_options(scrollY = "40VH"))
+      format_DT#(options = DT_options(scrollY = "40VH"))
   })
   
   output$team_games_plot <- renderPlotly({
@@ -492,11 +492,11 @@ function(input, output, session) {
   
   output$rating_point_diff_dt <- renderDT({
     rating_point_diff() %>%  select(-score_difference) %>% 
-      format_DT(DT_options(scrollY = "20VH", searching=F))
+      format_DT#(DT_options(scrollY = "20VH", searching=F))
   })
   
   output$weight_point_diff_dt <- renderDT({
     weight_point_diff() %>% select(-score_difference) %>% 
-      format_DT(DT_options(scrollY = "20VH", searching=F))
+      format_DT#(DT_options(scrollY = "20VH", searching=F))
   })
 }
