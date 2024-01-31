@@ -449,9 +449,14 @@ function(input, output, session) {
     team_summary(input$matchup_team_1) %>% 
       mutate(Team = input$matchup_team_1) %>% 
       filter(Opponent %in% common_opponents) %>% 
-      select(Team, Opponent, Score, Tournament, Date) %>% 
+      select(Opponent, Score, Tournament, Date) %>% 
       arrange(Opponent) %>% 
       format_DT
+  })
+  
+  output$matchup_team_text_1 <- renderText({
+    req(input$matchup_team_1)
+    input$matchup_team_1
   })
   
   output$matchup_mutual_opponents_2 <- renderDT({
@@ -465,10 +470,16 @@ function(input, output, session) {
     team_summary(input$matchup_team_2) %>% 
       mutate(Team = input$matchup_team_2) %>% 
       filter(Opponent %in% common_opponents) %>% 
-      select(Team, Opponent, Score, Tournament, Date) %>% 
+      select(Opponent, Score, Tournament, Date) %>% 
       arrange(Opponent) %>% 
       format_DT
   })
+  
+  output$matchup_team_text_2 <- renderText({
+    req(input$matchup_team_2)
+    input$matchup_team_2
+  })
+  
   
   # Functions for Algorithm Tab
   output$rating_point_diff_plot <- renderPlotly({
