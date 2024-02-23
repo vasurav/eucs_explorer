@@ -1,8 +1,12 @@
 source("algorithm/algorithm_explainer.R")
-source("server/read_data.R")
+source("read/read_data.R")
 source("server/string_functions.R")
 
 function(input, output, session) {
+  
+  # Sidebar UI
+  
+  
   # Functions for Wrangling Data
   game_data_filtered <- reactive({
     game_data %>% filter_output_data
@@ -32,7 +36,8 @@ function(input, output, session) {
   
   filter_output_data <- function(df) {
     df %>% filter(Division == input$division,
-                  Season == input$season)
+                  Season == input$season,
+                  Ranking_Calculation_Date == input$ranking_date)
   }
   
   add_wildcard_to_summary <- function(df) {

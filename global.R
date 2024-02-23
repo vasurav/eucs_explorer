@@ -11,7 +11,7 @@ library(bslib)
 library(bsicons)
 library(markdown)
 library(networkD3)
-source("server/read_data.R")
+source("read/read_data.R")
 
 theme_set(theme_minimal())
 thematic_shiny(font = "auto")
@@ -19,7 +19,8 @@ thematic_shiny(font = "auto")
 enableBookmarking("url")
 
 # Read Data
-data_path <- "demo_data/output_demo_2023_eucs_only/"
+# data_path <- "demo_data/output_demo_2023_eucs_only/"
+data_path <- "data/"
 game_data <- read_all_game_data(data_path)
 summary_data <- read_all_summary_data(data_path)
 wildcard_data <- read_all_wildcard_data(data_path) %>% 

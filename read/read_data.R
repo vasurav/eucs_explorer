@@ -5,6 +5,19 @@ read_all_game_data <- function(path) {
   read_all_output_data_filetype(path, "games")
 }
 
+get_seasons_from_path <- function(data_path){
+  list.dirs(data_path)
+}
+
+get_rankings_from_season_path <- function(season_path){
+  list.dirs(season_path)
+}
+
+get_season_data <- function(rankings){
+  
+}
+
+
 # Read all the summary data
 read_all_summary_data <- function(path) {
   read_all_output_data_filetype(path, "summary", read_summary_data) 
@@ -53,10 +66,10 @@ label_output_data <- function(df, path){
     )
 }
 
-# For a given filetype ("games", "summary", etc) - list all the fils in a given directory
-list_all_files_filetype <- function(path, filetype)
+# For a given filetype ("games", "summary", etc) - list all the files in a given directory
+list_all_files_filetype <- function(path, filetype, recursive = T)
 {
-  list.files(path) %>% 
+  list.files(path, recursive = recursive) %>% 
     as_tibble_col(column_name = "filename") %>% 
     filter(grepl(".csv", filename)) %>% 
     filter(filetype_from_path(filename) == filetype) %>% 
@@ -75,7 +88,7 @@ word_from_path <- function(path, number){
 }
 
 # Functions to extract specific words
-division_from_path <- function(path) word_from_path(path, 3)
+division_from_path <- function(path) word_from_path(path, 2)
 date_from_path <- function(path) word_from_path(path, 5)
 filetype_from_path <- function(path) word_from_path(path, 4)
-season_from_path <- function(path) word_from_path(path, 2)
+season_from_path <- function(path) word_from_path(path, 1)
