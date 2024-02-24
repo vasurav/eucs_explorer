@@ -37,6 +37,16 @@ season_nav_panel <-
       ),
       nav_panel(
         title="Evolution",
+        layout_columns(
+          fill=F, fillable=F,
+          numericInput("top_teams_number", "Top Teams", 16, 1, 100, 1),
+          selectInput(
+            "top_teams_select", 
+            tooltip(trigger = list("Include which teams?",
+                                   bs_icon("info-circle")),
+                    "If 'Entire Season' is selected every team that was ever in the top ranks will be included. If 'Current Ranking' is selected only the teams that hold the top rank from the last ranking calculation are included."), 
+            choices=c("Entire Season", "Current Ranking"))
+        ),
         plotlyOutput("season_ranking_evolution_plot")
       ),
       nav_panel(

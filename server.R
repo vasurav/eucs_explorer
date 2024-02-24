@@ -119,19 +119,30 @@ function(input, output, session) {
   })
   
   output$season_ranking_evolution_plot <- renderPlotly({
-    number_of_teams = 20
+    req(input$top_teams_number, input$ranking_date)
+    number_of_teams = input$top_teams_number
+    
+    
     season_evo_data <- 
       summary_data %>% 
       filter(Division==input$division, Season==input$season)
     
     top_teams <- season_evo_data %>% 
-      filter(Ranking %in% 1:number_of_teams) %>% pull(Team) %>% unique()
+      filter(
+        if(input$top_teams_select == "Current Ranking")
+          Ranking_Calculation_Date == input$ranking_date
+        else
+          T
+      ) %>% 
+      filter(Ranking %in% 1:number_of_teams) %>% pull(Team) %>% unique
+    
+    season_evo_data <- season_evo_data %>%
+      filter(Team %in% top_teams)
     
     season_evo_data %>% 
-        filter(Team %in% top_teams) %>% 
         ggplot(aes(x=Ranking_Calculation_Date, y=Ranking, color=Team)) +
         geom_line() + geom_point() +
-        scale_y_reverse(limits = c(NA,1), breaks=c(1,5,10,15,20)) +
+        scale_y_reverse(limits = c(NA,1), breaks=c(1,seq(5,max(season_evo_data$Ranking),5))) +
         geom_hline(yintercept = 16.5, 
                    color=color_eucf_likely_dark, 
                    linetype="dashed") +
