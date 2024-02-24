@@ -1,0 +1,57 @@
+Tournament,Date,Team_1,Team_2,Score_1,Score_2,Game_Rank_Diff_USAU,Game_Wght_USAU,Is_Ignored_USAU,Team_Rank_Diff_USAU
+Spring Invite Padova,2023-04-21,DISConnection,FlyHigh,13,7,557.532,1.000,0,573.450
+Spring Invite Padova,2023-04-21,DISConnection,Gentle Mixed,15,9,515.481,1.000,0,375.320
+Spring Invite Padova,2023-04-21,DISConnection,HoneyMoon,15,6,600.000,1.000,1,1013.660
+Spring Invite Padova,2023-04-21,DISConnection,Leamington Lemmings,13,12,125.000,1.000,0,-110.700
+Spring Invite Padova,2023-04-21,DISConnection,Owls UC,15,6,600.000,1.000,0,672.110
+Spring Invite Padova,2023-04-21,DISConnection,ZomBees,14,8,536.035,1.000,0,823.870
+Spring Invite Padova,2023-04-21,FlyHigh,HoneyMoon,15,7,600.000,1.000,0,440.210
+Spring Invite Padova,2023-04-21,FlyHigh,HoneyMoon,13,8,496.160,1.000,0,440.210
+Spring Invite Padova,2023-04-21,FlyHigh,ZomBees,15,7,600.000,1.000,0,250.420
+Spring Invite Padova,2023-04-21,FucZH,FlyHigh,15,9,515.481,1.000,0,309.620
+Spring Invite Padova,2023-04-21,FucZH,Gentle Mixed,14,8,536.035,1.000,0,111.490
+Spring Invite Padova,2023-04-21,FucZH,Owls UC,11,7,466.893,0.973,0,408.280
+Spring Invite Padova,2023-04-21,Gentle Mixed,FucZH,10,9,125.000,1.000,0,-111.490
+Spring Invite Padova,2023-04-21,Gentle Mixed,Owls UC,12,8,441.155,1.000,0,296.790
+Spring Invite Padova,2023-04-21,Gentle Mixed,ZomBees,15,6,600.000,1.000,0,448.550
+Spring Invite Padova,2023-04-21,HoneyMoon,ZomBees,11,9,249.207,1.000,0,-189.790
+Spring Invite Padova,2023-04-21,Leamington Lemmings,FucZH,15,5,600.000,1.000,0,374.530
+Spring Invite Padova,2023-04-21,Leamington Lemmings,FucZH,15,3,600.000,1.000,0,374.530
+Spring Invite Padova,2023-04-21,Leamington Lemmings,Gentle Mixed,15,10,453.604,1.000,0,486.020
+Spring Invite Padova,2023-04-21,Leamington Lemmings,HoneyMoon,15,1,600.000,1.000,1,1124.360
+Spring Invite Padova,2023-04-21,Leamington Lemmings,Owls UC,15,6,600.000,1.000,0,782.810
+Spring Invite Padova,2023-04-21,Owls UC,HoneyMoon,15,8,564.809,1.000,0,341.550
+Spring Invite Padova,2023-04-21,ZomBees,FlyHigh,15,14,125.000,1.000,0,-250.420
+Spring Invite Padova,2023-04-21,ZomBees,Owls UC,10,9,125.000,1.000,0,-151.760
+Spring Invite Wroclaw,2023-04-21,FRuBB,Hässliche Erdferkel,11,5,600.000,0.918,0,309.380
+Spring Invite Wroclaw,2023-04-21,FRuBB,KS FLOW WROCŁAW,11,10,125.000,1.000,0,335.450
+Spring Invite Wroclaw,2023-04-21,FRuBB,KS FLOW WROCŁAW,13,6,600.000,1.000,0,335.450
+Spring Invite Wroclaw,2023-04-21,FRuBB,PELT,12,11,125.000,1.000,0,193.470
+Spring Invite Wroclaw,2023-04-21,FRuBB,Zoom Ultimate,13,5,600.000,1.000,0,540.400
+Spring Invite Wroclaw,2023-04-21,Hässliche Erdferkel,PELT,10,8,262.666,0.973,0,-115.910
+Spring Invite Wroclaw,2023-04-21,Hässliche Erdferkel,Prague Devils,9,6,418.566,0.889,0,355.510
+Spring Invite Wroclaw,2023-04-21,Hässliche Erdferkel,Savage Ultimate,12,9,345.365,1.000,0,-119.270
+Spring Invite Wroclaw,2023-04-21,Hässliche Erdferkel,Transylvania Ultimate,10,9,125.000,1.000,0,416.670
+Spring Invite Wroclaw,2023-04-21,KS FLOW WROCŁAW,Left Overs,7,6,125.000,0.827,0,-272.770
+Spring Invite Wroclaw,2023-04-21,KS FLOW WROCŁAW,RJP,10,9,125.000,1.000,0,60.890
+Spring Invite Wroclaw,2023-04-21,KS FLOW WROCŁAW,Zoom Ultimate,10,9,125.000,1.000,0,204.950
+Spring Invite Wroclaw,2023-04-21,Left Overs,FRuBB,11,9,249.207,1.000,0,-62.680
+Spring Invite Wroclaw,2023-04-21,Left Overs,PELT,11,9,249.207,1.000,0,130.790
+Spring Invite Wroclaw,2023-04-21,Left Overs,RJP,9,6,418.566,0.889,0,333.660
+Spring Invite Wroclaw,2023-04-21,Left Overs,Transylvania Ultimate,9,3,600.000,0.827,1,663.370
+Spring Invite Wroclaw,2023-04-21,Left Overs,Zoom Ultimate,11,6,546.695,0.946,0,477.720
+Spring Invite Wroclaw,2023-04-21,PELT,KS FLOW WROCŁAW,8,6,300.492,0.858,0,141.980
+Spring Invite Wroclaw,2023-04-21,PELT,Left Overs,9,8,125.000,0.946,0,-130.790
+Spring Invite Wroclaw,2023-04-21,PELT,Zoom Ultimate,10,7,389.665,0.946,0,346.930
+Spring Invite Wroclaw,2023-04-21,Prague Devils,Transylvania Ultimate,11,10,125.000,1.000,0,61.160
+Spring Invite Wroclaw,2023-04-21,Prague Devils,Zoom Ultimate,10,9,125.000,1.000,0,-124.490
+Spring Invite Wroclaw,2023-04-21,RJP,Hässliche Erdferkel,10,9,125.000,1.000,0,-86.960
+Spring Invite Wroclaw,2023-04-21,RJP,Prague Devils,11,8,365.609,1.000,0,268.550
+Spring Invite Wroclaw,2023-04-21,RJP,Prague Devils,10,7,389.665,0.946,0,268.550
+Spring Invite Wroclaw,2023-04-21,RJP,Transylvania Ultimate,12,10,238.123,1.000,0,329.710
+Spring Invite Wroclaw,2023-04-21,Savage Ultimate,Hässliche Erdferkel,12,10,238.123,1.000,0,119.270
+Spring Invite Wroclaw,2023-04-21,Savage Ultimate,KS FLOW WROCŁAW,9,7,279.337,0.918,0,145.340
+Spring Invite Wroclaw,2023-04-21,Savage Ultimate,Prague Devils,12,7,520.511,1.000,0,474.780
+Spring Invite Wroclaw,2023-04-21,Savage Ultimate,RJP,14,10,398.702,1.000,0,206.230
+Spring Invite Wroclaw,2023-04-21,Savage Ultimate,Transylvania Ultimate,12,7,520.511,1.000,0,535.940
+Spring Invite Wroclaw,2023-04-21,Zoom Ultimate,Transylvania Ultimate,12,7,520.511,1.000,0,185.650
