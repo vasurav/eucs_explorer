@@ -36,6 +36,10 @@ season_nav_panel <-
         DTOutput("season_games_table")
       ),
       nav_panel(
+        title="Evolution",
+        plotlyOutput("season_ranking_evolution_plot")
+      ),
+      nav_panel(
         title = "Connections",
         simpleNetworkOutput("season_network")
       )

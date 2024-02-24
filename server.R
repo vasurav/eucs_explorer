@@ -41,7 +41,9 @@ function(input, output, session) {
   }
   
   add_wildcard_to_summary <- function(df) {
-    df %>% left_join(wildcard_data, by=c("Team", "Division", "Season")) %>% 
+    df %>% left_join(wildcard_data %>% 
+                       filter(Wildcard_Date < input$ranking_date), 
+                     by=c("Team", "Division", "Season")) %>% 
       mutate(Wildcard = !is.na(Wildcard_Event)) %>% 
       add_ranking_no_wildcard
       
@@ -114,6 +116,29 @@ function(input, output, session) {
   
   output$eucf_ranking_spots_likely <- renderText({
     eucf_ranking_spots_likely() - eucf_ranking_spots_guaranteed()
+  })
+  
+  output$season_ranking_evolution_plot <- renderPlotly({
+    number_of_teams = 20
+    season_evo_data <- 
+      summary_data %>% 
+      filter(Division==input$division, Season==input$season)
+    
+    top_teams <- season_evo_data %>% 
+      filter(Ranking %in% 1:number_of_teams) %>% pull(Team) %>% unique()
+    
+    season_evo_data %>% 
+        filter(Team %in% top_teams) %>% 
+        ggplot(aes(x=Ranking_Calculation_Date, y=Ranking, color=Team)) +
+        geom_line() + geom_point() +
+        scale_y_reverse(limits = c(NA,1), breaks=c(1,5,10,15,20)) +
+        geom_hline(yintercept = 16.5, 
+                   color=color_eucf_likely_dark, 
+                   linetype="dashed") +
+        geom_hline(yintercept = eucf_ranking_spots_guaranteed() + 0.5, 
+                   color=color_eucf_guaranteed_dark, 
+                   linetype="dashed")
+    
   })
   
   output$season_ranking_table <- renderDT({
