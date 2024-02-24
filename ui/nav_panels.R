@@ -101,6 +101,10 @@ team_nav_panel <-
       nav_panel(
         "Plot",
         plotlyOutput("team_games_plot")
+      ),
+      nav_panel(
+        "Evolution",
+        plotlyOutput("team_evolution_plot")
       )
       # nav_panel(
       #   "Roster"

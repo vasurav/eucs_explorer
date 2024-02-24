@@ -252,6 +252,21 @@ function(input, output, session) {
     summary_data_filtered_eligible() %>% filter(Team == input$team)
   })
   
+  output$team_evolution_plot <- renderPlotly({
+    summary_data %>% 
+      filter(Season == input$season, Division == input$division) %>% 
+      filter(Team == input$team) %>% 
+      ggplot(aes(x=Ranking_Calculation_Date, y=Ranking, color=Team)) +
+      geom_line() + geom_point() +
+      scale_y_reverse(limits = c(NA,1)) +
+      geom_hline(yintercept = 16.5, 
+                 color=color_eucf_likely_dark, 
+                 linetype="dashed") +
+      geom_hline(yintercept = eucf_ranking_spots_guaranteed() + 0.5, 
+                 color=color_eucf_guaranteed_dark, 
+                 linetype="dashed")
+  })
+  
   eucf_cutoff_rating_guaranteed <- reactive({
     req(input$team)
     
