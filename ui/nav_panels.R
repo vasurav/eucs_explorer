@@ -14,15 +14,14 @@ season_nav_panel <-
                                            "Number of ranking spots that are guaranteed to get EUCF spots.")),
                 value = textOutput("eucf_ranking_spots_guaranteed"),
                 showcase = bs_icon("shield-fill-check"),
-                theme = value_box_theme(bg = color_eucf_guaranteed)),
-      value_box(title = card_title("Unassigned Wildcards",
+                theme = value_box_theme(bg = color_eucf_guaranteed_dark)),
+      value_box(title = card_title("Potential Bids",
                                    tooltip(bs_icon("info-circle"),
-                                           "Ranking spots that are likely to get EUCF spots. 
-                                           If wildcards are awarded to teams outside the top 16, 
-                                           these spots will no longer qualify teams to the EUCF.")),
+                                           "The number of potential spots is equal to the number of unassigned wildcards. 
+                                           These spots will qualify teams to the EUCF only if teams that earn the wildcards are in the top 16 of the ranking.")),
                 value = textOutput("eucf_ranking_spots_likely"),
                 showcase = bs_icon("patch-question-fill"),
-                theme = value_box_theme(bg = color_eucf_likely))
+                theme = value_box_theme(bg = color_eucf_likely_dark))
       
     ),
     navset_card_tab(
@@ -93,7 +92,7 @@ team_nav_panel <-
                              ),
                              popover(
                                bs_icon("gear-fill"),
-                               checkboxInput("team_eucf_cutoff_type", "Include Unassigned Wildcars?",
+                               checkboxInput("team_eucf_cutoff_type", "Include potential bids?",
                                            value = F),
                                placement = "top"
                                )
