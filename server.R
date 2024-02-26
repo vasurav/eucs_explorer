@@ -120,7 +120,7 @@ function(input, output, session) {
   
   output$season_ranking_evolution_plot <- renderPlotly({
     req(input$top_teams_number, input$ranking_date)
-    number_of_teams = input$top_teams_number
+    number_of_teams <- input$top_teams_number
     
     
     season_evo_data <- 
@@ -139,16 +139,23 @@ function(input, output, session) {
     season_evo_data <- season_evo_data %>%
       filter(Team %in% top_teams)
     
-    season_evo_data %>% 
+    `EUCF Cutoff` = eucf_ranking_spots_guaranteed()
+    `EUCF Cutoff (Including Unassigned Wildcards)` = 16
+    
+    (season_evo_data %>% 
         ggplot(aes(x=Ranking_Calculation_Date, y=Ranking, color=Team)) +
         geom_line() + geom_point() +
         scale_y_reverse(limits = c(NA,1), breaks=c(1,seq(5,max(season_evo_data$Ranking),5))) +
-        geom_hline(yintercept = 16.5, 
+        geom_hline(aes(yintercept = `EUCF Cutoff (Including Unassigned Wildcards)`, 
+                   linetype="EUCF Cutoff (Including Unassigned Wildcards)"),
                    color=color_eucf_likely_dark, 
-                   linetype="dashed") +
-        geom_hline(yintercept = eucf_ranking_spots_guaranteed() + 0.5, 
-                   color=color_eucf_guaranteed_dark, 
-                   linetype="dashed")
+                   ) +
+        geom_hline(aes(yintercept = `EUCF Cutoff`, 
+                   
+                   linetype="EUCF Cutoff"),
+                   color=color_eucf_guaranteed_dark) +
+      scale_linetype_manual(name="Horizontal Lines", values = c(2, 2))) %>%
+      ggplotly(tooltip = c("color","shape", "y", "x", "yintercept")) %>% hide_legend()
     
   })
   
