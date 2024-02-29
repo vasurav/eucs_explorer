@@ -17,7 +17,13 @@ function(reqest){
         padding: 0 !important;
       }
     }
-  "))
+  ")),
+      tags$style(HTML(
+        '
+        .nav.navbar-nav .form-group.shiny-input-container {margin-bottom: 0; height: 38px;}
+        .nav.navbar-nav .form-group.shiny-input-container > label {display: inline;}
+        '
+      )),
     ),
     page_navbar(
       id = "main_tab",
@@ -54,13 +60,19 @@ function(reqest){
                       unique %>% 
                       sort(decreasing=T)
         ),
-        selectInput(inputId = "division", "Division:",
-                    choices = c("Mixed", "Open", "Women"), selected = "Mixed"),
+        # selectInput(inputId = "division", "Division:",
+        #             choices = c("Mixed", "Open", "Women"), selected = "Mixed"),
         selectInput(inputId = "eligible_only", 
                     tooltip(trigger = list("Teams Counted in Ranking:",
                                            bs_icon("info-circle")),
                             "Only teams with 10 games or more are eligible to qualify for the EUCF. However, by default, all teams are shown in the ranking here."),
                     choices = c("All Teams", ">10 Games Only"))
+      ),
+      
+      nav_item(
+        collapsible = F,
+        selectInput(inputId = "division", NULL,
+                    choices = c("Mixed", "Open", "Women"), selected = "Mixed", width="120px")
       ),
       
       # Actual Content
