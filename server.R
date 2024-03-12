@@ -5,7 +5,18 @@ source("server/string_functions.R")
 function(input, output, session) {
   
   # Sidebar UI
-  
+  output$select_ranking_date <- renderUI({
+    req(input$season)
+    selectInput(inputId = "ranking_date", "Ranking Date:",
+                choices = 
+                  game_data %>% 
+                  filter(Season == input$season) %>% 
+                  pull(Ranking_Calculation_Date) %>% 
+                  unique %>% 
+                  sort(decreasing=T)
+    )
+  }
+  )
   
   # Functions for Wrangling Data
   game_data_filtered <- reactive({
@@ -107,14 +118,17 @@ function(input, output, session) {
   
   # Functions for Season Tab
   output$wildcard_count <- renderText({
+    req(input$ranking_date)
     paste0(wildcards_awarded(), " of ", total_wildcards())
   })
   
   output$eucf_ranking_spots_guaranteed <- renderText({
+    req(input$ranking_date)
     eucf_ranking_spots_guaranteed()
   })
   
   output$eucf_ranking_spots_likely <- renderText({
+    req(input$ranking_date)
     eucf_ranking_spots_likely() - eucf_ranking_spots_guaranteed()
   })
   
@@ -160,6 +174,7 @@ function(input, output, session) {
   })
   
   output$season_ranking_table <- renderDT({
+    req(input$ranking_date)
     summary_data_filtered_eligible() %>% 
       arrange(Ranking) %>% 
       mutate(Wildcard = if_else(Wildcard, Wildcard_Event, "")) %>% 
@@ -252,8 +267,10 @@ function(input, output, session) {
   }
   
   output$team_selector <- renderUI({
+    req(input$ranking_date)
     selectInput("team", label = NULL, width="100%",
-                choices = summary_data_filtered() %>% 
+                choices = 
+                  summary_data_filtered() %>% 
                   arrange(Team) %>% 
                   pull(Team))
   })

@@ -52,14 +52,7 @@ function(reqest){
       sidebar = sidebar(
         selectInput(inputId = "season", "Season:",
                     choices = game_data %>% pull(Season) %>% unique),
-        selectInput(inputId = "ranking_date", "Ranking Date:",
-                    choices = 
-                      game_data %>% 
-                      # filter(Season == input$Season) %>% 
-                      pull(Ranking_Calculation_Date) %>% 
-                      unique %>% 
-                      sort(decreasing=T)
-        ),
+        uiOutput("select_ranking_date"),
         # selectInput(inputId = "division", "Division:",
         #             choices = c("Mixed", "Open", "Women"), selected = "Mixed"),
         selectInput(inputId = "eligible_only", 
