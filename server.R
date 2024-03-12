@@ -267,12 +267,15 @@ function(input, output, session) {
   }
   
   output$team_selector <- renderUI({
-    req(input$ranking_date)
+    req(input$division, input$season)
     selectInput("team", label = NULL, width="100%",
                 choices = 
-                  summary_data_filtered() %>% 
+                  summary_data %>%
+                  filter(Division == input$division,
+                         Season == input$season) %>% 
                   arrange(Team) %>% 
-                  pull(Team))
+                  pull(Team) %>% 
+                  unique())
   })
   
   observeEvent(input$team, {

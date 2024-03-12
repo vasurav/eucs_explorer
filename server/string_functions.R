@@ -14,6 +14,7 @@ str_to_url_link <- function(team, tab="Team", input)
          "&division=&quot;",input$division, "&quot;",
          "&season=&quot;",input$season, "&quot;",
          "&eligible_only=&quot;",input$eligible_only, "&quot;",
+         "&ranking_date=&quot;",input$ranking_date, "&quot;",
          "\">",team,"</a>")
 }
   
