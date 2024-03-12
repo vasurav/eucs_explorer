@@ -1,0 +1,99 @@
+Tournament,Date,Team_1,Team_2,Score_1,Score_2,Game_Rank_Diff_USAU,Game_Wght_USAU,Is_Ignored_USAU,Team_Rank_Diff_USAU
+Spring Invite Padova,2023-04-21,DISConnection,FlyHigh,13,7,557.532,1.000,0,589.920
+Spring Invite Padova,2023-04-21,DISConnection,Gentle Mixed,15,9,515.481,1.000,0,394.040
+Spring Invite Padova,2023-04-21,DISConnection,HoneyMoon,15,6,600.000,1.000,1,1034.830
+Spring Invite Padova,2023-04-21,DISConnection,Leamington Lemmings,13,12,125.000,1.000,0,-91.820
+Spring Invite Padova,2023-04-21,DISConnection,Owls UC,15,6,600.000,1.000,1,706.080
+Spring Invite Padova,2023-04-21,DISConnection,ZomBees,14,8,536.035,1.000,0,841.670
+Spring Invite Padova,2023-04-21,FlyHigh,HoneyMoon,15,7,600.000,1.000,0,444.910
+Spring Invite Padova,2023-04-21,FlyHigh,HoneyMoon,13,8,496.160,1.000,0,444.910
+Spring Invite Padova,2023-04-21,FlyHigh,ZomBees,15,7,600.000,1.000,0,251.750
+Spring Invite Padova,2023-04-21,FucZH,FlyHigh,15,9,515.481,1.000,0,305.220
+Spring Invite Padova,2023-04-21,FucZH,Gentle Mixed,14,8,536.035,1.000,0,109.340
+Spring Invite Padova,2023-04-21,FucZH,Owls UC,11,7,466.893,0.973,0,421.380
+Spring Invite Padova,2023-04-21,Gentle Mixed,FucZH,10,9,125.000,1.000,0,-109.340
+Spring Invite Padova,2023-04-21,Gentle Mixed,Owls UC,12,8,441.155,1.000,0,312.040
+Spring Invite Padova,2023-04-21,Gentle Mixed,ZomBees,15,6,600.000,1.000,0,447.630
+Spring Invite Padova,2023-04-21,HoneyMoon,ZomBees,11,9,249.207,1.000,0,-193.160
+Spring Invite Padova,2023-04-21,Leamington Lemmings,FucZH,15,5,600.000,1.000,0,376.520
+Spring Invite Padova,2023-04-21,Leamington Lemmings,FucZH,15,3,600.000,1.000,0,376.520
+Spring Invite Padova,2023-04-21,Leamington Lemmings,Gentle Mixed,15,10,453.604,1.000,0,485.860
+Spring Invite Padova,2023-04-21,Leamington Lemmings,HoneyMoon,15,1,600.000,1.000,1,1126.650
+Spring Invite Padova,2023-04-21,Leamington Lemmings,Owls UC,15,6,600.000,1.000,0,797.900
+Spring Invite Padova,2023-04-21,Owls UC,HoneyMoon,15,8,564.809,1.000,0,328.750
+Spring Invite Padova,2023-04-21,ZomBees,FlyHigh,15,14,125.000,1.000,0,-251.750
+Spring Invite Padova,2023-04-21,ZomBees,Owls UC,10,9,125.000,1.000,0,-135.590
+Spring Invite Wroclaw,2023-04-21,FRuBB,Hässliche Erdferkel,11,5,600.000,0.918,0,350.450
+Spring Invite Wroclaw,2023-04-21,FRuBB,KS FLOW WROCŁAW,11,10,125.000,1.000,0,340.800
+Spring Invite Wroclaw,2023-04-21,FRuBB,KS FLOW WROCŁAW,13,6,600.000,1.000,0,340.800
+Spring Invite Wroclaw,2023-04-21,FRuBB,PELT,12,11,125.000,1.000,0,193.160
+Spring Invite Wroclaw,2023-04-21,FRuBB,Zoom Ultimate,13,5,600.000,1.000,0,493.150
+Spring Invite Wroclaw,2023-04-21,Hässliche Erdferkel,PELT,10,8,262.666,0.973,0,-157.290
+Spring Invite Wroclaw,2023-04-21,Hässliche Erdferkel,Prague Devils,9,6,418.566,0.889,0,353.070
+Spring Invite Wroclaw,2023-04-21,Hässliche Erdferkel,Savage Ultimate,12,9,345.365,1.000,0,-113.600
+Spring Invite Wroclaw,2023-04-21,Hässliche Erdferkel,Transylvania Ultimate,10,9,125.000,1.000,0,485.800
+Spring Invite Wroclaw,2023-04-21,KS FLOW WROCŁAW,Left Overs,7,6,125.000,0.827,0,-278.960
+Spring Invite Wroclaw,2023-04-21,KS FLOW WROCŁAW,RJP,10,9,125.000,1.000,0,96.190
+Spring Invite Wroclaw,2023-04-21,KS FLOW WROCŁAW,Zoom Ultimate,10,9,125.000,1.000,0,152.350
+Spring Invite Wroclaw,2023-04-21,Left Overs,FRuBB,11,9,249.207,1.000,0,-61.840
+Spring Invite Wroclaw,2023-04-21,Left Overs,PELT,11,9,249.207,1.000,0,131.320
+Spring Invite Wroclaw,2023-04-21,Left Overs,RJP,9,6,418.566,0.889,0,375.150
+Spring Invite Wroclaw,2023-04-21,Left Overs,Transylvania Ultimate,9,3,600.000,0.827,1,774.410
+Spring Invite Wroclaw,2023-04-21,Left Overs,Zoom Ultimate,11,6,546.695,0.946,0,431.310
+Spring Invite Wroclaw,2023-04-21,PELT,KS FLOW WROCŁAW,8,6,300.492,0.858,0,147.640
+Spring Invite Wroclaw,2023-04-21,PELT,Left Overs,9,8,125.000,0.946,0,-131.320
+Spring Invite Wroclaw,2023-04-21,PELT,Zoom Ultimate,10,7,389.665,0.946,0,299.990
+Spring Invite Wroclaw,2023-04-21,Prague Devils,Transylvania Ultimate,11,10,125.000,1.000,0,132.730
+Spring Invite Wroclaw,2023-04-21,Prague Devils,Zoom Ultimate,10,9,125.000,1.000,0,-210.370
+Spring Invite Wroclaw,2023-04-21,RJP,Hässliche Erdferkel,10,9,125.000,1.000,0,-86.540
+Spring Invite Wroclaw,2023-04-21,RJP,Prague Devils,11,8,365.609,1.000,0,266.530
+Spring Invite Wroclaw,2023-04-21,RJP,Prague Devils,10,7,389.665,0.946,0,266.530
+Spring Invite Wroclaw,2023-04-21,RJP,Transylvania Ultimate,12,10,238.123,1.000,0,399.260
+Spring Invite Wroclaw,2023-04-21,Savage Ultimate,Hässliche Erdferkel,12,10,238.123,1.000,0,113.600
+Spring Invite Wroclaw,2023-04-21,Savage Ultimate,KS FLOW WROCŁAW,9,7,279.337,0.918,0,103.950
+Spring Invite Wroclaw,2023-04-21,Savage Ultimate,Prague Devils,12,7,520.511,1.000,0,466.670
+Spring Invite Wroclaw,2023-04-21,Savage Ultimate,RJP,14,10,398.702,1.000,0,200.140
+Spring Invite Wroclaw,2023-04-21,Savage Ultimate,Transylvania Ultimate,12,7,520.511,1.000,0,599.400
+Spring Invite Wroclaw,2023-04-21,Zoom Ultimate,Transylvania Ultimate,12,7,520.511,1.000,0,343.100
+Elite Invite,2023-05-29,DISConnection,Deep Space,14,13,125.000,1.000,0,141.810
+Elite Invite,2023-05-29,DISConnection,PUC,15,5,600.000,1.000,1,687.880
+Elite Invite,2023-05-29,DISConnection,Reading,12,9,345.365,1.000,0,-161.270
+Elite Invite,2023-05-29,DISConnection,Smog,15,12,300.492,1.000,0,434.770
+Elite Invite,2023-05-29,Deep Space,Mosquitos,15,4,600.000,1.000,0,267.970
+Elite Invite,2023-05-29,Deep Space,PUC,15,9,515.481,1.000,0,546.070
+Elite Invite,2023-05-29,Deep Space,Sesquidistus,13,10,328.142,1.000,0,-63.080
+Elite Invite,2023-05-29,GRUT,Deep Space,15,8,564.809,1.000,0,42.100
+Elite Invite,2023-05-29,GRUT,Deep Space,13,11,228.840,1.000,0,42.100
+Elite Invite,2023-05-29,GRUT,PUC,15,6,600.000,1.000,0,588.170
+Elite Invite,2023-05-29,GRUT,Smog,12,9,345.365,1.000,0,335.060
+Elite Invite,2023-05-29,Mosquitos,GRUT,13,11,228.840,1.000,0,-310.070
+Elite Invite,2023-05-29,Mosquitos,PUC,15,11,381.165,1.000,0,278.100
+Elite Invite,2023-05-29,Mosquitos,PUC,12,10,238.123,1.000,0,278.100
+Elite Invite,2023-05-29,Reading,DISConnection,14,11,313.338,1.000,0,161.270
+Elite Invite,2023-05-29,Reading,GRUT,15,10,453.604,1.000,0,260.980
+Elite Invite,2023-05-29,Reading,Mosquitos,15,9,515.481,1.000,0,571.050
+Elite Invite,2023-05-29,Reading,Sesquidistus,15,10,453.604,1.000,0,240.000
+Elite Invite,2023-05-29,Reading,Smog,15,5,600.000,1.000,0,596.040
+Elite Invite,2023-05-29,Sesquidistus,DISConnection,14,13,125.000,1.000,0,-78.730
+Elite Invite,2023-05-29,Sesquidistus,PUC,15,8,564.809,1.000,0,609.150
+Elite Invite,2023-05-29,Sesquidistus,Smog,15,7,600.000,1.000,0,356.040
+Elite Invite,2023-05-29,Sesquidistus,Smog,13,7,557.532,1.000,0,356.040
+Elite Invite,2023-05-29,Smog,Mosquitos,15,12,300.492,1.000,0,-24.990
+EUCR Istanbul,2023-06-11,Fireball Ultimate,OldSchool,9,7,279.337,0.918,0,87.010
+EUCR Istanbul,2023-06-11,Fireball Ultimate,Shopski Otryad,9,4,600.000,0.827,0,96.020
+EUCR Istanbul,2023-06-11,Fireball Ultimate,Steamhuck,10,9,125.000,1.000,0,4.420
+EUCR Istanbul,2023-06-11,Fireball Ultimate,Transylvania Ultimate,8,7,125.000,0.889,0,286.370
+EUCR Istanbul,2023-06-11,OldSchool,Seahawks Ultimate,12,11,125.000,1.000,0,337.540
+EUCR Istanbul,2023-06-11,OldSchool,Shopski Otryad,11,7,466.893,0.973,0,9.010
+EUCR Istanbul,2023-06-11,OldSchool,Steamhuck,11,10,125.000,1.000,0,-82.590
+EUCR Istanbul,2023-06-11,Seahawks Ultimate,Transylvania Ultimate,10,9,125.000,1.000,0,-138.180
+EUCR Istanbul,2023-06-11,Shopski Otryad,Seahawks Ultimate,15,5,600.000,1.000,0,328.530
+EUCR Istanbul,2023-06-11,Shopski Otryad,Steamhuck,12,11,125.000,1.000,0,-91.600
+EUCR Istanbul,2023-06-11,Shopski Otryad,Transylvania Ultimate,15,8,564.809,1.000,0,190.350
+EUCR Istanbul,2023-06-11,Steamhuck,Fireball Ultimate,8,6,300.492,0.858,0,-4.420
+EUCR Istanbul,2023-06-11,Steamhuck,OldSchool,11,8,365.609,1.000,0,82.590
+EUCR Istanbul,2023-06-11,Transylvania Ultimate,Seahawks Ultimate,11,7,466.893,0.973,0,138.180
+EUCR Istanbul,2023-06-11,Zoom Ultimate,Fireball Ultimate,11,8,365.609,1.000,0,56.730
+EUCR Istanbul,2023-06-11,Zoom Ultimate,OldSchool,10,9,125.000,1.000,0,143.740
+EUCR Istanbul,2023-06-11,Zoom Ultimate,Seahawks Ultimate,11,8,365.609,1.000,0,481.280
+EUCR Istanbul,2023-06-11,Zoom Ultimate,Transylvania Ultimate,13,6,600.000,1.000,0,343.100
