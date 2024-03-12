@@ -14,15 +14,15 @@ function(reqest){
         HTML("
     @media (max-width: 575.98px) {
       .main {
-        padding: 0 !important;
+        padding: 5px !important;
       }
     }
   ")),
       tags$style(HTML(
-        '
+        "
         .nav.navbar-nav .form-group.shiny-input-container {margin-bottom: 0; height: 38px;}
         .nav.navbar-nav .form-group.shiny-input-container > label {display: inline;}
-        '
+        "
       )),
     ),
     page_navbar(
@@ -70,7 +70,9 @@ function(reqest){
       ),
       
       nav_item(
+        persistent = TRUE,
         collapsible = F,
+        collapse = F,
         selectInput(inputId = "division", NULL,
                     choices = c("Mixed", "Open", "Women"), selected = "Mixed", width="120px")
       ),
