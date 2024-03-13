@@ -1,5 +1,7 @@
 source("ui/nav_panels.R")
 
+addResourcePath("fonts", "./fonts")
+
 function(reqest){
   tagList(
     tags$head(
@@ -39,7 +41,9 @@ function(reqest){
           "nav-link-font-weight" = "normal",
           "nav-text-color" = "#fc0 !important",
           "nav-link-hover-color" = "#fc0 !important",
-          base_font = font_google("Bebas Neue"),
+          #base_font = font_google("Bebas Neue"),
+          base_font = font_face(family = "Bebas Neue",
+                                src = "url('/fonts/BebasNeue-Regular.ttf') format('truetype')")
         ),
       # Title
       title=img(
