@@ -50,6 +50,7 @@ function(reqest){
       
       #Sidebar
       sidebar = sidebar(
+        bg = "#1E1E1E",
         selectInput(inputId = "season", "Season:",
                     choices = game_data %>% pull(Season) %>% unique),
         uiOutput("select_ranking_date"),
