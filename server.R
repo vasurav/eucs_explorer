@@ -4,8 +4,13 @@ source("server/string_functions.R")
 
 function(input, output, session) {
   
+  #Observe Events to allow links to change inputs
   observeEvent(input$main_tab,{
     updateTabsetPanel(session, "main_tab", input$main_tab)
+  })
+  
+  observeEvent(input$team, {
+    updateSelectInput(session, "team", selected=input$team)
   })
   
   # Sidebar UI
@@ -281,10 +286,6 @@ function(input, output, session) {
                   arrange(Team) %>% 
                   pull(Team) %>% 
                   unique())
-  })
-  
-  observeEvent(input$team, {
-    updateSelectInput(session, "team", selected=input$team)
   })
   
   ranking_row <- reactive({
