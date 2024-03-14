@@ -41,7 +41,6 @@ function(reqest){
           "nav-link-font-weight" = "normal",
           "nav-text-color" = "#fc0 !important",
           "nav-link-hover-color" = "#fc0 !important",
-          #base_font = font_google("Bebas Neue"),
           base_font = font_face(family = "Bebas Neue",
                                 src = "url('/fonts/BebasNeue-Regular.ttf') format('truetype')")
         ),
@@ -54,27 +53,20 @@ function(reqest){
       
       #Sidebar
       sidebar = sidebar(
+        open="open",
         bg = "#1E1E1E",
+        selectInput(inputId = "division", "Division:",
+                    choices = c("Mixed", "Open", "Women"), selected = "Mixed"),
         selectInput(inputId = "season", "Season:",
                     choices = game_data %>% pull(Season) %>% unique),
         uiOutput("select_ranking_date"),
-        # selectInput(inputId = "division", "Division:",
-        #             choices = c("Mixed", "Open", "Women"), selected = "Mixed"),
         selectInput(inputId = "eligible_only", 
                     tooltip(trigger = list("Teams Counted in Ranking:",
                                            bs_icon("info-circle")),
                             "Only teams with 10 games or more are eligible to qualify for the EUCF. However, by default, all teams are shown in the ranking here."),
                     choices = c("All Teams", ">10 Games Only"))
       ),
-      
-      nav_item(
-        persistent = TRUE,
-        collapsible = F,
-        collapse = F,
-        selectInput(inputId = "division", NULL,
-                    choices = c("Mixed", "Open", "Women"), selected = "Mixed", width="120px")
-      ),
-      
+    
       # Actual Content
       season_nav_panel,
       team_nav_panel,
