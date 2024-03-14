@@ -4,6 +4,10 @@ source("server/string_functions.R")
 
 function(input, output, session) {
   
+  observeEvent(input$main_tab,{
+    updateTabsetPanel(session, "main_tab", input$main_tab)
+  })
+  
   # Sidebar UI
   output$select_ranking_date <- renderUI({
     req(input$season)
@@ -180,7 +184,8 @@ function(input, output, session) {
       mutate(Wildcard = if_else(Wildcard, Wildcard_Event, "")) %>% 
       mutate(`Record (W-L)` = paste0(Wins, " - ", Losses)) %>% 
       select(Ranking, Ranking_No_Wildcard, Team, Rating_USAU, `Record (W-L)`, Tournaments, Wildcard) %>% 
-      mutate(Team = str_to_url_link(Team, input = input)) %>% 
+      #mutate(Team = str_to_url_link(Team, input = input)) %>%
+      mutate(Team = str_to_input_link(string=Team)) %>% 
       dplyr::rename(Rating = Rating_USAU) %>%
       format_DT(options = DT_options(hidden_rows = c("Ranking_No_Wildcard"))) %>% 
       formatStyle(
@@ -216,7 +221,7 @@ function(input, output, session) {
   
   output$season_games_table <- renderDT({
     game_data_filtered() %>% 
-      mutate(Game = paste0(str_to_url_link(Team_1, input = input), " vs. ", str_to_url_link(Team_2, input = input), " : ", 
+      mutate(Game = paste0(str_to_input_link(Team_1), " vs. ", str_to_input_link(Team_2), " : ", 
                            Score_1, "-", Score_2)) %>% 
       mutate(Game_Rating_Diff = Game_Rank_Diff_USAU %>% round(2),
              Team_Rating_Diff = Team_Rank_Diff_USAU %>% round(2)) %>% 

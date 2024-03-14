@@ -1,6 +1,11 @@
-str_to_input_link <- function(string, href="#", select_input = "team")
+str_to_input_link <- function(string, href="#", select_input = "team", tab="Team")
 {
-  paste0("<a href=\"", href ,"\", onclick=\"Shiny.setInputValue('",
+  paste0('<a href="', 
+         href ,"\",",
+         " onclick=\"Shiny.setInputValue('",
+         "main_tab", "', '",
+         tab, "');",
+         "Shiny.setInputValue('",
          select_input, "', '",
          string, "')\">",
          string, "</a>")

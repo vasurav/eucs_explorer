@@ -18,6 +18,7 @@ function(reqest){
     @media (max-width: 575.98px) {
       .main {
         padding: 5px !important;
+        padding-left: 30px !important;
       }
     }
   ")),
