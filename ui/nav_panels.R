@@ -188,7 +188,9 @@ matchup_nav_panel <-
 algo_nav_panel <- 
   nav_panel(
     title = "Algorithm",
+    
     layout_column_wrap(
+      fill = F,
       card(
         max_height = "100%",
         withMathJax(includeMarkdown("algorithm/algorithm_explainer.qmd"))),
@@ -197,26 +199,28 @@ algo_nav_panel <-
         navset_card_tab(
           full_screen = T,
           title = "Rating",
+
+          nav_panel(
+            "Table",
+            DTOutput("rating_point_diff_dt")
+          ),
           nav_panel(
             "Plot",
             plotlyOutput("rating_point_diff_plot")
           ),
-          nav_panel(
-            "Table",
-            DTOutput("rating_point_diff_dt")
-          )
           ),
         navset_card_tab(
           full_screen = T,
           title = "Weight",
+          
+          nav_panel(
+            "Table",
+            DTOutput("weight_point_diff_dt")
+          ),
           nav_panel(
             "Plot",
             plotlyOutput("weight_point_diff_plot")
           ),
-          nav_panel(
-            "Table",
-            DTOutput("weight_point_diff_dt")
-          )
         )
       )
     )
