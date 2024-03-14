@@ -190,6 +190,7 @@ algo_nav_panel <-
     title = "Algorithm",
     
     layout_column_wrap(
+      fill = F,
       card(
         max_height = "100%",
         withMathJax(includeMarkdown("algorithm/algorithm_explainer.qmd"))),
