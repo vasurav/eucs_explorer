@@ -43,7 +43,7 @@ function(reqest){
           "nav-link-hover-color" = "#fc0 !important",
           #base_font = font_google("Bebas Neue"),
           base_font = font_face(family = "Bebas Neue",
-                                src = "url('fonts/BebasNeue-Regular.ttf') format('truetype')")
+                                src = "url('/fonts/BebasNeue-Regular.ttf') format('truetype')")
         ),
       # Title
       title=img(
