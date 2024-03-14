@@ -12,16 +12,18 @@ function(reqest){
                  ".card-body a:hover {color: #ddaa00}"),
       tags$style('.card-body p, ol {font-family: "Helvetica Neue",Arial,sans-serif !important}'),
       tags$style('.tooltip {font-family: "Helvetica Neue",Arial,sans-serif !important}'),
-      tags$style(".accordion-button {padding: 5px;}"), 
+      tags$style(".accordion-button {padding: 5px;}"),
+      tags$style(".accordion-body {padding: 0px; margin: 0px;}"), 
       tags$style(
         HTML("
-    @media (max-width: 575.98px) {
-      .main {
-        padding: 5px !important;
-        padding-left: 30px !important;
-      }
-    }
-  ")),
+                @media (max-width: 575.98px) {
+                  .main {
+                    padding: 5px !important;
+                    padding-left: 30px !important;
+                  }
+                }
+              ")
+      ),
       tags$style(HTML(
         "
         .nav.navbar-nav .form-group.shiny-input-container {margin-bottom: 0; height: 38px;}
