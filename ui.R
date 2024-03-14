@@ -12,6 +12,7 @@ function(reqest){
                  ".card-body a:hover {color: #ddaa00}"),
       tags$style('.card-body p, ol {font-family: "Helvetica Neue",Arial,sans-serif !important}'),
       tags$style('.tooltip {font-family: "Helvetica Neue",Arial,sans-serif !important}'),
+      tags$style(".accordion-button {padding: 5px;}"), 
       tags$style(
         HTML("
     @media (max-width: 575.98px) {
