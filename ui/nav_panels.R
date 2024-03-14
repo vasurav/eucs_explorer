@@ -1,3 +1,9 @@
+games_tooltip <- function()
+{
+  tooltip(span("Games", bs_icon("info-circle")),
+          "Games in red are not counted because they fall under the blowout rule. See the 'Algorithm' tab above for an explanation on the blowout rule.")
+}
+
 season_nav_panel <- 
   nav_panel(
     title = "Season",
@@ -35,7 +41,7 @@ season_nav_panel <-
         DTOutput("season_ranking_table")
       ),
       nav_panel(
-        title = "Games",
+        title =  games_tooltip(),
         DTOutput("season_games_table")
       ),
       nav_panel(
@@ -114,7 +120,7 @@ team_nav_panel <-
     navset_card_tab(
       full_screen = T,
       nav_panel(
-        "Games",
+        title = games_tooltip(),
         DTOutput("team_games_table")
       ),
       nav_panel(
@@ -224,3 +230,5 @@ algo_nav_panel <-
       )
     )
   )
+
+
