@@ -217,7 +217,7 @@ function(input, output, session) {
         'Wildcard',
         target='row',
         backgroundColor = styleEqual(wildcard_events(), '#FC0')
-      )
+      ) 
   })
   
   wildcard_events <- reactive({
@@ -234,9 +234,21 @@ function(input, output, session) {
       select(Game, Tournament, Date, 
              Game_Rating_Diff,
              Team_Rating_Diff, Counted) %>% 
-      format_DT
-    
+      format_DT %>% 
+      format_blowout_games()
   })
+  
+  format_blowout_games <- function(dt)
+  {
+    dt %>% formatStyle(
+      columns = "Counted",
+      valueColumns = "Counted",
+      `class` = 'dt-strikethrough',
+      target = "row",
+      fontSize = "100%",
+      backgroundColor = styleEqual(c("No"), c("#FF9999")) 
+    )
+  }
   
   output$season_network <- renderSimpleNetwork({
     game_data_filtered() %>% 
@@ -389,7 +401,7 @@ function(input, output, session) {
       select(Opponent, Result, Score, Game_Rating, Opponent_Rating, Tournament, Date,  Counted) %>% 
       arrange(desc(Date)) %>% 
       mutate(Opponent = str_to_input_link(Opponent)) %>% 
-      format_DT#(options = DT_options(scrollY = "40VH"))
+      format_DT %>% format_blowout_games
   })
   
   output$team_games_plot <- renderPlotly({
