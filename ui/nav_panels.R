@@ -1,6 +1,6 @@
 games_tooltip <- function()
 {
-  tooltip(span("Games", bs_icon("info-circle")),
+  tooltip(trigger = list("Games", bs_icon("info-circle")),
           "Games in red are not counted because they fall under the blowout rule. See the 'Algorithm' tab above for an explanation on the blowout rule.")
 }
 
