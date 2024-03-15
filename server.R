@@ -5,11 +5,12 @@ source("server/string_functions.R")
 function(input, output, session) {
   
   #Observe Events to allow links to change inputs
-  observeEvent(input$main_tab,{
-    updateTabsetPanel(session, "main_tab", input$main_tab)
-  })
+  # observeEvent(input$main_tab,{
+  #   updateTabsetPanel(session, "main_tab", input$main_tab)
+  # })
   
   observeEvent(input$team, {
+    updateTabsetPanel(session, "main_tab", "Team")
     updateSelectInput(session, "team", selected=input$team)
   })
   
@@ -290,6 +291,10 @@ function(input, output, session) {
   
   output$team_selector <- renderUI({
     req(input$division, input$season)
+    current_selection <- input$team
+    
+    if(!isTruthy(current_selection)) current_selection = NULL
+    
     selectInput("team", label = NULL, width="100%",
                 choices = 
                   summary_data %>%
@@ -297,7 +302,8 @@ function(input, output, session) {
                          Season == input$season) %>% 
                   arrange(Team) %>% 
                   pull(Team) %>% 
-                  unique())
+                  unique(),
+                selected = current_selection)
   })
   
   ranking_row <- reactive({
