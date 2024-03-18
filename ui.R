@@ -30,6 +30,7 @@ function(reqest){
         .nav.navbar-nav .form-group.shiny-input-container > label {display: inline;}
         "
       )),
+      tags$style(HTML('.bslib-value-box .value-box-title {font-size:18px;}'))
     ),
     page_navbar(
       id = "main_tab",
