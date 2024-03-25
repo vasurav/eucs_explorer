@@ -68,7 +68,7 @@ The maximum rating difference that can be achieved is 600 points. So what happen
 
 Yes this is true, to deal with this there is a blowout rule. blowout games are not counted for either the winning or losing team if ***ALL*** of the following conditions are met:
 
-1. The winning team is has a rating of 600 or more points higher than the losing team.
+1. The winning team has a rating of 600 or more points higher than the losing team.
 1. The winning team wins by ***more than*** twice the score of the losing team + 1.
 1. The winning team has at least 5 other results where results are not being ignored. 
 
