@@ -13,7 +13,7 @@ function(reqest){
       tags$style('.card-body p, ol {font-family: "Helvetica Neue",Arial,sans-serif !important}'),
       tags$style('.tooltip {font-family: "Helvetica Neue",Arial,sans-serif !important}'),
       tags$style(".accordion-button {padding: 5px;}"),
-      tags$style(".accordion-body {padding: 0px; margin: 0px;}"), 
+      tags$style(".accordion-body {padding: 0px; margin: 0px;}"),
       tags$style(
         HTML("
                 @media (max-width: 575.98px) {
@@ -30,7 +30,7 @@ function(reqest){
         .nav.navbar-nav .form-group.shiny-input-container > label {display: inline;}
         "
       )),
-      tags$style(HTML('.bslib-value-box .value-box-title {font-size:18px;}'))
+      tags$style(HTML('.bslib-value-box .value-box-title {font-size:18px; !important}'))
     ),
     page_navbar(
       id = "main_tab",
@@ -54,7 +54,7 @@ function(reqest){
         src = "European_Ultimate_Federation_EUF_Logo.png",
         height = 60
       ),
-      window_title = "EUCS Explorer",
+      window_title = "EUCS Ranking",
       
       #Sidebar
       sidebar = sidebar(
