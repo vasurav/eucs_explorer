@@ -11,20 +11,21 @@ season_nav_panel <-
       accordion_panel("",
                       layout_columns(
                         fill = F, fillable = T,
-                        value_box(title = card_title("Wildcards Awarded",
-                                                     tooltip(bs_icon("info-circle"),
-                                                             "Wildcard bids are awarded to teams who win Elite Invite and Summer Tour events regardless of ranking position. Teams in yellow are guaranteed to qualify for the EUCF regardless of ranking.")),
+                        value_box(title = span(tooltip(trigger = list("Wildcards Awarded",
+                                                  bs_icon("info-circle")),
+                                                             "Wildcard bids are awarded to teams who win Elite Invite and Summer Tour events regardless of ranking position. 
+                                                  Teams in yellow are guaranteed to qualify for the EUCF regardless of ranking.")),
                                   value = textOutput("wildcard_count"),
                                   showcase = bs_icon("suit-spade-fill"),
                                   theme = "primary"),
-                        value_box(title = card_title("Ranking Bids",
-                                                     tooltip(bs_icon("info-circle"),
+                        value_box(title = span(tooltip(trigger = list("Ranking Bids",
+                                                                 bs_icon("info-circle")),
                                                              "Number of ranking spots that are guaranteed to get EUCF spots. Ranking spots in green are guaranteed to qualify teams for the EUCF.")),
                                   value = textOutput("eucf_ranking_spots_guaranteed"),
                                   showcase = bs_icon("shield-fill-check"),
                                   theme = value_box_theme(bg = color_eucf_guaranteed_dark)),
-                        value_box(title = card_title("Potential Bids",
-                                                     tooltip(bs_icon("info-circle"),
+                        value_box(title = span(tooltip(trigger = list("Potential Bids",
+                                                                         bs_icon("info-circle")),
                                                              "The number of potential spots is equal to the number of unassigned wildcards. 
                                            Ranking spots in blue will qualify teams to the EUCF only if teams that earn the wildcards are in the top 16 of the ranking.")),
                                   value = textOutput("eucf_ranking_spots_likely"),
@@ -74,36 +75,32 @@ team_nav_panel <-
       accordion_panel("",
                       layout_columns(
                         widths = 1/5, fill = F, fillable = T,
-                        value_box(title = 
-                                    card_title("Rank"), 
+                        value_box(title = h5("Rank"), 
                                   showcase=bs_icon("reception-4"), 
                                   value = textOutput("team_rank"),
                                   theme="primary",
                                   showcase_layout = showcase_left_center(max_height = "50%")),
-                        value_box(title = 
-                                    card_title("Rating"), 
+                        value_box(title = h5("Rating"), 
                                   showcase=bs_icon("heart-half"), 
                                   value = textOutput("team_rating"), 
                                   theme="primary"),
-                        value_box(title = 
-                                    card_title("Record"), 
+                        value_box(title = h5("Record"), 
                                   showcase=bs_icon("rulers"), 
                                   value = textOutput("team_record"), 
                                   theme="primary"),
-                        value_box(title = 
-                                    card_title("S.O.S.",
-                                               tooltip(bs_icon("info-circle"),
+                        value_box(title = span(tooltip(trigger = list("S.O.S.",
+                                               bs_icon("info-circle")),
                                                        "Strength of Schedule: Average rating of opponent.")), 
                                   showcase=bs_icon("lightning-fill"), 
                                   value = textOutput("team_strength_of_schedule"), 
                                   theme="primary"),
-                        value_box(title = 
-                                    card_title("To EUCF Cutoff",
-                                               tooltip(
-                                                 bs_icon("info-circle"), options = list(html = T),
-                                                 HTML("If positive: number of rating points needed to reach the current EUCF cutoff rating. <br> <br>
-                               If negative: the amount of points the team can lose and still be above the EUCF cutoff rating.")
-                                               ),
+                        value_box(title = span(tooltip(trigger = list("To EUCF Cutoff",
+                                                                 bs_icon("info-circle")), 
+                                                  options = list(html = T),
+                                                  HTML("If positive: number of rating points needed to reach the current EUCF cutoff rating. <br> <br>
+                               If negative: the amount of points the team can lose and still be above the EUCF cutoff rating."
+                                                       )
+                                                  ),
                                                popover(
                                                  bs_icon("gear-fill"),
                                                  checkboxInput("team_eucf_cutoff_type", "Include potential bids?",
@@ -116,7 +113,7 @@ team_nav_panel <-
                                   theme = "primary")
                       )
       )
-    ),
+      ),
     navset_card_tab(
       full_screen = T,
       nav_panel(
@@ -154,12 +151,13 @@ matchup_nav_panel <-
                       layout_columns(
                         widths = 1/2,
                         fill = F, fillable = T,
-                        value_box(title = card_title("Rating Difference"),
+                        value_box(title = h5("Rating Difference"),
                                   value = textOutput("matchup_rating_diff"),
                                   showcase = bs_icon("clipboard-heart"),
                                   theme = "primary"),
-                        value_box(title = card_title("Expected Score",
-                                                     tooltip(bs_icon("info-circle"),options = list(html = T),
+                        value_box(title = span(tooltip(trigger = list("Expected Score",
+                                                     bs_icon("info-circle")),
+                                                  options = list(html = T),
                                                              HTML("Games of 15-7 to 15-0 are counted as 600 in the algorithm. <br>
                                            Therefore, any time there is a rating difference of more than 600, the score cannot be predicted, and is labeled blowout. <br>
                                            <br>Any teams that are within 45 points of eachother are so close that the algorithm predicts a draw between the two teams."))),
