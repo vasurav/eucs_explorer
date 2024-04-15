@@ -79,6 +79,7 @@ function(input, output, session) {
   
   total_wildcards <- reactive({
     wildcard_data %>% 
+      filter(Season == input$season) %>% 
       filter(Division == input$division) %>% 
       nrow
   })
