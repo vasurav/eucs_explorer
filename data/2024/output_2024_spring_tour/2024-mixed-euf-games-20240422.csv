@@ -1,8 +1,8 @@
 Tournament,Date,Team_1,Team_2,Score_1,Score_2,Game_Rank_Diff_USAU,Game_Wght_USAU,Is_Ignored_USAU,Team_Rank_Diff_USAU
-Gentle Invite,2024-03-16,PUC,Glory Owls,15,10,453.604,1.000,0,536.130
-Gentle Invite,2024-03-16,PUC,Remix,11,7,466.893,0.973,0,382.140
-Gentle Invite,2024-03-16,Remix,Glory Owls,15,9,515.481,1.000,0,153.990
-Gentle Invite,2024-03-17,Glory Owls,Remix,11,10,125.000,1.000,0,-153.990
+Gentle Invite,2024-03-16,PUC,Remix,11,7,466.893,0.973,0,412.770
+Gentle Invite,2024-03-16,PUC,The Owls,15,10,453.604,1.000,0,581.670
+Gentle Invite,2024-03-16,Remix,The Owls,15,9,515.481,1.000,0,168.900
+Gentle Invite,2024-03-17,The Owls,Remix,11,10,125.000,1.000,0,-168.900
 FFFD Mixed Ph1,2024-03-24,Sesquidistus,PUC,14,10,398.702,1.000,0,398.680
 FFFD Mixed Ph2,2024-04-07,Sesquidistus,Manchots,15,10,453.604,1.000,0,453.610
 Spring Tour 2024 Malmö,2024-04-20,Glasgow Ultimate,PELT,10,5,573.898,0.889,0,241.470
@@ -17,30 +17,30 @@ Spring Tour 2024 Malmö,2024-04-20,Savage Ultimate,Wiener Mischung,15,10,453.604
 Spring Tour 2024 Malmö,2024-04-20,Sky This Warszawa,DTU,14,7,582.887,1.000,0,485.780
 Spring Tour 2024 Malmö,2024-04-20,Sky This Warszawa,Malmö Ultimate Club,12,11,125.000,1.000,0,40.300
 Spring Tour 2024 Malmö,2024-04-20,Sky This Warszawa,Nullacht! Ultimate,15,12,300.492,1.000,0,-49.560
-Spring Tour 2024 Padova,2024-04-20,BN1,Colorado,13,10,328.142,1.000,0,97.970
-Spring Tour 2024 Padova,2024-04-20,BN1,W.underteam,15,7,600.000,1.000,0,458.000
-Spring Tour 2024 Padova,2024-04-20,Colorado,AKS Zły Ultimate,15,9,515.481,1.000,0,437.420
-Spring Tour 2024 Padova,2024-04-20,Colorado,W.underteam,15,3,600.000,1.000,0,360.030
-Spring Tour 2024 Padova,2024-04-20,Cus Padova Rangərs,Frubb,15,9,515.481,1.000,0,388.220
-Spring Tour 2024 Padova,2024-04-20,Cus Padova Rangərs,Nuclear Discs,15,5,600.000,1.000,0,782.590
-Spring Tour 2024 Padova,2024-04-20,Cus Padova Rangərs,OUT,15,6,600.000,1.000,0,405.970
-Spring Tour 2024 Padova,2024-04-20,Deep Space,Heroes Flying Disc,15,1,600.000,1.000,0,248.040
-Spring Tour 2024 Padova,2024-04-20,Deep Space,The Owls,15,6,600.000,1.000,1,690.120
-Spring Tour 2024 Padova,2024-04-20,Frubb,Nuclear Discs,14,9,473.868,1.000,0,394.370
-Spring Tour 2024 Padova,2024-04-20,Frubb,Zombees,15,10,453.604,1.000,0,846.010
-Spring Tour 2024 Padova,2024-04-20,Mosquitos,Heroes Flying Disc,15,11,381.165,1.000,0,309.990
-Spring Tour 2024 Padova,2024-04-20,Mosquitos,The Owls,15,4,600.000,1.000,1,752.070
-Spring Tour 2024 Padova,2024-04-20,Nuclear Discs,Zombees,12,7,520.511,1.000,0,451.640
-Spring Tour 2024 Padova,2024-04-20,OUT,Nuclear Discs,11,8,365.609,1.000,0,376.620
-Spring Tour 2024 Padova,2024-04-20,OUT,Zombees,15,3,600.000,1.000,1,828.260
-Spring Tour 2024 Padova,2024-04-20,PUC,AKS Zły Ultimate,15,8,564.809,1.000,0,809.830
-Spring Tour 2024 Padova,2024-04-20,PUC,BN1,14,10,398.702,1.000,0,274.440
-Spring Tour 2024 Padova,2024-04-20,PUC,Colorado,15,3,600.000,1.000,0,372.410
-Spring Tour 2024 Padova,2024-04-20,Tiefseetaucher,Deep Space,15,12,300.492,1.000,0,463.570
-Spring Tour 2024 Padova,2024-04-20,Tiefseetaucher,Heroes Flying Disc,15,9,515.481,1.000,0,711.610
-Spring Tour 2024 Padova,2024-04-20,Tiefseetaucher,Mosquitos,15,9,515.481,1.000,0,401.620
-Spring Tour 2024 Padova,2024-04-20,Tiefseetaucher,The Owls,15,4,600.000,1.000,1,1153.690
-Spring Tour 2024 Padova,2024-04-20,W.underteam,AKS Zły Ultimate,12,9,345.365,1.000,0,77.390
+Spring Tour 2024 Padova,2024-04-20,BN1,Colorado,13,10,328.142,1.000,0,98.230
+Spring Tour 2024 Padova,2024-04-20,BN1,W.underteam,15,7,600.000,1.000,0,454.560
+Spring Tour 2024 Padova,2024-04-20,Colorado,AKS Zły Ultimate,15,9,515.481,1.000,0,431.540
+Spring Tour 2024 Padova,2024-04-20,Colorado,W.underteam,15,3,600.000,1.000,0,356.330
+Spring Tour 2024 Padova,2024-04-20,Cus Padova Rangərs,Frubb,15,9,515.481,1.000,0,383.900
+Spring Tour 2024 Padova,2024-04-20,Cus Padova Rangərs,Nuclear Discs,15,5,600.000,1.000,0,777.050
+Spring Tour 2024 Padova,2024-04-20,Cus Padova Rangərs,OUT,15,6,600.000,1.000,0,403.150
+Spring Tour 2024 Padova,2024-04-20,Deep Space,Heroes Flying Disc,15,1,600.000,1.000,0,242.660
+Spring Tour 2024 Padova,2024-04-20,Deep Space,The Owls,15,6,600.000,1.000,1,658.880
+Spring Tour 2024 Padova,2024-04-20,Frubb,Nuclear Discs,14,9,473.868,1.000,0,393.150
+Spring Tour 2024 Padova,2024-04-20,Frubb,Zombees,15,10,453.604,1.000,0,837.530
+Spring Tour 2024 Padova,2024-04-20,Mosquitos,Heroes Flying Disc,15,11,381.165,1.000,0,304.910
+Spring Tour 2024 Padova,2024-04-20,Mosquitos,The Owls,15,4,600.000,1.000,1,721.130
+Spring Tour 2024 Padova,2024-04-20,Nuclear Discs,Zombees,12,7,520.511,1.000,0,444.380
+Spring Tour 2024 Padova,2024-04-20,OUT,Nuclear Discs,11,8,365.609,1.000,0,373.900
+Spring Tour 2024 Padova,2024-04-20,OUT,Zombees,15,3,600.000,1.000,1,818.280
+Spring Tour 2024 Padova,2024-04-20,PUC,AKS Zły Ultimate,15,8,564.809,1.000,0,789.840
+Spring Tour 2024 Padova,2024-04-20,PUC,BN1,14,10,398.702,1.000,0,260.070
+Spring Tour 2024 Padova,2024-04-20,PUC,Colorado,15,3,600.000,1.000,0,358.300
+Spring Tour 2024 Padova,2024-04-20,Tiefseetaucher,Deep Space,15,12,300.492,1.000,0,460.760
+Spring Tour 2024 Padova,2024-04-20,Tiefseetaucher,Heroes Flying Disc,15,9,515.481,1.000,0,703.420
+Spring Tour 2024 Padova,2024-04-20,Tiefseetaucher,Mosquitos,15,9,515.481,1.000,0,398.510
+Spring Tour 2024 Padova,2024-04-20,Tiefseetaucher,The Owls,15,4,600.000,1.000,1,1119.640
+Spring Tour 2024 Padova,2024-04-20,W.underteam,AKS Zły Ultimate,12,9,345.365,1.000,0,75.210
 Spring Tour 2024 Malmö,2024-04-21,DTU,Wiener Mischung,15,10,453.604,1.000,0,-22.970
 Spring Tour 2024 Malmö,2024-04-21,Glasgow Ultimate,DTU,15,3,600.000,1.000,1,900.180
 Spring Tour 2024 Malmö,2024-04-21,Glasgow Ultimate,Malmö Ultimate Club,12,6,579.311,0.973,0,454.700
@@ -53,24 +53,24 @@ Spring Tour 2024 Malmö,2024-04-21,PELT,Sky This Warszawa,15,8,564.809,1.000,0,1
 Spring Tour 2024 Malmö,2024-04-21,Savage Ultimate,DTU,12,7,520.511,1.000,0,354.870
 Spring Tour 2024 Malmö,2024-04-21,Sky This Warszawa,Malmö Ultimate Club,12,10,238.123,1.000,0,40.300
 Spring Tour 2024 Malmö,2024-04-21,Sky This Warszawa,Wiener Mischung,12,11,125.000,1.000,0,462.810
-Spring Tour 2024 Padova,2024-04-21,AKS Zły Ultimate,Zombees,15,8,564.809,1.000,0,330.410
-Spring Tour 2024 Padova,2024-04-21,BN1,AKS Zły Ultimate,15,6,600.000,1.000,0,535.390
-Spring Tour 2024 Padova,2024-04-21,Cus Padova Rangərs,PUC,13,12,125.000,1.000,0,93.990
-Spring Tour 2024 Padova,2024-04-21,Cus Padova Rangərs,Zombees,15,2,600.000,1.000,1,1234.230
-Spring Tour 2024 Padova,2024-04-21,Deep Space,Colorado,13,11,228.840,1.000,0,433.150
-Spring Tour 2024 Padova,2024-04-21,Deep Space,OUT,12,11,125.000,1.000,0,372.720
-Spring Tour 2024 Padova,2024-04-21,Frubb,BN1,13,12,125.000,1.000,0,-19.790
-Spring Tour 2024 Padova,2024-04-21,Frubb,OUT,13,12,125.000,1.000,0,17.750
-Spring Tour 2024 Padova,2024-04-21,Heroes Flying Disc,Nuclear Discs,15,9,515.481,1.000,0,501.300
-Spring Tour 2024 Padova,2024-04-21,Heroes Flying Disc,The Owls,15,6,600.000,1.000,0,442.080
-Spring Tour 2024 Padova,2024-04-21,Heroes Flying Disc,W.underteam,15,5,600.000,1.000,0,545.140
-Spring Tour 2024 Padova,2024-04-21,Mosquitos,BN1,15,8,564.809,1.000,0,397.130
-Spring Tour 2024 Padova,2024-04-21,Mosquitos,Deep Space,12,11,125.000,1.000,0,61.950
-Spring Tour 2024 Padova,2024-04-21,Mosquitos,Frubb,13,11,228.840,1.000,0,416.920
-Spring Tour 2024 Padova,2024-04-21,OUT,Colorado,12,11,125.000,1.000,0,60.430
-Spring Tour 2024 Padova,2024-04-21,PUC,W.underteam,15,3,600.000,1.000,1,732.440
-Spring Tour 2024 Padova,2024-04-21,The Owls,AKS Zły Ultimate,11,9,249.207,1.000,0,180.450
-Spring Tour 2024 Padova,2024-04-21,The Owls,Zombees,15,4,600.000,1.000,0,510.860
-Spring Tour 2024 Padova,2024-04-21,Tiefseetaucher,Cus Padova Rangərs,13,5,600.000,1.000,0,430.320
-Spring Tour 2024 Padova,2024-04-21,Tiefseetaucher,PUC,15,6,600.000,1.000,0,524.310
-Spring Tour 2024 Padova,2024-04-21,W.underteam,Nuclear Discs,10,9,125.000,1.000,0,-43.840
+Spring Tour 2024 Padova,2024-04-21,AKS Zły Ultimate,Zombees,15,8,564.809,1.000,0,324.420
+Spring Tour 2024 Padova,2024-04-21,BN1,AKS Zły Ultimate,15,6,600.000,1.000,0,529.770
+Spring Tour 2024 Padova,2024-04-21,Cus Padova Rangərs,PUC,13,12,125.000,1.000,0,107.170
+Spring Tour 2024 Padova,2024-04-21,Cus Padova Rangərs,Zombees,15,2,600.000,1.000,1,1221.430
+Spring Tour 2024 Padova,2024-04-21,Deep Space,Colorado,13,11,228.840,1.000,0,435.510
+Spring Tour 2024 Padova,2024-04-21,Deep Space,OUT,12,11,125.000,1.000,0,373.190
+Spring Tour 2024 Padova,2024-04-21,Frubb,BN1,13,12,125.000,1.000,0,-16.660
+Spring Tour 2024 Padova,2024-04-21,Frubb,OUT,13,12,125.000,1.000,0,19.250
+Spring Tour 2024 Padova,2024-04-21,Heroes Flying Disc,Nuclear Discs,15,9,515.481,1.000,0,504.430
+Spring Tour 2024 Padova,2024-04-21,Heroes Flying Disc,The Owls,15,6,600.000,1.000,0,416.220
+Spring Tour 2024 Padova,2024-04-21,Heroes Flying Disc,W.underteam,15,5,600.000,1.000,0,549.180
+Spring Tour 2024 Padova,2024-04-21,Mosquitos,BN1,15,8,564.809,1.000,0,399.530
+Spring Tour 2024 Padova,2024-04-21,Mosquitos,Deep Space,12,11,125.000,1.000,0,62.250
+Spring Tour 2024 Padova,2024-04-21,Mosquitos,Frubb,13,11,228.840,1.000,0,416.190
+Spring Tour 2024 Padova,2024-04-21,OUT,Colorado,12,11,125.000,1.000,0,62.320
+Spring Tour 2024 Padova,2024-04-21,PUC,W.underteam,15,3,600.000,1.000,1,714.630
+Spring Tour 2024 Padova,2024-04-21,The Owls,AKS Zły Ultimate,11,9,249.207,1.000,0,208.170
+Spring Tour 2024 Padova,2024-04-21,The Owls,Zombees,15,4,600.000,1.000,0,532.590
+Spring Tour 2024 Padova,2024-04-21,Tiefseetaucher,Cus Padova Rangərs,13,5,600.000,1.000,0,430.800
+Spring Tour 2024 Padova,2024-04-21,Tiefseetaucher,PUC,15,6,600.000,1.000,0,537.970
+Spring Tour 2024 Padova,2024-04-21,W.underteam,Nuclear Discs,10,9,125.000,1.000,0,-44.750
