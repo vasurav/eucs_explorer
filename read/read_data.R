@@ -28,12 +28,18 @@ read_all_wildcard_data <- function(path) {
   read_all_output_data_filetype(path, "wildcard", fread) 
 }
 
+read_all_teams_data <- function(path) {
+  read_all_output_data_filetype(path, "teams", fread) %>% 
+    mutate(iso2c = countrycode(country_ioc, "ioc", "iso2c"))
+}
+
+
 # Read all the output data from a path for a filetype
 read_all_output_data_filetype <- function(path, filetype, FUN = read_output_data)
 {
   list_all_files_filetype(path, filetype) %>% 
     lapply(FUN = FUN) %>% 
-    bind_rows
+    rbindlist
 }
 
 # Read output data from the EUCS Algorithm

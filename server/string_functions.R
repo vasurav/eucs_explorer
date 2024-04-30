@@ -8,6 +8,33 @@ str_to_input_link <- function(string, href="#", select_input = "team", tab="Team
          string, "</a>")
 }
 
+flag_img <- function(country_code = "eu")
+{
+  tags$img(
+    src = paste0(
+      "https://cdn.rawgit.com/lipis/flag-icon-css/master/flags/4x3/",
+      country_code %>% str_to_lower,
+      ".svg"
+    ),
+    height="10.5px"
+  ) %>% 
+    as.character()
+}
+
+
+flag_and_link <- function(team, division, left_side = T)
+{
+  iso2c <- teams_data %>% 
+    filter(team_name == team, division_name == division) %>% 
+    first() %>% 
+    pull(iso2c)
+  
+  if_else(left_side,
+          paste0(flag_img(iso2c), " ", str_to_input_link(team)),
+          paste0(str_to_input_link(team), " ", flag_img(iso2c))
+          )
+}
+
 str_to_url_link <- function(team, tab="Team", input)
 {
   paste0("<a href=\"?_inputs_",

@@ -192,7 +192,8 @@ function(input, output, session) {
       mutate(`Record (W-L)` = paste0(Wins, " - ", Losses)) %>% 
       select(Ranking, Ranking_No_Wildcard, Team, Rating_USAU, `Record (W-L)`, Tournaments, Wildcard) %>% 
       #mutate(Team = str_to_url_link(Team, input = input)) %>%
-      mutate(Team = str_to_input_link(string=Team)) %>% 
+      #mutate(Team = str_to_input_link(string=Team)) %>% 
+      mutate(Team = sapply(Team, flag_and_link, division = input$division)) %>% 
       dplyr::rename(Rating = Rating_USAU) %>%
       format_DT(options = DT_options(hidden_rows = c("Ranking_No_Wildcard"))) %>% 
       formatStyle(
@@ -228,8 +229,14 @@ function(input, output, session) {
   
   output$season_games_table <- renderDT({
     game_data_filtered() %>% 
-      mutate(Game = paste0(str_to_input_link(Team_1), " ", Score_1, "-", 
-                           Score_2, " ", str_to_input_link(Team_2))) %>% 
+      # mutate(Game = paste0(str_to_input_link(Team_1), " ", Score_1, "-", 
+      #                      Score_2, " ", str_to_input_link(Team_2))) %>%
+      mutate(Game = paste0(sapply(Team_1, 
+                                                flag_and_link, 
+                                                division = input$division), " ", Score_1, "-",
+                           Score_2, " ", sapply(Team_2, 
+                                                              flag_and_link, 
+                                                              division = input$division, left_side=F))) %>%
       mutate(Game_Rating_Diff = Game_Rank_Diff_USAU %>% round(2),
              Team_Rating_Diff = Team_Rank_Diff_USAU %>% round(2)) %>% 
       mutate(Counted = ifelse(Is_Ignored_USAU, "No", "Yes")) %>% 
@@ -407,7 +414,7 @@ function(input, output, session) {
     team_summary_data() %>% 
       select(Opponent, Result, Score, Game_Rating, Opponent_Rating, Tournament, Date,  Counted) %>% 
       arrange(desc(Date)) %>% 
-      mutate(Opponent = str_to_input_link(Opponent)) %>% 
+      mutate(Opponent = sapply(Opponent, flag_and_link, division = input$division)) %>% 
       format_DT %>% format_blowout_games
   })
   
@@ -543,6 +550,7 @@ function(input, output, session) {
           filter(Opponent %in% common_opponents)
       ) %>% 
       select(Team, Opponent, Score, Tournament, Date) %>% 
+      mutate(Opponent = sapply(Opponent, flag_and_link, division = input$division)) %>% 
       format_DT
   })
   
@@ -559,6 +567,7 @@ function(input, output, session) {
       filter(Opponent %in% common_opponents) %>% 
       select(Opponent, Score, Tournament, Date) %>% 
       arrange(Opponent) %>% 
+      mutate(Opponent = sapply(Opponent, flag_and_link, division = input$division)) %>% 
       format_DT
   })
   
@@ -580,6 +589,7 @@ function(input, output, session) {
       filter(Opponent %in% common_opponents) %>% 
       select(Opponent, Score, Tournament, Date) %>% 
       arrange(Opponent) %>% 
+      mutate(Opponent = sapply(Opponent, flag_and_link, division = input$division)) %>%
       format_DT
   })
   
