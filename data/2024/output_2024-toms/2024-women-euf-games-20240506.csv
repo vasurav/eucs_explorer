@@ -1,0 +1,79 @@
+Tournament,Date,Team_1,Team_2,Score_1,Score_2,Game_Rank_Diff_USAU,Game_Wght_USAU,Is_Ignored_USAU,Team_Rank_Diff_USAU
+Vienna Spring Break,2024-04-08,Troubles,FABulous,11,10,125.000,1.000,0,-81.430
+Spring Tour 2024 Grenoble,2024-04-20,BFD Shout,FABulous,15,8,564.809,1.000,0,539.520
+Spring Tour 2024 Grenoble,2024-04-20,BFD Shout,FlyHigh Louves,15,5,600.000,1.000,1,1290.950
+Spring Tour 2024 Grenoble,2024-04-20,BFD Shout,GRUT,13,10,328.142,1.000,0,260.880
+Spring Tour 2024 Grenoble,2024-04-20,Catchup,Queen Kong,13,6,600.000,1.000,0,685.740
+Spring Tour 2024 Grenoble,2024-04-20,Catchup,Solebang,15,2,600.000,1.000,1,1159.770
+Spring Tour 2024 Grenoble,2024-04-20,FABulous,FlyHigh Louves,15,6,600.000,1.000,1,751.430
+Spring Tour 2024 Grenoble,2024-04-20,FABulous,wuf.,14,7,582.887,1.000,0,210.580
+Spring Tour 2024 Grenoble,2024-04-20,GRUT,FlyHigh Louves,15,4,600.000,1.000,1,1030.070
+Spring Tour 2024 Grenoble,2024-04-20,GRUT,wuf.,12,8,441.155,1.000,0,489.220
+Spring Tour 2024 Grenoble,2024-04-20,Jetset LUV,Catchup,13,12,125.000,1.000,0,-228.760
+Spring Tour 2024 Grenoble,2024-04-20,Jetset LUV,Queen Kong,9,6,418.566,0.889,0,456.980
+Spring Tour 2024 Grenoble,2024-04-20,Queen Kong,Solebang,13,6,600.000,1.000,0,474.030
+Spring Tour 2024 Grenoble,2024-04-20,Tequila Boom Boom,Jetset LUV,12,10,238.123,1.000,0,-100.000
+Spring Tour 2024 Grenoble,2024-04-20,Tequila Boom Boom,Queen Kong,10,5,573.898,0.889,0,356.980
+Spring Tour 2024 Grenoble,2024-04-20,Tequila Boom Boom,Solebang,13,3,600.000,1.000,1,831.010
+Spring Tour 2024 Grenoble,2024-04-20,wuf.,FlyHigh Louves,15,6,600.000,1.000,0,540.850
+Spring Tour 2024 London,2024-04-20,Bristol,Dublin Gravity,12,9,345.365,1.000,0,406.380
+Spring Tour 2024 London,2024-04-20,Bristol,Spice,15,3,600.000,1.000,0,573.140
+Spring Tour 2024 London,2024-04-20,Dublin Gravity,Horizon,13,7,557.532,1.000,0,512.730
+Spring Tour 2024 London,2024-04-20,Iceni,Horizon,15,4,600.000,1.000,1,1088.760
+Spring Tour 2024 London,2024-04-20,Iceni,Mooncup,10,9,125.000,1.000,0,142.190
+Spring Tour 2024 London,2024-04-20,Iceni,Seagulls,13,7,557.532,1.000,0,494.770
+Spring Tour 2024 London,2024-04-20,LMU,Dublin Gravity,10,8,262.666,0.973,0,356.170
+Spring Tour 2024 London,2024-04-20,LMU,Horizon,15,4,600.000,1.000,1,868.900
+Spring Tour 2024 London,2024-04-20,LMU,Seagulls,13,7,557.532,1.000,0,274.910
+Spring Tour 2024 London,2024-04-20,Mooncup,SMOG,11,9,249.207,1.000,0,269.520
+Spring Tour 2024 London,2024-04-20,Mooncup,SYC,15,2,600.000,1.000,0,473.820
+Spring Tour 2024 London,2024-04-20,SMOG,Bristol,12,11,125.000,1.000,0,-242.060
+Spring Tour 2024 London,2024-04-20,SMOG,Spice,15,9,515.481,1.000,0,331.080
+Spring Tour 2024 London,2024-04-20,SYC,Seagulls,13,11,228.840,1.000,0,-121.240
+Spring Tour 2024 London,2024-04-20,SYC,Spice,11,9,249.207,1.000,0,126.780
+Spring Tour 2024 Grenoble,2024-04-21,BFD Shout,GRUT,15,10,453.604,1.000,0,260.880
+Spring Tour 2024 Grenoble,2024-04-21,BFD Shout,Jetset LUV,15,3,600.000,1.000,0,735.130
+Spring Tour 2024 Grenoble,2024-04-21,BFD Shout,wuf.,15,6,600.000,1.000,0,750.100
+Spring Tour 2024 Grenoble,2024-04-21,Catchup,Jetset LUV,12,9,345.365,1.000,0,228.760
+Spring Tour 2024 Grenoble,2024-04-21,Catchup,Tequila Boom Boom,13,9,418.566,1.000,0,328.760
+Spring Tour 2024 Grenoble,2024-04-21,FABulous,Queen Kong,12,7,520.511,1.000,0,652.590
+Spring Tour 2024 Grenoble,2024-04-21,FABulous,Tequila Boom Boom,12,5,600.000,0.946,0,295.610
+Spring Tour 2024 Grenoble,2024-04-21,FlyHigh Louves,Queen Kong,7,6,125.000,0.827,0,-98.840
+Spring Tour 2024 Grenoble,2024-04-21,FlyHigh Louves,Solebang,11,9,249.207,1.000,0,375.190
+Spring Tour 2024 Grenoble,2024-04-21,GRUT,Catchup,15,8,564.809,1.000,0,245.490
+Spring Tour 2024 Grenoble,2024-04-21,GRUT,FABulous,13,11,228.840,1.000,0,278.640
+Spring Tour 2024 Grenoble,2024-04-21,Jetset LUV,Solebang,15,6,600.000,1.000,1,931.010
+Spring Tour 2024 Grenoble,2024-04-21,wuf.,Solebang,15,2,600.000,1.000,1,916.040
+Spring Tour 2024 Grenoble,2024-04-21,wuf.,Tequila Boom Boom,12,10,238.123,1.000,0,85.030
+Spring Tour 2024 London,2024-04-21,Bristol,Mooncup,10,8,262.666,0.973,0,-27.460
+Spring Tour 2024 London,2024-04-21,Bristol,SYC,12,7,520.511,1.000,0,446.360
+Spring Tour 2024 London,2024-04-21,Iceni,Bristol,12,11,125.000,1.000,0,169.650
+Spring Tour 2024 London,2024-04-21,Iceni,Dublin Gravity,12,7,520.511,1.000,0,576.030
+Spring Tour 2024 London,2024-04-21,Iceni,LMU,9,7,279.337,0.918,0,219.860
+Spring Tour 2024 London,2024-04-21,LMU,Spice,12,7,520.511,1.000,0,522.930
+Spring Tour 2024 London,2024-04-21,Mooncup,LMU,14,10,398.702,1.000,0,77.670
+Spring Tour 2024 London,2024-04-21,Mooncup,Spice,9,6,418.566,0.889,0,600.600
+Spring Tour 2024 London,2024-04-21,SMOG,Dublin Gravity,10,9,125.000,1.000,0,164.320
+Spring Tour 2024 London,2024-04-21,SMOG,Horizon,14,9,473.868,1.000,0,677.050
+Spring Tour 2024 London,2024-04-21,SYC,SMOG,11,10,125.000,1.000,0,-204.300
+Spring Tour 2024 London,2024-04-21,Seagulls,Dublin Gravity,10,7,389.665,0.946,0,81.260
+Spring Tour 2024 London,2024-04-21,Seagulls,Horizon,14,7,582.887,1.000,0,593.990
+Spring Tour 2024 London,2024-04-21,Seagulls,SYC,14,8,536.035,1.000,0,121.240
+Spring Tour 2024 London,2024-04-21,Spice,Horizon,15,9,515.481,1.000,0,345.970
+Vienna Spring Break,2024-04-27,3SB,Catchup,12,7,520.511,1.000,0,374.690
+Vienna Spring Break,2024-04-27,3SB,FABulous,15,11,381.165,1.000,0,407.840
+Vienna Spring Break,2024-04-27,3SB,Sharks Ultimate Barcelona,15,4,600.000,1.000,0,750.370
+Vienna Spring Break,2024-04-27,3SB,Troubles,12,7,520.511,1.000,0,489.270
+Vienna Spring Break,2024-04-27,Catchup,Troubles,15,6,600.000,1.000,0,114.580
+Vienna Spring Break,2024-04-27,Catchup,box vienna ultimate,12,7,520.511,1.000,0,158.040
+Vienna Spring Break,2024-04-27,FABulous,Catchup,9,8,125.000,0.946,0,-33.150
+Vienna Spring Break,2024-04-27,FABulous,ZU Swarm,15,9,515.481,1.000,0,727.640
+Vienna Spring Break,2024-04-27,Sharks Ultimate Barcelona,ZU Swarm,13,6,600.000,1.000,0,385.110
+Vienna Spring Break,2024-04-27,Troubles,FABulous,13,11,228.840,1.000,0,-81.430
+Vienna Spring Break,2024-04-27,box vienna ultimate,Sharks Ultimate Barcelona,14,7,582.887,1.000,0,217.640
+Vienna Spring Break,2024-04-27,box vienna ultimate,ZU Swarm,15,7,600.000,1.000,0,602.750
+Tom's Tourney,2024-05-03,GRUT,SYC,15,7,600.000,1.000,0,672.220
+Tom's Tourney,2024-05-03,GRUT,wuf.,15,4,600.000,1.000,0,489.220
+Tom's Tourney,2024-05-03,wuf.,SYC,15,7,600.000,1.000,0,183.000
+Tom's Tourney,2024-05-04,LMU,SYC,12,10,238.123,1.000,0,396.150
+Tom's Tourney,2024-05-04,LMU,wuf.,13,7,557.532,1.000,0,213.150
