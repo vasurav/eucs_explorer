@@ -1,0 +1,540 @@
+team_id,team_name,division_id,division_name,country_id,country_ioc,country_name,iso2c
+NULL,Left Overs,NULL,Mixed,1051,CZE,Czech Republic,CZ
+NULL,Prague Devils,NULL,Mixed,1051,CZE,Czech Republic,CZ
+NULL,KS FLOW WROCŁAW,NULL,Mixed,1151,POL,Poland,PL
+NULL,Savage Ultimate,NULL,Mixed,1151,POL,Poland,PL
+NULL,Pelt,NULL,Mixed,1088,IRL,Ireland,IE
+NULL,Hässliche Erdferkel,NULL,Mixed,1073,GER,Germany,DE
+NULL,FRuBB,NULL,Mixed,1073,GER,Germany,DE
+NULL,RJP,NULL,Mixed,1151,POL,Poland,PL
+NULL,Zoom Ultimate,NULL,Mixed,1190,TUR,Turkey,TR
+NULL,Transylvania Ultimate,NULL,Mixed,1156,ROU,Romania,RO
+NULL,Leamington Lemmings,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,DISConnection,NULL,Mixed,1073,GER,Germany,DE
+NULL,Gold,NULL,Mixed,1018,BEL,Belgium,BE
+NULL,Zombees,NULL,Mixed,1012,AUT,Austria,AT
+NULL,FucZH,NULL,Mixed,1174,SUI,Switzerland,CH
+NULL,HoneyMoon,NULL,Mixed,1018,BEL,Belgium,BE
+NULL,Owls UC,NULL,Mixed,1018,BEL,Belgium,BE
+NULL,FlyHigh,NULL,Mixed,1174,SUI,Switzerland,CH
+NULL,3SB - Open,NULL,Open,1051,CZE,Czech Republic,CZ
+NULL,M.U.C.,NULL,Open,1073,GER,Germany,DE
+NULL,Cotarica Grandes,NULL,Open,1093,ITA,Italy,IT
+NULL,Panthers Wrocław,NULL,Open,1151,POL,Poland,PL
+NULL,Flying Angels Bern,NULL,Open,1174,SUI,Switzerland,CH
+NULL,Alligators,NULL,Open,1093,ITA,Italy,IT
+NULL,Panthers Bern,NULL,Open,1174,SUI,Switzerland,CH
+NULL,Freespeed One,NULL,Open,1174,SUI,Switzerland,CH
+NULL,Red Bulls,NULL,Open,1093,ITA,Italy,IT
+NULL,Outsiterz,NULL,Open,1176,SVK,Slovakia,SK
+NULL,thebigEZ,NULL,Open,1012,AUT,Austria,AT
+NULL,Hardfisch,NULL,Open,1073,GER,Germany,DE
+NULL,FWD>>,NULL,Open,1012,AUT,Austria,AT
+NULL,Canieporci,NULL,Open,1093,ITA,Italy,IT
+NULL,Slovenia,NULL,Open,1166,SLO,Slovenia,SI
+NULL,Cus Padova Barbastreji,NULL,Open,1093,ITA,Italy,IT
+NULL,Shout,NULL,Women,1093,ITA,Italy,IT
+NULL,3SB - women,NULL,Women,1051,CZE,Czech Republic,CZ
+NULL,box vienna,NULL,Women,1012,AUT,Austria,AT
+NULL,Catchup Women,NULL,Women,1012,AUT,Austria,AT
+NULL,East Block,NULL,Women,1051,CZE,Czech Republic,CZ
+NULL,Panthers Wroclaw,NULL,Women,1151,POL,Poland,PL
+NULL,DiscoBolo,NULL,Women,1093,ITA,Italy,IT
+NULL,Cheetahs,NULL,Women,1093,ITA,Italy,IT
+NULL,CUS Padova Tane Malefiche,NULL,Women,1093,ITA,Italy,IT
+NULL,Tequila Boom Boom,NULL,Women,1093,ITA,Italy,IT
+NULL,JetSet Ultimate Open,NULL,Open,1018,BEL,Belgium,BE
+NULL,Uprising,NULL,Open,1151,POL,Poland,PL
+NULL,Gentle Open,NULL,Open,1018,BEL,Belgium,BE
+NULL,Bad Skid,NULL,Open,1073,GER,Germany,DE
+NULL,Aarhus Ultimate,NULL,Open,1052,DEN,Denmark,DK
+NULL,UFO,NULL,Open,1135,NED,Netherlands,NL
+NULL,Terrible Monkeys,NULL,Open,1051,CZE,Czech Republic,CZ
+NULL,SmashD,NULL,Open,1069,GBR,Great Britain,GB
+NULL,Frizzly Bears Aachen,NULL,Open,1073,GER,Germany,DE
+NULL,7 Schwaben,NULL,Open,1073,GER,Germany,DE
+NULL,Bora,NULL,Open,1073,GER,Germany,DE
+NULL,Hard2Fisch,NULL,Open,1073,GER,Germany,DE
+NULL,XVI,NULL,Open,1088,IRL,Ireland,IE
+NULL,Freezzz Beezzz,NULL,Open,1018,BEL,Belgium,BE
+NULL,Révolution'air,NULL,Open,1065,FRA,France,FR
+NULL,Disconnection,NULL,Mixed,1073,GER,Germany,DE
+NULL,Grut,NULL,Mixed,1135,NED,Netherlands,NL
+NULL,Deep Space,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,PUC,NULL,Mixed,1065,FRA,France,FR
+NULL,Mosquitos,NULL,Mixed,1012,AUT,Austria,AT
+NULL,Reading,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,Smog,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,Sesquidistus,NULL,Mixed,1065,FRA,France,FR
+NULL,Shout,NULL,Women,1093,ITA,Italy,IT
+NULL,3SB - women,NULL,Women,1051,CZE,Czech Republic,CZ
+NULL,box vienna,NULL,Women,1012,AUT,Austria,AT
+NULL,Seagulls,NULL,Women,1073,GER,Germany,DE
+NULL,Yaka,NULL,Women,1065,FRA,France,FR
+NULL,Bristol Women,NULL,Women,1069,GBR,Great Britain,GB
+NULL,JinX,NULL,Women,1073,GER,Germany,DE
+NULL,FABulous,NULL,Women,1174,SUI,Switzerland,CH
+NULL,Ranelagh,NULL,Open,1088,IRL,Ireland,IE
+NULL,Heidees,NULL,Open,1073,GER,Germany,DE
+NULL,Chevron Action Flash,NULL,Open,1069,GBR,Great Britain,GB
+NULL,3SB - Open,NULL,Open,1051,CZE,Czech Republic,CZ
+NULL,Clapham,NULL,Open,1069,GBR,Great Britain,GB
+NULL,BFD La Fotta,NULL,Open,1093,ITA,Italy,IT
+NULL,Mooncatchers,NULL,Open,1018,BEL,Belgium,BE
+NULL,Wall City,NULL,Open,1073,GER,Germany,DE
+NULL,Zoom Ultimate,NULL,Mixed,1190,TUR,Turkey,TR
+NULL,Fireball Ultimate,NULL,Mixed,1190,TUR,Turkey,TR
+NULL,Transylvania Ultimate,NULL,Mixed,1156,ROU,Romania,RO
+NULL,Shopski Otryad,NULL,Mixed,1030,BUL,Bulgaria,BG
+NULL,Steamhuck,NULL,Mixed,1190,TUR,Turkey,TR
+NULL,Iron Force Armenia,NULL,Mixed,1008,ARM,Armenia,AM
+NULL,Seahawks Ultimate,NULL,Mixed,1190,TUR,Turkey,TR
+NULL,OldSchool,NULL,Mixed,1190,TUR,Turkey,TR
+NULL,Outsiterz,NULL,Open,1176,SVK,Slovakia,SK
+NULL,Triglav,NULL,Open,1166,SLO,Slovenia,SI
+NULL,DEAC FreeBees,NULL,Open,1084,HUN,Hungary,HU
+NULL,Azvarlirea,NULL,Open,1156,ROU,Romania,RO
+NULL,Bremen,NULL,Mixed,1073,GER,Germany,DE
+NULL,DTU,NULL,Mixed,1052,DEN,Denmark,DK
+NULL,Gentle Mixed,NULL,Mixed,1018,BEL,Belgium,BE
+NULL,GRUT,NULL,Mixed,1135,NED,Netherlands,NL
+NULL,Malmö Ultimate Club,NULL,Mixed,1177,SWE,Sweden,SE
+NULL,Nullacht! Ultimate,NULL,Mixed,1073,GER,Germany,DE
+NULL,Owls UC,NULL,Mixed,1018,BEL,Belgium,BE
+NULL,Tartu Turbulence,NULL,Mixed,1061,EST,Estonia,EE
+NULL,Alligators,NULL,Open,1093,ITA,Italy,IT
+NULL,BFD LaFotta,NULL,Open,1093,ITA,Italy,IT
+NULL,Cotarica Grandes,NULL,Open,1093,ITA,Italy,IT
+NULL,Cus Padova Barbastreji,NULL,Open,1093,ITA,Italy,IT
+NULL,Flying Angels Bern,NULL,Open,1174,SUI,Switzerland,CH
+NULL,Freespeed,NULL,Open,1174,SUI,Switzerland,CH
+NULL,Iznogood,NULL,Open,1065,FRA,France,FR
+NULL,Panthers Bern,NULL,Open,1174,SUI,Switzerland,CH
+NULL,Red Bulls,NULL,Open,1093,ITA,Italy,IT
+NULL,Solebang,NULL,Open,1174,SUI,Switzerland,CH
+NULL,Tchac,NULL,Open,1065,FRA,France,FR
+NULL,FWD>>,NULL,Open,1012,AUT,Austria,AT
+NULL,Helsinki Ultimate,NULL,Open,1064,FIN,Finland,FI
+NULL,NXT,NULL,Open,1194,UKR,Ukraine,UA
+NULL,Otso,NULL,Open,1064,FIN,Finland,FI
+NULL,Outsiterz,NULL,Open,1176,SVK,Slovakia,SK
+NULL,Panthers Wrocław,NULL,Open,1151,POL,Poland,PL
+NULL,PirU,NULL,Open,1064,FIN,Finland,FI
+NULL,Prague Devils,NULL,Open,1051,CZE,Czech Republic,CZ
+NULL,SLOVENIA,NULL,Open,1166,SLO,Slovenia,SI
+NULL,Terrible Monkeys,NULL,Open,1051,CZE,Czech Republic,CZ
+NULL,thebigEZ,NULL,Open,1012,AUT,Austria,AT
+NULL,Uprising,NULL,Open,1151,POL,Poland,PL
+NULL,AUT BeeFire,NULL,Mixed,1093,ITA,Italy,IT
+NULL,CUS Bergamo Ultimate,NULL,Mixed,1093,ITA,Italy,IT
+NULL,DiscoBolo,NULL,Mixed,1093,ITA,Italy,IT
+NULL,FlyHigh,NULL,Mixed,1174,SUI,Switzerland,CH
+NULL,FucZH,NULL,Mixed,1174,SUI,Switzerland,CH
+NULL,Manchots,NULL,Mixed,1065,FRA,France,FR
+NULL,Monkey Grenoble,NULL,Mixed,1065,FRA,France,FR
+NULL,Sesquidistus,NULL,Mixed,1065,FRA,France,FR
+NULL,Aarhus Ultimate,NULL,Open,1052,DEN,Denmark,DK
+NULL,Amsterdam Ultimate Club,NULL,Open,1135,NED,Netherlands,NL
+NULL,Armada,NULL,Open,1018,BEL,Belgium,BE
+NULL,Bad Skid,NULL,Open,1073,GER,Germany,DE
+NULL,Freezzz Beezzz,NULL,Open,1018,BEL,Belgium,BE
+NULL,Frizzly Bears Aachen,NULL,Open,1073,GER,Germany,DE
+NULL,Gentle Open,NULL,Open,1018,BEL,Belgium,BE
+NULL,Heidees Open,NULL,Open,1073,GER,Germany,DE
+NULL,Københavns Frisbee Klub (KFK),NULL,Open,1052,DEN,Denmark,DK
+NULL,M.U.C.,NULL,Open,1073,GER,Germany,DE
+NULL,Wall City,NULL,Open,1073,GER,Germany,DE
+NULL,AKS ZŁY ULTIMATE,NULL,Mixed,1151,POL,Poland,PL
+NULL,Catchup Mixed,NULL,Mixed,1012,AUT,Austria,AT
+NULL,KS FLOW WROCŁAW,NULL,Mixed,1151,POL,Poland,PL
+NULL,Left Overs,NULL,Mixed,1051,CZE,Czech Republic,CZ
+NULL,Mosquitos,NULL,Mixed,1012,AUT,Austria,AT
+NULL,Rubber Duckies,NULL,Mixed,1166,SLO,Slovenia,SI
+NULL,OUT,NULL,Mixed,1084,HUN,Hungary,HU
+NULL,Savage Ultimate,NULL,Mixed,1151,POL,Poland,PL
+NULL,ZomBees,NULL,Mixed,1012,AUT,Austria,AT
+NULL,3SB - women,NULL,Women,1051,CZE,Czech Republic,CZ
+NULL,box vienna,NULL,Women,1012,AUT,Austria,AT
+NULL,East Block,NULL,Women,1051,CZE,Czech Republic,CZ
+NULL,Panthers Wroclaw,NULL,Women,1151,POL,Poland,PL
+NULL,Troubles Warsaw,NULL,Women,1151,POL,Poland,PL
+NULL,FABulous,NULL,Women,1174,SUI,Switzerland,CH
+NULL,Heidees Frauen,NULL,Women,1073,GER,Germany,DE
+NULL,Jetset LUV,NULL,Women,1018,BEL,Belgium,BE
+NULL,Lillipuc,NULL,Women,1065,FRA,France,FR
+NULL,Mooncup,NULL,Women,1018,BEL,Belgium,BE
+NULL,Seagulls,NULL,Women,1073,GER,Germany,DE
+NULL,Tequila Boom Boom,NULL,Women,1093,ITA,Italy,IT
+NULL,Wuf.,NULL,Women,1018,BEL,Belgium,BE
+NULL,Deep Space,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,DISConnection,NULL,Mixed,1073,GER,Germany,DE
+NULL,FRuBB,NULL,Mixed,1073,GER,Germany,DE
+NULL,GRUT,NULL,Mixed,1135,NED,Netherlands,NL
+NULL,KS FLOW WROCŁAW,NULL,Mixed,1151,POL,Poland,PL
+NULL,Leamington Lemmings,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,Left Overs,NULL,Mixed,1051,CZE,Czech Republic,CZ
+NULL,Manchots,NULL,Mixed,1065,FRA,France,FR
+NULL,Monkey Grenoble,NULL,Mixed,1065,FRA,France,FR
+NULL,Nullacht! Ultimate,NULL,Mixed,1073,GER,Germany,DE
+NULL,Reading Ultimate,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,Savage Ultimate,NULL,Mixed,1151,POL,Poland,PL
+NULL,Smog,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,Tartu Turbulence,NULL,Mixed,1061,EST,Estonia,EE
+NULL,Zoom Ultimate,NULL,Mixed,1190,TUR,Turkey,TR
+NULL,Glasgow,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,3SB - women,NULL,Women,1051,CZE,Czech Republic,CZ
+NULL,box vienna,NULL,Women,1012,AUT,Austria,AT
+NULL,Bristol,NULL,Women,1069,GBR,Great Britain,GB
+NULL,Dublin Gravity,NULL,Women,1088,IRL,Ireland,IE
+NULL,East Block,NULL,Women,1051,CZE,Czech Republic,CZ
+NULL,Flame,NULL,Women,1088,IRL,Ireland,IE
+NULL,Heidees Frauen,NULL,Women,1073,GER,Germany,DE
+NULL,Iceni,NULL,Women,1069,GBR,Great Britain,GB
+NULL,Jetset LUV,NULL,Women,1018,BEL,Belgium,BE
+NULL,JinX,NULL,Women,1073,GER,Germany,DE
+NULL,Mooncup,NULL,Women,1018,BEL,Belgium,BE
+NULL,Shout,NULL,Women,1093,ITA,Italy,IT
+NULL,Spice Ultimate,NULL,Women,1069,GBR,Great Britain,GB
+NULL,Tequila Boom Boom,NULL,Women,1093,ITA,Italy,IT
+NULL,Troubles Warsaw,NULL,Women,1151,POL,Poland,PL
+NULL,YAKA,NULL,Women,1065,FRA,France,FR
+NULL,3SB - Open,NULL,Open,1051,CZE,Czech Republic,CZ
+NULL,Bad Skid,NULL,Open,1073,GER,Germany,DE
+NULL,BFD LaFotta,NULL,Open,1093,ITA,Italy,IT
+NULL,Bristol Open,NULL,Open,1069,GBR,Great Britain,GB
+NULL,Chevron Action Flash,NULL,Open,1069,GBR,Great Britain,GB
+NULL,Clapham Ultimate,NULL,Open,1069,GBR,Great Britain,GB
+NULL,Cotarica Grandes,NULL,Open,1093,ITA,Italy,IT
+NULL,Flying Angels Bern,NULL,Open,1174,SUI,Switzerland,CH
+NULL,FWD>>,NULL,Open,1012,AUT,Austria,AT
+NULL,Gentle Open,NULL,Open,1018,BEL,Belgium,BE
+NULL,JetSet Ultimate Open,NULL,Open,1018,BEL,Belgium,BE
+NULL,Københavns Frisbee Klub (KFK),NULL,Open,1052,DEN,Denmark,DK
+NULL,M.U.C.,NULL,Open,1073,GER,Germany,DE
+NULL,Mooncatchers,NULL,Open,1018,BEL,Belgium,BE
+NULL,Otso,NULL,Open,1064,FIN,Finland,FI
+NULL,Outsiterz,NULL,Open,1176,SVK,Slovakia,SK
+NULL,Panthers Bern,NULL,Open,1174,SUI,Switzerland,CH
+NULL,Panthers Wrocław,NULL,Open,1151,POL,Poland,PL
+NULL,Uprising,NULL,Open,1151,POL,Poland,PL
+NULL,Ranelagh,NULL,Open,1088,IRL,Ireland,IE
+NULL,SmashD,NULL,Open,1069,GBR,Great Britain,GB
+NULL,Tchac,NULL,Open,1065,FRA,France,FR
+NULL,Wall City,NULL,Open,1073,GER,Germany,DE
+NULL,Alba,NULL,Open,1069,GBR,Great Britain,GB
+NULL,KFUM Örebro Frisbee,NULL,Open,1177,SWE,Sweden,SE
+NULL,KFK,NULL,Open,1052,DEN,Denmark,DK
+NULL,Terrible Monkeys,NULL,Open,1051,CZE,Czech Republic,CZ
+NULL,FWD>>,NULL,Open,1012,AUT,Austria,AT
+NULL,Uprising Ultimate,NULL,Open,1151,POL,Poland,PL
+NULL,Panthers Wrocław,NULL,Open,1151,POL,Poland,PL
+NULL,Outsiterz,NULL,Open,1176,SVK,Slovakia,SK
+NULL,3SB,NULL,Open,1051,CZE,Czech Republic,CZ
+NULL,Atrofované Ruce,NULL,Open,1051,CZE,Czech Republic,CZ
+NULL,thebigEZ,NULL,Open,1012,AUT,Austria,AT
+NULL,Iznogood,NULL,Open,1065,FRA,France,FR
+NULL,Monkey,NULL,Open,1065,FRA,France,FR
+NULL,Flying Angels Bern,NULL,Open,1174,SUI,Switzerland,CH
+NULL,Quijotes,NULL,Open,1060,ESP,Spain,ES
+NULL,Freespeed,NULL,Open,1174,SUI,Switzerland,CH
+NULL,Heidees,NULL,Open,1073,GER,Germany,DE
+NULL,XVI,NULL,Open,1088,IRL,Ireland,IE
+NULL,Smash'D,NULL,Open,1069,GBR,Great Britain,GB
+NULL,SMOG,NULL,Open,1069,GBR,Great Britain,GB
+NULL,Freezzz Beezzz,NULL,Open,1018,BEL,Belgium,BE
+NULL,Aarhus,NULL,Open,1052,DEN,Denmark,DK
+NULL,Grut,NULL,Open,1135,NED,Netherlands,NL
+NULL,UFO,NULL,Open,1135,NED,Netherlands,NL
+NULL,ZU PlatZHirsch,NULL,Open,1174,SUI,Switzerland,CH
+NULL,Révolution'Air,NULL,Open,1065,FRA,France,FR
+NULL,Solebang,NULL,Open,1174,SUI,Switzerland,CH
+NULL,Tchac,NULL,Open,1065,FRA,France,FR
+NULL,AUT Beefree,NULL,Open,1093,ITA,Italy,IT
+NULL,Jetset LUV,NULL,Women,1018,BEL,Belgium,BE
+NULL,Queen Kong,NULL,Women,1065,FRA,France,FR
+NULL,FlyHigh Louves,NULL,Women,1174,SUI,Switzerland,CH
+NULL,Tequila Boom Boom,NULL,Women,1093,ITA,Italy,IT
+NULL,wuf.,NULL,Women,1018,BEL,Belgium,BE
+NULL,FABulous,NULL,Women,1174,SUI,Switzerland,CH
+NULL,BFD Shout,NULL,Women,1093,ITA,Italy,IT
+NULL,GRUT,NULL,Women,1135,NED,Netherlands,NL
+NULL,Solebang,NULL,Women,1174,SUI,Switzerland,CH
+NULL,Catchup,NULL,Women,1012,AUT,Austria,AT
+NULL,Deep Space,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,BN1,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,Colorado,NULL,Mixed,1073,GER,Germany,DE
+NULL,Zombees,NULL,Mixed,1012,AUT,Austria,AT
+NULL,Nuclear Discs,NULL,Mixed,1166,SLO,Slovenia,SI
+NULL,Tiefseetaucher,NULL,Mixed,1073,GER,Germany,DE
+NULL,The Owls,NULL,Mixed,1018,BEL,Belgium,BE
+NULL,Heroes Flying Disc,NULL,Mixed,1084,HUN,Hungary,HU
+NULL,Mosquitos,NULL,Mixed,1012,AUT,Austria,AT
+NULL,OUT,NULL,Mixed,1084,HUN,Hungary,HU
+NULL,AKS Zły Ultimate,NULL,Mixed,1151,POL,Poland,PL
+NULL,Frubb,NULL,Mixed,1073,GER,Germany,DE
+NULL,PUC,NULL,Mixed,1065,FRA,France,FR
+NULL,Cus Padova Rangərs,NULL,Mixed,1093,ITA,Italy,IT
+NULL,W.underteam,NULL,Mixed,1012,AUT,Austria,AT
+NULL,One Tribe,NULL,Open,1093,ITA,Italy,IT
+NULL,Panthers Bern Ultimate,NULL,Open,1174,SUI,Switzerland,CH
+NULL,Bad Skid,NULL,Open,1073,GER,Germany,DE
+NULL,Ranelagh,NULL,Open,1088,IRL,Ireland,IE
+NULL,Catchup Graz,NULL,Open,1012,AUT,Austria,AT
+NULL,DiscoBolo,NULL,Open,1093,ITA,Italy,IT
+NULL,Mooncatchers,NULL,Open,1018,BEL,Belgium,BE
+NULL,BFD LaFotta,NULL,Open,1093,ITA,Italy,IT
+NULL,REDBULLS,NULL,Open,1093,ITA,Italy,IT
+NULL,Cotarica Grandes,NULL,Open,1093,ITA,Italy,IT
+NULL,Glasgow Ultimate,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,Nullacht! Ultimate,NULL,Mixed,1073,GER,Germany,DE
+NULL,Wiener Mischung,NULL,Mixed,1012,AUT,Austria,AT
+NULL,PELT,NULL,Mixed,1088,IRL,Ireland,IE
+NULL,Savage Ultimate,NULL,Mixed,1151,POL,Poland,PL
+NULL,Sky This Warszawa,NULL,Mixed,1151,POL,Poland,PL
+NULL,Malmö Ultimate Club,NULL,Mixed,1177,SWE,Sweden,SE
+NULL,DTU,NULL,Mixed,1052,DEN,Denmark,DK
+NULL,SYC,NULL,Women,1069,GBR,Great Britain,GB
+NULL,Iceni,NULL,Women,1069,GBR,Great Britain,GB
+NULL,Dublin Gravity,NULL,Women,1088,IRL,Ireland,IE
+NULL,Spice,NULL,Women,1069,GBR,Great Britain,GB
+NULL,SMOG,NULL,Women,1069,GBR,Great Britain,GB
+NULL,Seagulls,NULL,Women,1073,GER,Germany,DE
+NULL,Mooncup,NULL,Women,1018,BEL,Belgium,BE
+NULL,Horizon,NULL,Women,1069,GBR,Great Britain,GB
+NULL,LMU,NULL,Women,1069,GBR,Great Britain,GB
+NULL,Bristol,NULL,Women,1069,GBR,Great Britain,GB
+NULL,Team 1,NULL,Swissdraw test,1138,NIG,Niger,NE
+NULL,Team 2,NULL,Swissdraw test,1053,DJI,Djibouti,DJ
+NULL,Team 3,NULL,Swissdraw test,1140,NRU,Nauru,NR
+NULL,Team 4,NULL,Swissdraw test,1071,GEO,Georgia,GE
+NULL,Team 5,NULL,Swissdraw test,1126,MLT,Malta,MT
+NULL,Team 6,NULL,Swissdraw test,1069,GBR,Great Britain,GB
+NULL,Team 7,NULL,Swissdraw test,1100,KGZ,Kyrgyzstan,KG
+NULL,Team 8,NULL,Swissdraw test,1032,CAF,Central African Republic,CF
+NULL,Team 9,NULL,Swissdraw test,1004,AND,Andorra,AD
+NULL,Team 10,NULL,Swissdraw test,1084,HUN,Hungary,HU
+NULL,Team 1,NULL,Grenoble test,1164,SKN,Saint Kitts and Nevis,KN
+NULL,Team 2,NULL,Grenoble test,1181,TGA,Tonga,TO
+NULL,Team 3,NULL,Grenoble test,1180,TAN,Tanzania,TZ
+NULL,Team 4,NULL,Grenoble test,1137,NGR,Nigeria,NG
+NULL,Team 5,NULL,Grenoble test,1151,POL,Poland,PL
+NULL,Team 6,NULL,Grenoble test,1076,GRN,Grenada,GD
+NULL,Team 7,NULL,Grenoble test,1180,TAN,Tanzania,TZ
+NULL,Team 8,NULL,Grenoble test,1062,ETH,Ethiopia,ET
+NULL,Team 9,NULL,Grenoble test,1129,MOZ,Mozambique,MZ
+NULL,Team 10,NULL,Grenoble test,1163,SGP,Singapore,SG
+NULL,SYC,NULL,London Testing,1069,GBR,Great Britain,GB
+NULL,Iceni,NULL,London Testing,1069,GBR,Great Britain,GB
+NULL,Dublin Gravity,NULL,London Testing,1088,IRL,Ireland,IE
+NULL,Spice,NULL,London Testing,1069,GBR,Great Britain,GB
+NULL,SMOG,NULL,London Testing,1069,GBR,Great Britain,GB
+NULL,Seagulls,NULL,London Testing,1073,GER,Germany,DE
+NULL,Mooncup,NULL,London Testing,1018,BEL,Belgium,BE
+NULL,Horizon,NULL,London Testing,1069,GBR,Great Britain,GB
+NULL,LMU,NULL,London Testing,1069,GBR,Great Britain,GB
+NULL,Bristol,NULL,London Testing,1069,GBR,Great Britain,GB
+NULL,KFUM Örebro Frisbee,NULL,Brno Testing,1177,SWE,Sweden,SE
+NULL,KFK,NULL,Brno Testing,1052,DEN,Denmark,DK
+NULL,Terrible Monkeys,NULL,Brno Testing,1051,CZE,Czech Republic,CZ
+NULL,FWD>>,NULL,Brno Testing,1012,AUT,Austria,AT
+NULL,Uprising Ultimate,NULL,Brno Testing,1151,POL,Poland,PL
+NULL,Panthers Wrocław,NULL,Brno Testing,1151,POL,Poland,PL
+NULL,Outsiterz,NULL,Brno Testing,1176,SVK,Slovakia,SK
+NULL,3SB,NULL,Brno Testing,1051,CZE,Czech Republic,CZ
+NULL,Atrofované Ruce,NULL,Brno Testing,1051,CZE,Czech Republic,CZ
+NULL,thebigEZ,NULL,Brno Testing,1012,AUT,Austria,AT
+NULL,Deep Space,NULL,Padova Testing,1069,GBR,Great Britain,GB
+NULL,BN1,NULL,Padova Testing,1069,GBR,Great Britain,GB
+NULL,Colorado,NULL,Padova Testing,1073,GER,Germany,DE
+NULL,Zombees,NULL,Padova Testing,1012,AUT,Austria,AT
+NULL,Nuclear Discs,NULL,Padova Testing,1166,SLO,Slovenia,SI
+NULL,Tiefseetaucher,NULL,Padova Testing,1073,GER,Germany,DE
+NULL,The Owls,NULL,Padova Testing,1018,BEL,Belgium,BE
+NULL,Heroes Flying Disc,NULL,Padova Testing,1084,HUN,Hungary,HU
+NULL,Mosquitos,NULL,Padova Testing,1012,AUT,Austria,AT
+NULL,OUT,NULL,Padova Testing,1084,HUN,Hungary,HU
+NULL,AKS Zły Ultimate,NULL,Padova Testing,1151,POL,Poland,PL
+NULL,Frubb,NULL,Padova Testing,1073,GER,Germany,DE
+NULL,PUC,NULL,Padova Testing,1065,FRA,France,FR
+NULL,Cus Padova Rangərs,NULL,Padova Testing,1093,ITA,Italy,IT
+NULL,W.underteam,NULL,Padova Testing,1012,AUT,Austria,AT
+NULL,Glasgow Ultimate,NULL,Malmö Testing,1069,GBR,Great Britain,GB
+NULL,Nullacht! Ultimate,NULL,Malmö Testing,1073,GER,Germany,DE
+NULL,Wiener Mischung,NULL,Malmö Testing,1012,AUT,Austria,AT
+NULL,PELT,NULL,Malmö Testing,1088,IRL,Ireland,IE
+NULL,Savage Ultimate,NULL,Malmö Testing,1151,POL,Poland,PL
+NULL,Sky This Warszawa,NULL,Malmö Testing,1151,POL,Poland,PL
+NULL,Malmö Ultimate Club,NULL,Malmö Testing,1177,SWE,Sweden,SE
+NULL,DTU,NULL,Malmö Testing,1052,DEN,Denmark,DK
+NULL,Dublin Gravity,NULL,Women,1088,IRL,Ireland,IE
+NULL,Spice,NULL,Women,1069,GBR,Great Britain,GB
+NULL,SMOG,NULL,Women,1069,GBR,Great Britain,GB
+NULL,Seagulls,NULL,Women,1073,GER,Germany,DE
+NULL,Atletico,NULL,Women,1064,FIN,Finland,FI
+NULL,Aarhus Ultimate,NULL,Women,1052,DEN,Denmark,DK
+NULL,Malmö Ultimate Club,NULL,Women,1177,SWE,Sweden,SE
+NULL,Copenhagen Hucks,NULL,Women,1052,DEN,Denmark,DK
+NULL,KFUM Örebro Frisbee,NULL,Open,1177,SWE,Sweden,SE
+NULL,KFK,NULL,Open,1052,DEN,Denmark,DK
+NULL,Freezzz Beezzz,NULL,Open,1018,BEL,Belgium,BE
+NULL,Aarhus,NULL,Open,1052,DEN,Denmark,DK
+NULL,Ranelagh,NULL,Open,1088,IRL,Ireland,IE
+NULL,OTSO,NULL,Open,1064,FIN,Finland,FI
+NULL,PirU,NULL,Open,1064,FIN,Finland,FI
+NULL,Hardfisch,NULL,Open,1073,GER,Germany,DE
+NULL,Malmö Ultimate Club,NULL,Open,1177,SWE,Sweden,SE
+NULL,Deep Space,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,Reading Ultimate,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,Leamington Lemmings,NULL,Mixed,1069,GBR,Great Britain,GB
+NULL,Nullacht! Ultimate,NULL,Mixed,1073,GER,Germany,DE
+NULL,Sesquidistus,NULL,Mixed,1065,FRA,France,FR
+NULL,Disconnection,NULL,Mixed,1073,GER,Germany,DE
+NULL,Tartu Turbulence,NULL,Mixed,1061,EST,Estonia,EE
+NULL,Manchots,NULL,Mixed,1065,FRA,France,FR
+NULL,Jetset LUV,NULL,Women,1018,BEL,Belgium,BE
+NULL,Iceni,NULL,Women,1069,GBR,Great Britain,GB
+NULL,East Block,NULL,Women,1051,CZE,Czech Republic,CZ
+NULL,box vienna ultimate,NULL,Women,1012,AUT,Austria,AT
+NULL,BFD Shout,NULL,Women,1093,ITA,Italy,IT
+NULL,Mooncup,NULL,Women,1018,BEL,Belgium,BE
+NULL,YAKA,NULL,Women,1065,FRA,France,FR
+NULL,Jinx Midnight,NULL,Women,1073,GER,Germany,DE
+NULL,Jetset Open,NULL,Open,1018,BEL,Belgium,BE
+NULL,Wall City,NULL,Open,1073,GER,Germany,DE
+NULL,Gentle,NULL,Open,1018,BEL,Belgium,BE
+NULL,Chevron Action Flash,NULL,Open,1069,GBR,Great Britain,GB
+NULL,Alba,NULL,Open,1069,GBR,Great Britain,GB
+NULL,Mooncatchers,NULL,Open,1018,BEL,Belgium,BE
+NULL,BFD LaFotta,NULL,Open,1093,ITA,Italy,IT
+NULL,Clapham,NULL,Open,1069,GBR,Great Britain,GB
+1,Glasgow Ultimate,3,Mixed,1069,GBR,Great Britain,GB
+2,Deep Space,3,Mixed,1069,GBR,Great Britain,GB
+3,BN1,3,Mixed,1069,GBR,Great Britain,GB
+4,Reading Ultimate,3,Mixed,1069,GBR,Great Britain,GB
+5,Leamington Lemmings,3,Mixed,1069,GBR,Great Britain,GB
+6,Thundering Herd,3,Mixed,1069,GBR,Great Britain,GB
+7,Oxford Ultimate,3,Mixed,1069,GBR,Great Britain,GB
+9,Zoom Ultimate,3,Mixed,1190,TUR,Turkey,TR
+10,Nullacht! Ultimate,3,Mixed,1073,GER,Germany,DE
+11,Wiener Mischung,3,Mixed,1012,AUT,Austria,AT
+12,Colorado,3,Mixed,1073,GER,Germany,DE
+13,Zombees,3,Mixed,1012,AUT,Austria,AT
+14,Nuclear Discs,3,Mixed,1166,SLO,Slovenia,SI
+15,Tiefseetaucher,3,Mixed,1073,GER,Germany,DE
+16,The Owls,3,Mixed,1018,BEL,Belgium,BE
+18,Sesquidistus,3,Mixed,1065,FRA,France,FR
+19,Disconnection,3,Mixed,1073,GER,Germany,DE
+21,Remix,3,Mixed,1135,NED,Netherlands,NL
+22,Fireball Ultimate,3,Mixed,1190,TUR,Turkey,TR
+24,Heck,3,Mixed,1069,GBR,Great Britain,GB
+25,Steamhuck,3,Mixed,1190,TUR,Turkey,TR
+26,PELT,3,Mixed,1088,IRL,Ireland,IE
+27,Savage Ultimate,3,Mixed,1151,POL,Poland,PL
+28,Sky This Warszawa,3,Mixed,1151,POL,Poland,PL
+29,Malmö Ultimate Club,3,Mixed,1177,SWE,Sweden,SE
+30,Heroes Flying Disc,3,Mixed,1084,HUN,Hungary,HU
+31,Mosquitos,3,Mixed,1012,AUT,Austria,AT
+32,OUT,3,Mixed,1084,HUN,Hungary,HU
+33,AKS Zły Ultimate,3,Mixed,1151,POL,Poland,PL
+34,Tartu Turbulence,3,Mixed,1061,EST,Estonia,EE
+35,KS Flow Wrocław,3,Mixed,1151,POL,Poland,PL
+37,Jetset LUV,2,Women,1018,BEL,Belgium,BE
+38,Queen Kong,2,Women,1065,FRA,France,FR
+39,FlyHigh Louves,2,Women,1174,SUI,Switzerland,CH
+40,Tequila Boom Boom,2,Women,1093,ITA,Italy,IT
+41,wuf.,2,Women,1018,BEL,Belgium,BE
+42,SYC,2,Women,1069,GBR,Great Britain,GB
+43,ZU Swarm,2,Women,1174,SUI,Switzerland,CH
+44,Sharks Ultimate Barcelona,2,Women,1060,ESP,Spain,ES
+45,Iceni,2,Women,1069,GBR,Great Britain,GB
+46,Dublin Gravity,2,Women,1088,IRL,Ireland,IE
+47,Spice,2,Women,1069,GBR,Great Britain,GB
+48,SMOG,2,Women,1069,GBR,Great Britain,GB
+49,Seagulls,2,Women,1073,GER,Germany,DE
+50,Atletico,2,Women,1064,FIN,Finland,FI
+52,Aarhus Ultimate,2,Women,1052,DEN,Denmark,DK
+53,Malmö Ultimate Club,2,Women,1177,SWE,Sweden,SE
+54,Copenhagen Hucks,2,Women,1052,DEN,Denmark,DK
+55,FABulous,2,Women,1174,SUI,Switzerland,CH
+56,3SB,2,Women,1051,CZE,Czech Republic,CZ
+57,East Block,2,Women,1051,CZE,Czech Republic,CZ
+58,box vienna ultimate,2,Women,1012,AUT,Austria,AT
+60,Outsisterz,2,Women,1176,SVK,Slovakia,SK
+61,Troubles,2,Women,1151,POL,Poland,PL
+63,Iznogood,1,Open,1065,FRA,France,FR
+64,Monkey,1,Open,1065,FRA,France,FR
+65,Flying Angels Bern,1,Open,1174,SUI,Switzerland,CH
+66,Quijotes,1,Open,1060,ESP,Spain,ES
+67,Black Birds,1,Open,1018,BEL,Belgium,BE
+68,One Tribe,1,Open,1093,ITA,Italy,IT
+69,Jetset Open,1,Open,1018,BEL,Belgium,BE
+70,Krakens,1,Open,1060,ESP,Spain,ES
+71,Freespeed,1,Open,1174,SUI,Switzerland,CH
+72,Heidees,1,Open,1073,GER,Germany,DE
+73,Panthers Bern Ultimate,1,Open,1174,SUI,Switzerland,CH
+74,Bad Skid,1,Open,1073,GER,Germany,DE
+75,Wall City,1,Open,1073,GER,Germany,DE
+76,Gentle,1,Open,1018,BEL,Belgium,BE
+77,Frizzly Bears,1,Open,1073,GER,Germany,DE
+78,Ars Ludendi,1,Open,1073,GER,Germany,DE
+79,7Schwaben,1,Open,1073,GER,Germany,DE
+80,FrankN,1,Open,1073,GER,Germany,DE
+81,XVI,1,Open,1088,IRL,Ireland,IE
+82,Smash'D,1,Open,1069,GBR,Great Britain,GB
+83,SMOG,1,Open,1069,GBR,Great Britain,GB
+84,Chevron Action Flash,1,Open,1069,GBR,Great Britain,GB
+85,Alba,1,Open,1069,GBR,Great Britain,GB
+86,Bristol,1,Open,1069,GBR,Great Britain,GB
+87,Dublin Frisbee 7s,1,Open,1088,IRL,Ireland,IE
+88,Ka-Pow!,1,Open,1069,GBR,Great Britain,GB
+89,Uproar,1,Open,1088,IRL,Ireland,IE
+90,Rebel Ultimate,1,Open,1088,IRL,Ireland,IE
+91,KFUM Örebro Frisbee,1,Open,1177,SWE,Sweden,SE
+92,KFK,1,Open,1052,DEN,Denmark,DK
+93,Freezzz Beezzz,1,Open,1018,BEL,Belgium,BE
+94,Aarhus,1,Open,1052,DEN,Denmark,DK
+95,Ranelagh,1,Open,1088,IRL,Ireland,IE
+96,OTSO,1,Open,1064,FIN,Finland,FI
+97,PirU,1,Open,1064,FIN,Finland,FI
+99,Hardfisch,1,Open,1073,GER,Germany,DE
+100,Malmö Ultimate Club,1,Open,1177,SWE,Sweden,SE
+101,Terrible Monkeys,1,Open,1051,CZE,Czech Republic,CZ
+102,FWD>>,1,Open,1012,AUT,Austria,AT
+103,Uprising Ultimate,1,Open,1151,POL,Poland,PL
+104,Panthers Wrocław,1,Open,1151,POL,Poland,PL
+105,Outsiterz,1,Open,1176,SVK,Slovakia,SK
+107,Catchup Graz,1,Open,1012,AUT,Austria,AT
+108,3SB,1,Open,1051,CZE,Czech Republic,CZ
+109,Atrofované Ruce,1,Open,1051,CZE,Czech Republic,CZ
+111,thebigEZ,1,Open,1012,AUT,Austria,AT
+112,Grut,1,Open,1135,NED,Netherlands,NL
+113,UFO,1,Open,1135,NED,Netherlands,NL
+114,DiscoBolo,1,Open,1093,ITA,Italy,IT
+115,ZU PlatZHirsch,1,Open,1174,SUI,Switzerland,CH
+116,Révolution'Air,1,Open,1065,FRA,France,FR
+117,Solebang,1,Open,1174,SUI,Switzerland,CH
+118,Tchac,1,Open,1065,FRA,France,FR
+119,AUT Beefree,1,Open,1093,ITA,Italy,IT
+120,Mooncatchers,1,Open,1018,BEL,Belgium,BE
+121,BFD LaFotta,1,Open,1093,ITA,Italy,IT
+122,REDBULLS,1,Open,1093,ITA,Italy,IT
+123,Cotarica Grandes,1,Open,1093,ITA,Italy,IT
+124,DTU,3,Mixed,1052,DEN,Denmark,DK
+125,Frubb,3,Mixed,1073,GER,Germany,DE
+126,PUC,3,Mixed,1065,FRA,France,FR
+127,Cus Padova Rangərs,3,Mixed,1093,ITA,Italy,IT
+128,W.underteam,3,Mixed,1012,AUT,Austria,AT
+129,BFD Shout,2,Women,1093,ITA,Italy,IT
+130,GRUT,2,Women,1135,NED,Netherlands,NL
+131,Solebang,2,Women,1174,SUI,Switzerland,CH
+132,Catchup,2,Women,1012,AUT,Austria,AT
+133,Mooncup,2,Women,1018,BEL,Belgium,BE
+134,Horizon,2,Women,1069,GBR,Great Britain,GB
+135,LMU,2,Women,1069,GBR,Great Britain,GB
+136,Bristol,2,Women,1069,GBR,Great Britain,GB
+137,Clapham,1,Open,1069,GBR,Great Britain,GB
+138,Manchots,3,Mixed,1065,FRA,France,FR
+139,YAKA,2,Women,1065,FRA,France,FR
+140,Jinx Midnight,2,Women,1073,GER,Germany,DE
+141,Armada,1,Open,1018,BEL,Belgium,BE
+142,test,1,Open,1012,AUT,Austria,AT
