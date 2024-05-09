@@ -11,7 +11,7 @@ library(bslib)
 library(bsicons)
 library(markdown)
 library(networkD3)
-# library(countrycode)
+library(countrycode)
 source("read/read_data.R")
 
 theme_set(theme_minimal())
@@ -24,7 +24,8 @@ enableBookmarking("url")
 data_path <- "data/"
 game_data <- read_all_game_data(data_path)
 summary_data <- read_all_summary_data(data_path)
-teams_data <- read_csv("teams-temp.csv")
+#teams_data <- read_csv("teams-temp.csv")
+teams_data <- read_all_teams_data(data_path)
 wildcard_data <- read_all_wildcard_data(data_path) %>% 
   mutate(Season = as.character(Season)) %>% 
   mutate(Wildcard_Date = mdy(Wildcard_Date))
