@@ -4,11 +4,6 @@ source("server/string_functions.R")
 
 function(input, output, session) {
   
-  #Observe Events to allow links to change inputs
-  # observeEvent(input$main_tab,{
-  #   updateTabsetPanel(session, "main_tab", input$main_tab)
-  # })
-  
   observeEvent(input$team, {
     updateTabsetPanel(session, "main_tab", "Team")
     updateSelectInput(session, "team", selected=input$team)
@@ -46,11 +41,6 @@ function(input, output, session) {
           Games >= 10 
         else T
       ) %>% 
-      # filter(
-      #   if(!input$include_wildcard) 
-      #     !Wildcard
-      #   else T
-      # ) %>% 
       mutate(Ranking = rank(-Rating_USAU)) %>% 
       add_ranking_no_wildcard
   })
@@ -122,8 +112,6 @@ function(input, output, session) {
                 escape = F,
                 class = "display nowrap",
                 options = options
-                    #columnDefs = list(list(visible=FALSE, targets=c("Ranking_No_Wildcard")))
-                    #columnDefs = list(list(className = 'dt-left', targets = "_all"))
       )
   }
   
@@ -191,8 +179,6 @@ function(input, output, session) {
       mutate(Wildcard = if_else(Wildcard, Wildcard_Event, "")) %>% 
       mutate(`Record (W-L)` = paste0(Wins, " - ", Losses)) %>% 
       select(Ranking, Ranking_No_Wildcard, Team, Rating_USAU, `Record (W-L)`, Tournaments, Wildcard) %>% 
-      #mutate(Team = str_to_url_link(Team, input = input)) %>%
-      #mutate(Team = str_to_input_link(string=Team)) %>% 
       mutate(Team = sapply(Team, flag_and_link, division = input$division)) %>% 
       dplyr::rename(Rating = Rating_USAU) %>%
       format_DT(options = DT_options(hidden_rows = c("Ranking_No_Wildcard"))) %>% 
@@ -219,7 +205,7 @@ function(input, output, session) {
       formatStyle(
         'Wildcard',
         target='row',
-        backgroundColor = styleEqual(wildcard_events(), '#FC0')
+        backgroundColor = styleEqual(wildcard_events(), color_primary_light)
       ) 
   })
   
@@ -229,8 +215,6 @@ function(input, output, session) {
   
   output$season_games_table <- renderDT({
     game_data_filtered() %>% 
-      # mutate(Game = paste0(str_to_input_link(Team_1), " ", Score_1, "-", 
-      #                      Score_2, " ", str_to_input_link(Team_2))) %>%
       mutate(Game = paste0(sapply(Team_1, 
                                                 flag_and_link, 
                                                 division = input$division), " ", Score_1, "-",
@@ -262,7 +246,7 @@ function(input, output, session) {
   output$season_network <- renderSimpleNetwork({
     game_data_filtered() %>% 
       simpleNetwork("Team_1", "Team_2", 
-                    linkColour = "#DA0", nodeColour = "#000", 
+                    linkColour = color_primary_dark, nodeColour = "#000", 
                     zoom=T, 
                     fontFamily = font_google("Bebas Neue"),
                     linkDistance = 250)
@@ -610,11 +594,11 @@ function(input, output, session) {
   
   output$rating_point_diff_dt <- renderDT({
     rating_point_diff() %>%  select(-score_difference) %>% 
-      format_DT#(DT_options(scrollY = "20VH", searching=F))
+      format_DT
   })
   
   output$weight_point_diff_dt <- renderDT({
     weight_point_diff() %>% select(-score_difference) %>% 
-      format_DT#(DT_options(scrollY = "20VH", searching=F))
+      format_DT
   })
 }

@@ -38,7 +38,7 @@ function(reqest){
       theme = 
         bs_theme(
           bootswatch = "lux", version = 5,
-          primary = "#fc0",
+          primary = color_primary_light,
           secondary = "#545454",
           "navbar-bg" = "#000",
           "nav-link-color" = "#FC0 !important",
@@ -92,18 +92,7 @@ function(reqest){
                    href = "https://live.ultimatefederation.eu/",
                    target = "_blank")),
         algo_nav_panel,
-      ),
-      
-      # # This spacer puts the socials on the right side of the screen
-      # nav_spacer(),
-      # 
-      # # Socials
-      # nav_item(a(bs_icon(name = "instagram"),
-      #            href="http://www.instagram.com/ultimatefederation_eu")),
-      # nav_item(a(bs_icon(name = "facebook"),
-      #            href="https://www.facebook.com/ultimate.eu/")),
-      # nav_item(a(bs_icon(name = "envelope"),
-      #            href="mailto:competition@ultimatefederation.eu"))
+      )
     )
   )
 }
