@@ -444,6 +444,50 @@ function(input, output, session) {
       ggplotly(tooltip = c("shape", "x", "y", "label", "label1", "label2", "yintercept")) %>% hide_legend()
   })
   
+  output$team_master_roster <- renderDT(
+    master_roster %>% 
+      filter(division_name == input$division,
+             team_name == input$team) %>% 
+      mutate(Name = paste(first_name, last_name)) %>% 
+      select(Name) %>% 
+      arrange(Name) %>% 
+      as_tibble() %>% 
+      format_DT
+  )
+  
+  team_events <- reactive(
+    {
+    req(input$team)
+    
+    event_teams %>% 
+      filter(team_name == input$team, division_name == input$division) %>% 
+      as_tibble() %>% 
+      pull(event_name)
+    }
+  )
+  
+  output$team_event_select <- renderUI(
+    selectInput("team_event", NULL,
+                choices = team_events(), width = "100%")
+  )
+  
+  output$team_event_roster <- renderDT(
+    {
+      req(input$team_event)
+      
+      event_roster %>% 
+        filter(team_name == input$team, 
+               division_name == input$division,
+               event_name == input$team_event) %>% 
+        mutate(Name = paste(first_name, last_name)) %>% 
+        rename(Jersey = shirt_no) %>% 
+        select(Jersey, Name) %>% 
+        arrange(Jersey) %>% 
+        as_tibble() %>% 
+        format_DT
+    }
+  )
+  
   # Functions for Matchup Tab
   output$matchup_team_1 <- renderUI({
     select_matchup_team(1)

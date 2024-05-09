@@ -121,6 +121,17 @@ team_nav_panel <-
         DTOutput("team_games_table")
       ),
       nav_panel(
+        "Roster",
+        layout_column_wrap(
+          card(card_title("Master"),
+               DTOutput("team_master_roster")
+          ),
+          card(card_title("Event"),
+               uiOutput("team_event_select"),
+               DTOutput("team_event_roster"))
+        )
+      ),
+      nav_panel(
         "Plot",
         plotlyOutput("team_games_plot")
       ),
@@ -128,12 +139,6 @@ team_nav_panel <-
         "Evolution",
         plotlyOutput("team_evolution_plot")
       )
-      # nav_panel(
-      #   "Roster"
-      # ),
-      # nav_panel(
-      #   "Ranking Evolution"
-      # )
     )
   )
 

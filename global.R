@@ -12,6 +12,9 @@ library(bsicons)
 library(markdown)
 library(networkD3)
 library(countrycode)
+library(dbplyr)
+library(RMariaDB)
+library(config)
 source("read/read_data.R")
 
 theme_set(theme_minimal())
@@ -27,6 +30,20 @@ teams_data <- read_all_teams_data(data_path)
 wildcard_data <- read_all_wildcard_data(data_path) %>% 
   mutate(Season = as.character(Season)) %>% 
   mutate(Wildcard_Date = mdy(Wildcard_Date))
+
+#connect to database
+dbConf <- config::get("gravato")
+
+connection <- 
+  DBI::dbConnect(RMariaDB::MariaDB(),
+                 host = dbConf$host,
+                 user = dbConf$user,
+                 password = dbConf$password,
+                 dbname = dbConf$dbname
+                 )
+master_roster <- tbl(connection, "rostering_master_rosters")
+event_teams <- tbl(connection, "rostering_event_teams")
+event_roster <- tbl(connection, "rostering_event_rosters")
 
 
 # Color Schemes
