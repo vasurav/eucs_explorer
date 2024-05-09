@@ -21,17 +21,26 @@ flag_img <- function(country_code = "eu")
     as.character()
 }
 
-
-flag_and_link <- function(team, division, left_side = T)
+get_iso2c <- function(team, division)
 {
-  iso2c <- teams_data %>% 
+  teams_data %>% 
     filter(team_name == team, division_name == division) %>% 
     first() %>% 
     pull(iso2c)
+}
+
+flag_team <- function(team, division)
+{
+  get_iso2c(team, division) %>% flag_img
+}
+
+flag_and_link <- function(team, division, left_side = T)
+{
+  flag <- flag_team(team, division)
   
   if_else(left_side,
-          paste0(flag_img(iso2c), " ", str_to_input_link(team)),
-          paste0(str_to_input_link(team), " ", flag_img(iso2c))
+          paste0(flag, " ", str_to_input_link(team)),
+          paste0(str_to_input_link(team), " ", flag)
           )
 }
 

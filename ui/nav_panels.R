@@ -177,11 +177,11 @@ matchup_nav_panel <-
         "Mutuals",
         layout_column_wrap(
           card(
-            card_header(textOutput("matchup_team_text_1")),
+            card_header(htmlOutput("matchup_team_text_1")),
             DTOutput("matchup_mutual_opponents_1")
           ),
           card(
-            card_header(textOutput("matchup_team_text_2")),
+            card_header(htmlOutput("matchup_team_text_2")),
             DTOutput("matchup_mutual_opponents_2")
           ),
         )

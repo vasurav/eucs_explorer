@@ -538,48 +538,47 @@ function(input, output, session) {
       format_DT
   })
   
-  output$matchup_mutual_opponents_1 <- renderDT({
-    req(input$matchup_team_1, input$matchup_team_2)
-    
-    opponents_1 <- team_summary(input$matchup_team_1) %>% pull(Opponent) %>% unique
-    opponents_2 <- team_summary(input$matchup_team_2) %>% pull(Opponent) %>% unique
-    
-    common_opponents <- intersect(opponents_1, opponents_2)
-    
-    team_summary(input$matchup_team_1) %>% 
-      mutate(Team = input$matchup_team_1) %>% 
-      filter(Opponent %in% common_opponents) %>% 
-      select(Opponent, Score, Tournament, Date) %>% 
-      arrange(Opponent) %>% 
-      mutate(Opponent = sapply(Opponent, flag_and_link, division = input$division)) %>% 
-      format_DT
-  })
+  matchup_team_text <- function(team, division)
+  {
+    paste0(flag_team(team, division), " ", team)
+  }
   
   output$matchup_team_text_1 <- renderText({
     req(input$matchup_team_1)
-    input$matchup_team_1
+    matchup_team_text(input$matchup_team_1, input$division)
+  })
+  
+  output$matchup_team_text_2 <- renderText({
+    req(input$matchup_team_2)
+    matchup_team_text(input$matchup_team_2, input$division)
+  })
+  
+  matchup_mutual_opponents_table <- function(primary_team, secondary_team, division)
+  {
+    opponents_1 <- team_summary(primary_team) %>% pull(Opponent) %>% unique
+    opponents_2 <- team_summary(secondary_team) %>% pull(Opponent) %>% unique
+    
+    common_opponents <- intersect(opponents_1, opponents_2)
+    
+    team_summary(primary_team) %>% 
+      mutate(Team = primary_team) %>% 
+      filter(Opponent %in% common_opponents) %>% 
+      select(Opponent, Score, Tournament, Date) %>% 
+      arrange(Opponent) %>% 
+      mutate(Opponent = sapply(Opponent, flag_and_link, division = division)) %>% 
+      format_DT
+  }
+  
+  output$matchup_mutual_opponents_1 <- renderDT({
+    req(input$matchup_team_1, input$matchup_team_2)
+    
+    matchup_mutual_opponents_table(input$matchup_team_1, input$matchup_team_2, input$division)
   })
   
   output$matchup_mutual_opponents_2 <- renderDT({
     req(input$matchup_team_1, input$matchup_team_2)
     
-    opponents_1 <- team_summary(input$matchup_team_1) %>% pull(Opponent) %>% unique
-    opponents_2 <- team_summary(input$matchup_team_2) %>% pull(Opponent) %>% unique
-    
-    common_opponents <- intersect(opponents_1, opponents_2)
-    
-    team_summary(input$matchup_team_2) %>% 
-      mutate(Team = input$matchup_team_2) %>% 
-      filter(Opponent %in% common_opponents) %>% 
-      select(Opponent, Score, Tournament, Date) %>% 
-      arrange(Opponent) %>% 
-      mutate(Opponent = sapply(Opponent, flag_and_link, division = input$division)) %>%
-      format_DT
-  })
-  
-  output$matchup_team_text_2 <- renderText({
-    req(input$matchup_team_2)
-    input$matchup_team_2
+    matchup_mutual_opponents_table(input$matchup_team_2, input$matchup_team_1, input$division)
   })
   
   
