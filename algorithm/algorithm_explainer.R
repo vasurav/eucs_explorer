@@ -38,22 +38,14 @@ calc_rating_score_diff <- function(score_diff, score_winner = 15)
 
 calc_score_diff_rating_diff <- function(rating_diff, score_winner = 15)
 {
-  rating_point_diff() %>% 
-    filter(score_winner == 15) %>% 
-    filter(score_difference <= 8) %>%
-    add_row(score_difference = 0, game_rating_diff = 0) %>% 
-    add_row(game_rating_diff = abs(rating_diff)) %>% 
-    mutate(score_diff_predict = coalesce(score_difference, 
-                                         predict(lm(score_difference~game_rating_diff),
-                                                 across(score_difference)))) %>% 
-    filter(game_rating_diff == abs(rating_diff)) %>% 
-    pull(score_diff_predict) %>% 
-    `[[`(1)
+  rating_table <- rating_point_diff(15, seq(7,15,0.01)) 
+  
+  rating_table$score_difference[which.min(abs(rating_table$game_rating_diff - abs(rating_diff)))]
 }
 
-rating_point_diff <- function()
+rating_point_diff <- function(score_winner = 15:2, score_loser = 14:0)
 {
-  create_score_tibble() %>% 
+  create_score_tibble(score_winner, score_loser) %>% 
     mutate(game_rating_diff = mapply(calc_rating, 
                                      score_winner = score_winner, 
                                      score_loser = score_loser))

@@ -528,7 +528,7 @@ function(input, output, session) {
     
     case_when(
       abs(rating_diff) > 600 ~ "Blowout",
-      abs(rating_diff) <= 45 ~ "Draw",
+      abs(rating_diff) <= 35 ~ "Draw",
       rating_diff < 0 ~ paste0((15 - score_diff), " - 15"),
       .default = paste0("15 - ", (15 - score_diff))
     )
