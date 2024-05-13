@@ -152,8 +152,8 @@ function(input, output, session) {
     season_evo_data <- season_evo_data %>%
       filter(Team %in% top_teams)
     
-    `EUCF Cutoff` = eucf_ranking_spots_guaranteed()
-    `EUCF Cutoff (Including Unassigned Wildcards)` = 16
+    `EUCF Cutoff` = eucf_ranking_spots_guaranteed() + 0.5
+    `EUCF Cutoff (Including Unassigned Wildcards)` = 16 + 0.5
     
     (season_evo_data %>% 
         ggplot(aes(x=Ranking_Calculation_Date, y=Ranking, color=Team)) +
