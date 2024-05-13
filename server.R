@@ -607,7 +607,7 @@ function(input, output, session) {
     team_summary(primary_team) %>% 
       mutate(Team = primary_team) %>% 
       filter(Opponent %in% common_opponents) %>% 
-      select(Opponent, Score, Tournament, Date) %>% 
+      select(Opponent, Result, Score, Game_Rating, Tournament) %>% 
       arrange(Opponent) %>% 
       mutate(Opponent = sapply(Opponent, flag_and_link, division = division)) %>% 
       format_DT
