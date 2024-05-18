@@ -258,7 +258,7 @@ function(input, output, session) {
     team_summary(input$team)
   })
   
-  team_summary <- function(team)
+  team_summary <- function(team, counted_only = F)
   {
     game_data_filtered() %>% 
       filter(Team_1 == team | Team_2 == team) %>% 
@@ -278,7 +278,8 @@ function(input, output, session) {
                                   Opponent_Rating + Game_Rank_Diff_USAU, 
                                   Opponent_Rating - Game_Rank_Diff_USAU) %>% 
                round(2)) %>% 
-      mutate(Counted = ifelse(Is_Ignored_USAU, "No", "Yes"))
+      mutate(Counted = ifelse(Is_Ignored_USAU, "No", "Yes")) %>% 
+      filter(!(counted_only & Counted == "No"))
   }
   
   output$team_selector <- renderUI({
@@ -423,7 +424,8 @@ function(input, output, session) {
                    label = Date,
                    label1 = Opponent,
                    label2 = Score)) + 
-        geom_boxplot(color = color_data,
+        geom_boxplot(data = team_summary(input$team, counted_only = T),
+                     color = color_data,
                      outlier.shape = NA) +
         geom_jitter(aes(shape = Counted), 
                     alpha = 0.5, 
