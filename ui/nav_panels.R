@@ -175,11 +175,14 @@ matchup_nav_panel <-
     navset_card_tab(
       full_screen = T,
       nav_panel(
-      "Games",
-      DTOutput("matchup_game_history")
+        "History",
+        DTOutput("matchup_game_history")
       ),
       nav_panel(
-        "Mutuals",
+        "Games",
+        checkboxInput("matchup_mutual_only",
+                      "Mutual Opponents Only",
+                      value = T),
         layout_column_wrap(
           card(
             card_header(htmlOutput("matchup_team_text_1")),
@@ -190,7 +193,9 @@ matchup_nav_panel <-
             DTOutput("matchup_mutual_opponents_2")
           ),
         )
-      )
+      ),
+      nav_panel("Plot",
+                plotlyOutput("matchup_plot"))
     )
   )
 

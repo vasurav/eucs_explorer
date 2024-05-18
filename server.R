@@ -216,11 +216,11 @@ function(input, output, session) {
   output$season_games_table <- renderDT({
     game_data_filtered() %>% 
       mutate(Game = paste0(sapply(Team_1, 
-                                                flag_and_link, 
-                                                division = input$division), " ", Score_1, "-",
+                                  flag_and_link, 
+                                  division = input$division), " ", Score_1, "-",
                            Score_2, " ", sapply(Team_2, 
-                                                              flag_and_link, 
-                                                              division = input$division, left_side=F))) %>%
+                                                flag_and_link, 
+                                                division = input$division, left_side=F))) %>%
       mutate(Game_Rating_Diff = Game_Rank_Diff_USAU %>% round(2),
              Team_Rating_Diff = Team_Rank_Diff_USAU %>% round(2)) %>% 
       mutate(Counted = ifelse(Is_Ignored_USAU, "No", "Yes")) %>% 
@@ -536,7 +536,6 @@ function(input, output, session) {
     )
   }
   
-  
   output$matchup_game_history <- renderDT({
     req(input$matchup_team_1, input$matchup_team_2)
     game_data_filtered() %>% 
@@ -545,12 +544,31 @@ function(input, output, session) {
           (Team_1 == input$matchup_team_2 & Team_2 == input$matchup_team_1)
       ) %>%  
       mutate(Score = ifelse(Team_1 == input$matchup_team_1,
-                            paste0(Score_1, " - ", Score_2),
-                            paste0(Score_2, " - ", Score_1))) %>% 
+                            paste0(
+                              sapply(Team_1, 
+                                     flag_and_link, 
+                                     division = input$division),
+                              " ", Score_1, 
+                              " - ", 
+                              Score_2, " ",
+                              sapply(Team_2, 
+                                     flag_and_link, 
+                                     division = input$division, left_side=F)),
+                            paste0(
+                              sapply(Team_2, 
+                                     flag_and_link, 
+                                     division = input$division),
+                              " ", Score_2, 
+                              " - ", 
+                              Score_1, " ",
+                              sapply(Team_1, 
+                                     flag_and_link, 
+                                     division = input$division, left_side=F)))) %>% 
       mutate(Rating_Difference = Game_Rank_Diff_USAU %>% round(2)) %>% 
       mutate(Counted = ifelse(Is_Ignored_USAU, "No", "Yes")) %>% 
-      select(Tournament, Date, Score, Rating_Difference, Counted) %>% 
-      format_DT
+      select(Score, Rating_Difference, Tournament, Date, Counted) %>% 
+      format_DT(options = DT_options(searching = F)) %>% 
+      format_blowout_games
   })
   
   matchup_rating_diff <- function()
@@ -562,27 +580,6 @@ function(input, output, session) {
       filter(Team == input$matchup_team_2) %>% 
       pull(Rating_USAU))
   }
-  
-  output$matchup_mutual_opponents <- renderDT({
-    req(input$matchup_team_1, input$matchup_team_2)
-    
-    opponents_1 <- team_summary(input$matchup_team_1) %>% pull(Opponent) %>% unique
-    opponents_2 <- team_summary(input$matchup_team_2) %>% pull(Opponent) %>% unique
-    
-    common_opponents <- intersect(opponents_1, opponents_2)
-    
-    team_summary(input$matchup_team_1) %>% 
-      mutate(Team = input$matchup_team_1) %>% 
-      filter(Opponent %in% common_opponents) %>% 
-      bind_rows(
-        team_summary(input$matchup_team_2) %>% 
-          mutate(Team = input$matchup_team_2) %>% 
-          filter(Opponent %in% common_opponents)
-      ) %>% 
-      select(Team, Opponent, Score, Tournament, Date) %>% 
-      mutate(Opponent = sapply(Opponent, flag_and_link, division = input$division)) %>% 
-      format_DT
-  })
   
   matchup_team_text <- function(team, division)
   {
@@ -608,12 +605,42 @@ function(input, output, session) {
     
     team_summary(primary_team) %>% 
       mutate(Team = primary_team) %>% 
-      filter(Opponent %in% common_opponents) %>% 
-      select(Opponent, Result, Score, Game_Rating, Tournament) %>% 
-      arrange(Opponent) %>% 
+      mutate(common = Opponent %in% common_opponents) %>% 
+      filter(Opponent %in% common_opponents | !input$matchup_mutual_only) %>% 
+      arrange(desc(common), Opponent) %>% 
+      select(Opponent, Result, Score, Game_Rating, Tournament, Counted) %>% 
       mutate(Opponent = sapply(Opponent, flag_and_link, division = division)) %>% 
-      format_DT
+      format_DT(options = DT_options(searching = F)) %>% 
+      format_blowout_games
   }
+  
+  output$matchup_plot <- renderPlotly(
+    {
+      req(input$matchup_team_1, input$matchup_team_2)
+      
+      df <-  bind_rows(team_summary(input$matchup_team_1), 
+                       team_summary(input$matchup_team_2))
+      
+      df_summary <- summary_data_filtered() %>% 
+        filter(Team %in% c(input$matchup_team_1, input$matchup_team_2)) %>% 
+        mutate(Rating = Rating_USAU)
+        
+      
+      (df %>% 
+          mutate(Team = factor(Team, levels = c(input$matchup_team_1,input$matchup_team_2))) %>% 
+          mutate(Counted = factor(Counted, levels = c("Yes", "No"))) %>% 
+          ggplot(aes(x = Team, y = Game_Rating, color = Team, label = Opponent, label1 = Score)) +
+          geom_boxplot(data = df %>% filter(Counted == "Yes")) +
+          geom_jitter(aes(shape = Counted), 
+                      alpha = 0.5, 
+                      size=2.5, 
+                      width = 0.05) +  
+          scale_shape_manual(values = c(19, 4)) +
+          geom_hline(data = df_summary, aes(yintercept = Rating, color = Team, label=Ranking), linetype = "dashed")
+      ) %>% 
+        ggplotly(tooltip = c("color", "label", "label1", "y", "shape", "yintercept")) %>% hide_legend()
+    }
+  )
   
   output$matchup_mutual_opponents_1 <- renderDT({
     req(input$matchup_team_1, input$matchup_team_2)
