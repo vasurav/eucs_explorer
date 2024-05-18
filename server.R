@@ -426,6 +426,7 @@ function(input, output, session) {
                    label2 = Score)) + 
         geom_boxplot(data = team_summary(input$team, counted_only = T),
                      color = color_data,
+                     outliers = F,
                      outlier.shape = NA) +
         geom_jitter(aes(shape = Counted), 
                     alpha = 0.5, 
@@ -629,8 +630,10 @@ function(input, output, session) {
       (df %>% 
           mutate(Team = factor(Team, levels = c(input$matchup_team_1,input$matchup_team_2))) %>% 
           mutate(Counted = factor(Counted, levels = c("Yes", "No"))) %>% 
-          ggplot(aes(x = Team, y = Game_Rating, color = Team, label = Opponent, label1 = Score)) +
-          geom_boxplot(data = df %>% filter(Counted == "Yes")) +
+          ggplot(aes(x = Team, y = Game_Rating, color = Team, label = Opponent, label1 = Result, label2 = Score)) +
+          geom_boxplot(data = df %>% filter(Counted == "Yes"),
+                       outliers = F,
+                       outlier.shape = NA) +
           geom_jitter(aes(shape = Counted), 
                       alpha = 0.5, 
                       size=2.5, 
@@ -638,7 +641,7 @@ function(input, output, session) {
           scale_shape_manual(values = c(19, 4)) +
           geom_hline(data = df_summary, aes(yintercept = Rating, color = Team, label=Ranking), linetype = "dashed")
       ) %>% 
-        ggplotly(tooltip = c("color", "label", "label1", "y", "shape", "yintercept")) %>% hide_legend()
+        ggplotly(tooltip = c("color", "label", "label1", "label2", "y", "shape", "yintercept")) %>% hide_legend()
     }
   )
   
