@@ -4,10 +4,6 @@ source("server/string_functions.R")
 
 function(input, output, session) {
   
-  # onStop(function() {
-  #   poolClose(pool)
-  # })
-  
   observeEvent(input$team, {
     updateTabsetPanel(session, "main_tab", "Team")
     updateSelectInput(session, "team", selected=input$team)
@@ -453,7 +449,6 @@ function(input, output, session) {
   
   output$team_master_roster <- renderDT(
     master_roster %>% 
-    # tbl(pool, "rostering_master_rosters") %>% 
       filter(division_name == input$division,
              team_name == input$team) %>% 
       mutate(Name = paste(first_name, last_name)) %>% 
@@ -468,7 +463,6 @@ function(input, output, session) {
     req(input$team)
     
     event_teams %>%
-    # tbl(pool, "rostering_event_teams") %>%
       filter(team_name == input$team, division_name == input$division) %>% 
       as_tibble() %>% 
       pull(event_name)
@@ -485,7 +479,6 @@ function(input, output, session) {
       req(input$team_event)
       
       event_roster %>%
-      # tbl(pool, "rostering_event_rosters") %>% 
         filter(team_name == input$team, 
                division_name == input$division,
                event_name == input$team_event) %>% 
@@ -688,7 +681,6 @@ function(input, output, session) {
   output$event_select_ui <- renderUI({
     all_events <- 
       events %>% 
-      # tbl(pool, "rostering_events") %>% 
       arrange(start_date) %>% pull(name)
     
     selectInput("event", "Event", width="100%",
@@ -697,7 +689,6 @@ function(input, output, session) {
   
   event_team_list <- function(event, division){
     event_teams %>% 
-    # tbl(pool, "rostering_event_teams") %>% 
       filter(event_name == event,
                            division_name == division) %>% 
       pull(team_name) %>% 
@@ -729,7 +720,6 @@ function(input, output, session) {
   
   get_event_row <- function(event)
   {
-    # tbl(pool, "rostering_events") %>% 
     events %>% 
       filter(name == input$event) %>% 
       first()
