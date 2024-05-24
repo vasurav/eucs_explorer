@@ -680,4 +680,43 @@ function(input, output, session) {
     weight_point_diff() %>% select(-score_difference) %>% 
       format_DT
   })
+  
+  #Function for Events Tab
+  output$event_select_ui <- renderUI({
+    all_events <- events %>% arrange(start_date) %>% pull(name)
+    
+    selectInput("event", "Event", width="100%",
+                choices = all_events)
+  })
+  
+  event_team_list <- function(event, division){
+    event_teams %>% filter(event_name == event,
+                           division_name == division) %>% 
+      pull(team_name) %>% 
+      sort()
+  }
+  
+  event_team_table <- function(event, division){
+    tibble(Team = 
+             sapply(event_team_list(event, division), 
+                    flag_and_link,division = division)) %>% 
+      format_DT
+  }
+  
+  output$event_input_division_teams <- renderDT({
+    event_team_table(input$event, input$division)
+  })
+  
+  output$event_mixed_teams <- renderDT({
+    event_team_table(input$event, division = "Mixed")
+  })
+  
+  output$event_open_teams <- renderDT({
+    event_team_table(input$event, division = "Open")
+  })
+  
+  output$event_women_teams <- renderDT({
+    event_team_table(input$event, division = "Women")
+  })
+  
 }

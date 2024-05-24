@@ -199,6 +199,16 @@ matchup_nav_panel <-
     )
   )
 
+event_nav_panel <- 
+  nav_panel(
+    title = "Events",
+    uiOutput("event_select_ui"),
+    card(
+      title = "Teams",
+      DTOutput("event_input_division_teams")
+    )
+  )
+
 algo_nav_panel <- 
   nav_panel(
     title = "Algorithm",

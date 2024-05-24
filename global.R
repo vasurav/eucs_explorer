@@ -45,6 +45,7 @@ pool <-
 master_roster <- tbl(pool, "rostering_master_rosters")
 event_teams <- tbl(pool, "rostering_event_teams")
 event_roster <- tbl(pool, "rostering_event_rosters")
+events <- tbl(pool, "rostering_events")
 
 
 # Color Schemes

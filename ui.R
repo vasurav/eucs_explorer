@@ -80,6 +80,7 @@ function(reqest){
       season_nav_panel,
       team_nav_panel,
       matchup_nav_panel,
+      event_nav_panel,
       nav_menu( "EUCS",
         nav_item(a("Home",
                    href = "https://eucs.ultimatefederation.eu/",
