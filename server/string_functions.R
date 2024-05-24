@@ -4,7 +4,7 @@ str_to_input_link <- function(string, href="#", select_input = "team", tab="Team
          href ,"\",",
          " onclick=\"Shiny.setInputValue('",
          select_input, "', '",
-         string, "')\">",
+         string, "',{priority:'event'})\">",
          string, "</a>")
 }
 
