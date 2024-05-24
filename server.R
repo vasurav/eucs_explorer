@@ -452,7 +452,8 @@ function(input, output, session) {
   })
   
   output$team_master_roster <- renderDT(
-    tbl(pool, "rostering_master_rosters") %>% 
+    master_roster %>% 
+    # tbl(pool, "rostering_master_rosters") %>% 
       filter(division_name == input$division,
              team_name == input$team) %>% 
       mutate(Name = paste(first_name, last_name)) %>% 
@@ -466,8 +467,8 @@ function(input, output, session) {
     {
     req(input$team)
     
-    # event_teams %>% 
-    tbl(pool, "rostering_event_teams") %>%
+    event_teams %>%
+    # tbl(pool, "rostering_event_teams") %>%
       filter(team_name == input$team, division_name == input$division) %>% 
       as_tibble() %>% 
       pull(event_name)
@@ -483,8 +484,8 @@ function(input, output, session) {
     {
       req(input$team_event)
       
-      # event_roster %>% 
-      tbl(pool, "rostering_event_rosters") %>% 
+      event_roster %>%
+      # tbl(pool, "rostering_event_rosters") %>% 
         filter(team_name == input$team, 
                division_name == input$division,
                event_name == input$team_event) %>% 
@@ -685,14 +686,19 @@ function(input, output, session) {
   
   #Function for Events Tab
   output$event_select_ui <- renderUI({
-    all_events <- tbl(pool, "rostering_events") %>% arrange(start_date) %>% pull(name)
+    all_events <- 
+      events %>% 
+      # tbl(pool, "rostering_events") %>% 
+      arrange(start_date) %>% pull(name)
     
     selectInput("event", "Event", width="100%",
                 choices = all_events)
   })
   
   event_team_list <- function(event, division){
-    tbl(pool, "rostering_event_teams") %>% filter(event_name == event,
+    event_teams %>% 
+    # tbl(pool, "rostering_event_teams") %>% 
+      filter(event_name == event,
                            division_name == division) %>% 
       pull(team_name) %>% 
       sort()
@@ -723,7 +729,8 @@ function(input, output, session) {
   
   get_event_row <- function(event)
   {
-    tbl(pool, "rostering_events") %>% 
+    # tbl(pool, "rostering_events") %>% 
+    events %>% 
       filter(name == input$event) %>% 
       first()
   }
