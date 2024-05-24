@@ -681,9 +681,9 @@ function(input, output, session) {
   output$event_select_ui <- renderUI({
     all_events <- 
       events %>% 
-      arrange(start_date) %>% pull(name)
+      arrange(name) %>% pull(name)
     
-    selectInput("event", "Event", width="100%",
+    selectInput("event", NULL, width="100%",
                 choices = all_events)
   })
   
