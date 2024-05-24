@@ -4,9 +4,9 @@ source("server/string_functions.R")
 
 function(input, output, session) {
   
-  onStop(function() {
-    poolClose(pool)
-  })
+  # onStop(function() {
+  #   poolClose(pool)
+  # })
   
   observeEvent(input$team, {
     updateTabsetPanel(session, "main_tab", "Team")
