@@ -721,4 +721,26 @@ function(input, output, session) {
     event_team_table(input$event, division = "Women")
   })
   
+  get_event_row <- function(event)
+  {
+    tbl(pool, "rostering_events") %>% 
+      filter(name == input$event) %>% 
+      first()
+  }
+  
+  output$event_location <- renderText({
+    get_event_row(input$event) %>% 
+      pull(location)
+  })
+  
+  output$event_start_date <- renderText({
+    get_event_row(input$event) %>% 
+      pull(start_date) %>% as.character()
+  })
+  
+  output$event_deadline_roster <- renderText({
+    get_event_row(input$event) %>% 
+      pull(deadline_rosters) %>% as.character()
+  })
+  
 }

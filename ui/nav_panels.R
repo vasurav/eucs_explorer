@@ -203,6 +203,32 @@ event_nav_panel <-
   nav_panel(
     title = "Events",
     uiOutput("event_select_ui"),
+    
+    accordion(
+      accordion_panel("",
+                      layout_column_wrap(
+                        fill = F, fillable = T,
+                        value_box(
+                          title = h5("Location"),
+                          value = textOutput("event_location"),
+                          showcase = bs_icon("globe-europe-africa"),
+                          theme="primary"),
+                        value_box(
+                          title = h5("Date"),
+                          value = textOutput("event_start_date"),
+                          showcase = bs_icon("calendar-date"),
+                          theme="primary"),
+                        value_box(
+                          title = h5("Roster Deadline"),
+                          value = textOutput("event_deadline_roster"),
+                          showcase = bs_icon("calendar-check"),
+                          theme="primary"),
+                        
+                      )
+      )
+      
+    ),
+    
     card(
       title = "Teams",
       DTOutput("event_input_division_teams")
