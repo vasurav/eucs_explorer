@@ -484,7 +484,7 @@ function(input, output, session) {
       req(input$team_event)
       
       # event_roster %>% 
-      tbl(pool, "rostering_event_rosters")
+      tbl(pool, "rostering_event_rosters") %>% 
         filter(team_name == input$team, 
                division_name == input$division,
                event_name == input$team_event) %>% 
