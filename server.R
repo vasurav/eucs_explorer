@@ -4,6 +4,10 @@ source("server/string_functions.R")
 
 function(input, output, session) {
   
+  onStop(function() {
+    poolClose(pool)
+  })
+  
   observeEvent(input$team, {
     updateTabsetPanel(session, "main_tab", "Team")
     updateSelectInput(session, "team", selected=input$team)
@@ -454,7 +458,7 @@ function(input, output, session) {
       mutate(Name = paste(first_name, last_name)) %>% 
       select(Name) %>% 
       arrange(Name) %>% 
-      as_tibble() %>% 
+      collect() %>% 
       format_DT
   )
   
@@ -486,7 +490,7 @@ function(input, output, session) {
         rename(Jersey = shirt_no) %>% 
         select(Jersey, Name) %>% 
         arrange(Jersey) %>% 
-        as_tibble() %>% 
+        collect() %>% 
         format_DT
     }
   )

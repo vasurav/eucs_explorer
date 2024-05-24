@@ -15,6 +15,7 @@ library(countrycode)
 library(dbplyr)
 library(RMariaDB)
 library(config)
+library(pool)
 source("read/read_data.R")
 
 theme_set(theme_minimal())
@@ -34,16 +35,16 @@ wildcard_data <- read_all_wildcard_data(data_path) %>%
 #connect to database
 dbConf <- config::get("gravato")
 
-connection <- 
-  DBI::dbConnect(RMariaDB::MariaDB(),
+pool <- 
+  dbPool(RMariaDB::MariaDB(),
                  host = dbConf$host,
                  user = dbConf$user,
                  password = dbConf$password,
                  dbname = dbConf$dbname
                  )
-master_roster <- tbl(connection, "rostering_master_rosters")
-event_teams <- tbl(connection, "rostering_event_teams")
-event_roster <- tbl(connection, "rostering_event_rosters")
+master_roster <- tbl(pool, "rostering_master_rosters")
+event_teams <- tbl(pool, "rostering_event_teams")
+event_roster <- tbl(pool, "rostering_event_rosters")
 
 
 # Color Schemes
