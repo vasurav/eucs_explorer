@@ -7,6 +7,7 @@ games_tooltip <- function()
 season_nav_panel <- 
   nav_panel(
     title = "Season",
+    value = "season",
     accordion(
       accordion_panel("",
                       layout_columns(
@@ -70,6 +71,7 @@ season_nav_panel <-
 team_nav_panel <- 
   nav_panel(
     title = "Team",
+    value = "team",
     uiOutput("team_selector"),
     accordion(
       accordion_panel("",
@@ -145,6 +147,7 @@ team_nav_panel <-
 matchup_nav_panel <- 
   nav_panel(
     title = "Matchup",
+    value="matchup",
     layout_columns(
       widths = 1/2,
       fill = F, fillable = F,
@@ -201,7 +204,8 @@ matchup_nav_panel <-
 
 event_nav_panel <- 
   nav_panel(
-    title = "Events",
+    title = "Event",
+    value = "event",
     uiOutput("event_select_ui"),
     
     accordion(
@@ -238,7 +242,7 @@ event_nav_panel <-
 algo_nav_panel <- 
   nav_panel(
     title = "Algorithm",
-    
+    value = "algorithm",
     layout_column_wrap(
       card(
         max_height = "100%",

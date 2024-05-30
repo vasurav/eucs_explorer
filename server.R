@@ -4,8 +4,60 @@ source("server/string_functions.R")
 
 function(input, output, session) {
   
+  
+ 
+  observe({
+    
+    # This code handles URL parsing of the search and hash string
+    # Hash string handles the sidebar options
+    # Example: #mixed/2024
+    # Search string options handle the tab and primary selection
+    # Example: ?team/Clapham
+    
+    # handle hash parameters
+    hash_parameters <- parse_string(session$clientData$url_hash)
+    
+    if(hash_parameters[1] != "")
+      updateSelectInput(session, "division", selected = str_to_title(hash_parameters[1]))
+    
+    if(!is.na(hash_parameters[2]))
+      updateSelectInput(session, "season", selected = hash_parameters[2])
+    
+    if(!is.na(hash_parameters[3]))
+      updateSelectInput(session, "ranking_date", selected = hash_parameters[3])
+    
+    # handle search parameters
+    search_parameters <- parse_string(session$clientData$url_search, "\\?")
+    
+    if(search_parameters[1] != "")
+      updateTabsetPanel(session, "main_tab", search_parameters[1])
+    
+    if(!is.na(search_parameters[2]))
+    {
+      if(input$main_tab == "team")
+        updateSelectInput(session, "team", selected = search_parameters[2])
+      else if(input$main_tab == "matchup")
+      {
+        updateSelectInput(session, "matchup_team_1", selected = search_parameters[2])
+        updateSelectInput(session, "matchup_team_2", selected = search_parameters[3])
+      }
+      else if(input$main_tab == "event")
+        updateSelectInput(session, "event", selected = search_parameters[2])
+    }
+    
+  })
+  
+  parse_string <- function(string, 
+                           remove_char = "#",
+                           split_char = "/")
+  {
+    string %>% 
+      sub(remove_char, "", .) %>% 
+      str_split_1(split_char)
+  }
+  
   observeEvent(input$team, {
-    updateTabsetPanel(session, "main_tab", "Team")
+    updateTabsetPanel(session, "main_tab", "team")
     updateSelectInput(session, "team", selected=input$team)
   })
   
