@@ -201,7 +201,7 @@ matchup_nav_panel <-
 
 event_nav_panel <- 
   nav_panel(
-    title = "Events",
+    title = "Event",
     uiOutput("event_select_ui"),
     
     accordion(
