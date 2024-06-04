@@ -679,12 +679,13 @@ function(input, output, session) {
   
   #Function for Events Tab
   output$event_select_ui <- renderUI({
-    all_events <- 
+    all_events_div <- 
       events %>% 
+      filter(division_name == input$division) %>% 
       arrange(name) %>% pull(name)
     
     selectInput("event", NULL, width="100%",
-                choices = all_events)
+                choices = all_events_div)
   })
   
   event_team_list <- function(event, division){
