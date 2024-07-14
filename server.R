@@ -152,7 +152,7 @@ function(input, output, session) {
     season_evo_data <- season_evo_data %>%
       filter(Team %in% top_teams)
     
-    `EUCF Cutoff` = eucf_ranking_spots_guaranteed() + 0.5
+    `EUCF Cutoff` = find_eucf_cutoff() + 0.5
     `EUCF Cutoff (Including Unassigned Wildcards)` = 16 + 0.5
     
     (season_evo_data %>% 
@@ -171,6 +171,15 @@ function(input, output, session) {
       ggplotly(tooltip = c("color","shape", "y", "x", "yintercept")) %>% hide_legend()
     
   })
+  
+  find_eucf_cutoff <- reactive(
+  {
+   summary_data_filtered_eligible() %>% 
+      filter(Ranking_No_Wildcard == eucf_ranking_spots_guaranteed()) %>% 
+      pull(Ranking) %>% 
+      first
+  }
+  )
   
   output$season_ranking_table <- renderDT({
     req(input$ranking_date)
@@ -317,7 +326,7 @@ function(input, output, session) {
       geom_hline(yintercept = 16.5, 
                  color=color_eucf_likely_dark, 
                  linetype="dashed") +
-      geom_hline(yintercept = eucf_ranking_spots_guaranteed() + 0.5, 
+      geom_hline(yintercept = find_eucf_cutoff() + 0.5, 
                  color=color_eucf_guaranteed_dark, 
                  linetype="dashed")
   })
