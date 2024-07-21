@@ -258,7 +258,8 @@ function(input, output, session) {
                     linkColour = color_primary_dark, nodeColour = "#000", 
                     zoom=T, 
                     fontFamily = font_google("Bebas Neue"),
-                    linkDistance = 250)
+                    linkDistance = 150,
+                    charge = -70)
   })
   
   # Functions for Team Tab
