@@ -31,6 +31,7 @@ teams_data <- read_all_teams_data(data_path)
 wildcard_data <- read_all_wildcard_data(data_path) %>% 
   mutate(Season = as.character(Season)) %>% 
   mutate(Wildcard_Date = mdy(Wildcard_Date))
+end_of_season_data <- read_all_end_of_season_data(data_path)
 
 #connect to database
 dbConf <- config::get("gravato")

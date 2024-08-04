@@ -33,6 +33,10 @@ read_all_teams_data <- function(path) {
     mutate(iso2c = countrycode(country_ioc, "ioc", "iso2c"))
 }
 
+read_all_end_of_season_data <- function(path) {
+  read_all_output_data_filetype(path, "eos", fread)
+}
+
 
 # Read all the output data from a path for a filetype
 read_all_output_data_filetype <- function(path, filetype, FUN = read_output_data)

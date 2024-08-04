@@ -9,6 +9,11 @@ function(input, output, session) {
     updateSelectInput(session, "team", selected=input$team)
   })
   
+  observeEvent(input$ranking_date, {
+    updateCheckboxInput(session, "eligible_only", value=end_of_season_bool())
+  })
+  
+  
   # Sidebar UI
   output$select_ranking_date <- renderUI({
     req(input$season)
@@ -22,6 +27,16 @@ function(input, output, session) {
     )
   }
   )
+  
+  end_of_season_date <- reactive({
+    end_of_season_data %>% filter(Season == input$season) %>% 
+      pull(End_Of_Season) %>% 
+      first
+  })
+  
+  end_of_season_bool <- reactive({
+    input$ranking_date == end_of_season_date()
+  })
   
   # Functions for Wrangling Data
   game_data_filtered <- reactive({
@@ -37,7 +52,8 @@ function(input, output, session) {
   summary_data_filtered_eligible <- reactive({
     summary_data_filtered() %>% 
       filter(
-        if(input$eligible_only == ">10 Games Only") 
+        # if(input$eligible_only == ">10 Games Only")
+        if(input$eligible_only) 
           Games >= 10 
         else T
       ) %>% 
@@ -79,15 +95,24 @@ function(input, output, session) {
   })
   
   eucf_ranking_spots_guaranteed <- reactive({
-    16 - total_wildcards()
+    16 - total_wildcards() + if_else(input$eligible_only & end_of_season_bool(), ineligible_wildcards(), 0)
   })
   
   eucf_ranking_spots_likely <- reactive({
-    16 - wildcards_awarded()
+    16 - wildcards_awarded() + if_else(input$eligible_only & !end_of_season_bool(), ineligible_wildcards(), 0)
+  })
+  
+  eligible_wildcards <- reactive({
+    summary_data_filtered_eligible() %>% 
+      filter(Wildcard == T) %>% 
+      nrow
+  })
+  
+  ineligible_wildcards <- reactive({
+    wildcards_awarded() - eligible_wildcards()
   })
   
   # Formatting Functions
-  
   DT_options <- function(scrollY = "100%", searching=T, hidden_rows = c()){
     list(
       paging = F, 
@@ -206,7 +231,7 @@ function(input, output, session) {
       formatStyle(
         'Ranking_No_Wildcard',
         target='row',
-        backgroundColor = styleEqual(1:(eucf_ranking_spots_guaranteed()), color_eucf_guaranteed_light)
+        backgroundColor = styleEqual(1:(eucf_ranking_spots_guaranteed()), if_else(end_of_season_bool(), color_eucf_guaranteed_dark, color_eucf_guaranteed_light))
       ) %>% 
       formatStyle(
         'Ranking',

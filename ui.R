@@ -69,11 +69,16 @@ function(reqest){
                     choices = game_data %>% pull(Season) %>% unique %>% sort(decreasing=T),
                     selected = game_data %>% pull(Season) %>% unique %>% max),
         uiOutput("select_ranking_date"),
-        selectInput(inputId = "eligible_only", 
-                    tooltip(trigger = list("Teams Counted in Ranking:",
-                                           bs_icon("info-circle")),
-                            "Only teams with 10 games or more are eligible to qualify for the EUCF. However, by default, all teams are shown in the ranking here."),
-                    choices = c("All Teams", ">10 Games Only"))
+        # selectInput(inputId = "eligible_only", 
+        #             tooltip(trigger = list("Teams Counted in Ranking:",
+        #                                    bs_icon("info-circle")),
+        #                     "Only teams with 10 games or more are eligible to qualify for the EUCF. However, by default, all teams are shown in the ranking here."),
+        #             choices = c("All Teams", ">10 Games Only")),
+        checkboxInput(inputId = "eligible_only",
+                      label = tooltip(trigger = list("Eligible Teams Only?",
+                                                     bs_icon("info-circle")),
+                                      "Only teams with 10 games or more are eligible to qualify for the EUCF. However, by default, in mid-season rankings, all teams are shown in the ranking here.",
+                      value = F))
       ),
     
       # Actual Content
