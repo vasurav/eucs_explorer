@@ -56,8 +56,14 @@ season_nav_panel <-
                                    bs_icon("info-circle")),
                     "If 'Entire Season' is selected every team that was ever in the top ranks will be included. If 'Current Ranking' is selected only the teams that hold the top rank from the last ranking calculation are included."), 
             choices=c("Entire Season", "Current Ranking"),
-            selected="Current Ranking")
+            selected="Entire Season"),
+          selectInput(
+            "season_evolution_type",
+            "What to track?",
+            choices = c("Ranking", "Rating")
+          )
         ),
+        
         plotlyOutput("season_ranking_evolution_plot")
       ),
       nav_panel(

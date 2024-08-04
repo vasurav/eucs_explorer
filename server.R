@@ -138,7 +138,8 @@ function(input, output, session) {
     
     season_evo_data <- 
       summary_data %>% 
-      filter(Division==input$division, Season==input$season)
+      filter(Division==input$division, Season==input$season) %>% 
+      rename(Rating = Rating_USAU)
     
     top_teams <- season_evo_data %>% 
       filter(
@@ -149,25 +150,31 @@ function(input, output, session) {
       ) %>% 
       filter(Ranking %in% 1:number_of_teams) %>% pull(Team) %>% unique
     
+    y_var <- sym(input$season_evolution_type)
+    
     season_evo_data <- season_evo_data %>%
       filter(Team %in% top_teams)
     
     `EUCF Cutoff` = find_eucf_cutoff() + 0.5
     `EUCF Cutoff (Including Unassigned Wildcards)` = 16 + 0.5
     
-    (season_evo_data %>% 
-        ggplot(aes(x=Ranking_Calculation_Date, y=Ranking, color=Team)) +
-        geom_line() + geom_point() +
-        scale_y_reverse(limits = c(NA,1), breaks=c(1,seq(5,max(season_evo_data$Ranking),5))) +
-        geom_hline(aes(yintercept = `EUCF Cutoff (Including Unassigned Wildcards)`, 
-                   linetype="EUCF Cutoff (Including Unassigned Wildcards)"),
-                   color=color_eucf_likely_dark, 
-                   ) +
-        geom_hline(aes(yintercept = `EUCF Cutoff`, 
-                   
-                   linetype="EUCF Cutoff"),
-                   color=color_eucf_guaranteed_dark) +
-      scale_linetype_manual(name="Horizontal Lines", values = c(2, 2))) %>%
+    plt <- season_evo_data %>% 
+        ggplot(aes(x=Ranking_Calculation_Date, y=!!y_var, color=Team)) +
+        geom_line() + geom_point() 
+    
+    if(input$season_evolution_type == "Ranking")
+      plt <- plt +
+      geom_hline(aes(yintercept = `EUCF Cutoff (Including Unassigned Wildcards)`, 
+                     linetype="EUCF Cutoff (Including Unassigned Wildcards)"),
+                 color=color_eucf_likely_dark, 
+      ) +
+      geom_hline(aes(yintercept = `EUCF Cutoff`, 
+                     linetype="EUCF Cutoff"),
+                 color=color_eucf_guaranteed_dark) +
+      scale_linetype_manual(name="Horizontal Lines", values = c(2, 2)) + 
+      scale_y_reverse(limits = c(NA,1), breaks=c(1,seq(5,max(season_evo_data$Ranking),5)))
+    
+    plt %>% 
       ggplotly(tooltip = c("color","shape", "y", "x", "yintercept")) %>% hide_legend()
     
   })
