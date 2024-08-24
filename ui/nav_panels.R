@@ -144,6 +144,11 @@ team_nav_panel <-
       nav_panel(
         "Evolution",
         plotlyOutput("team_evolution_plot")
+      ),
+      nav_panel(
+        "Connections",
+        numericInput("team_connection_depth", label = "Depth:", min=1, step =1, value=1),
+        simpleNetworkOutput("team_connection")
       )
     )
   )

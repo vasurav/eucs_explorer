@@ -292,13 +292,19 @@ function(input, output, session) {
   
   output$season_network <- renderSimpleNetwork({
     game_data_filtered() %>% 
+      game_connection_network
+  })
+  
+  game_connection_network <- function(game_data)
+  {
+    game_data %>% 
       simpleNetwork("Team_1", "Team_2", 
                     linkColour = color_primary_dark, nodeColour = "#000", 
                     zoom=T, 
                     fontFamily = font_google("Bebas Neue"),
                     linkDistance = 150,
                     charge = -70)
-  })
+  }
   
   # Functions for Team Tab
   team_summary_data <- reactive({
@@ -540,6 +546,45 @@ function(input, output, session) {
         format_DT
     }
   )
+  
+  output$team_connection <- renderSimpleNetwork(
+    {
+      req(input$team, input$team_connection_depth)
+      game_data_filtered() %>% 
+        team_connection_data(input$team, input$team_connection_depth) %>% 
+        game_connection_network()
+    }
+  )
+  
+  team_connection_data <- function(game_data, team, depth)
+  {
+    team_list = c(team)
+    
+    team_list_expansions = depth - 1
+    
+    if(team_list_expansions > 0)
+      for(i in 1:team_list_expansions)
+      {
+        team_list = expand_team_list(game_data, team_list)
+      }
+    
+    game_data %>% 
+      filter(Team_1 %in% team_list | Team_2 %in% team_list)
+  }
+  
+  expand_team_list <- function(game_data, current_team_list)
+  {
+    game_data_filtered <- game_data %>%
+      filter(Team_1 %in% current_team_list | Team_2 %in% current_team_list)
+    
+    team_1 <- game_data_filtered %>% pull(Team_1)
+    
+    team_2 <- game_data_filtered %>% pull(Team_2)
+    
+    c(team_1, team_2) %>% unique
+  }
+  
+  
   
   # Functions for Matchup Tab
   output$matchup_team_1 <- renderUI({
