@@ -303,7 +303,7 @@ function(input, output, session) {
                     zoom=T, 
                     fontFamily = font_google("Bebas Neue"),
                     linkDistance = 150,
-                    charge = -70)
+                    charge = -75)
   }
   
   # Functions for Team Tab
