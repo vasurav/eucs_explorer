@@ -219,15 +219,28 @@ function(input, output, session) {
   }
   )
   
+  delta_to_character <- function(delta)
+  {
+    if_else(is.na(delta), "New", 
+            if_else(delta > 0,
+                    paste0("+", delta),
+                    as.character(delta)))
+  }
+  
   output$season_ranking_table <- renderDT({
     req(input$ranking_date)
     summary_data_filtered_eligible() %>% 
       arrange(Ranking) %>% 
       mutate(Wildcard = if_else(Wildcard, Wildcard_Event, "")) %>% 
       mutate(`Record (W-L)` = paste0(Wins, " - ", Losses)) %>% 
-      select(Ranking, Ranking_No_Wildcard, Team, Rating_USAU, `Record (W-L)`, Tournaments, Wildcard) %>% 
+      select(Ranking, Delta_Ranking, Ranking_No_Wildcard, Team, Rating_USAU, Delta_Rating_USAU, `Record (W-L)`, Tournaments, Wildcard) %>% 
       mutate(Team = sapply(Team, flag_and_link, division = input$division)) %>% 
-      dplyr::rename(Rating = Rating_USAU) %>%
+      dplyr::rename(Rating = Rating_USAU,
+                    Delta_Rating = Delta_Rating_USAU) %>%
+      # mutate(Delta_Ranking = delta_to_character(Delta_Ranking),
+      #        Delta_Rating = delta_to_character(Delta_Rating)) %>% 
+      dplyr::rename(`Δ` = Delta_Ranking,
+                    `Δ Rating` = Delta_Rating) %>% 
       format_DT(options = DT_options(hidden_rows = c("Ranking_No_Wildcard"))) %>% 
       formatStyle(
         'Ranking_No_Wildcard',

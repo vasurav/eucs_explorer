@@ -20,8 +20,35 @@ get_season_data <- function(rankings){
 
 # Read all the summary data
 read_all_summary_data <- function(path) {
-  read_all_output_data_filetype(path, "summary", read_summary_data) 
+  read_all_output_data_filetype(path, "summary", read_summary_data) %>% 
+    add_delta_to_summary_data
 }
+
+add_delta_to_summary_data <- function(summary_data)
+{
+  next_ranking_table <- summary_data %>% 
+    select(Season, Ranking_Calculation_Date) %>% 
+    unique %>%
+    group_by(Season) %>% 
+    arrange(Ranking_Calculation_Date) %>% 
+    mutate(Next_Ranking_Date = lead(Ranking_Calculation_Date))
+  
+  prior_ranking <- 
+    summary_data %>% 
+    left_join(next_ranking_table, by=c("Season", "Ranking_Calculation_Date")) %>% 
+    select(Team, Ranking, Rating_USAU, Division, Season, Ranking_Calculation_Date, Next_Ranking_Date) %>% 
+    rename(Prior_Ranking_Date = Ranking_Calculation_Date,
+           Ranking_Calculation_Date = Next_Ranking_Date,
+           Prior_Ranking = Ranking,
+           Prior_Rating_USAU = Rating_USAU)
+  
+  summary_data %>% 
+    left_join(prior_ranking, by = c("Team", "Season", "Division", "Ranking_Calculation_Date")) %>% 
+    mutate(Delta_Ranking = Prior_Ranking - Ranking,
+           Delta_Rating_USAU = round(Rating_USAU - Prior_Rating_USAU,2))
+}
+
+summary_data$Ranking_Calculation_Date
 
 #Read all wildcard data
 read_all_wildcard_data <- function(path) {
