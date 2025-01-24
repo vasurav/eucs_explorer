@@ -48,8 +48,6 @@ add_delta_to_summary_data <- function(summary_data)
            Delta_Rating_USAU = round(Rating_USAU - Prior_Rating_USAU,2))
 }
 
-summary_data$Ranking_Calculation_Date
-
 #Read all wildcard data
 read_all_wildcard_data <- function(path) {
   read_all_output_data_filetype(path, "wildcard", fread) 
