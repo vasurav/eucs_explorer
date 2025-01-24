@@ -153,7 +153,8 @@ function(input, output, session) {
   
   output$eucf_ranking_spots_likely <- renderText({
     req(input$ranking_date)
-    eucf_ranking_spots_likely() - eucf_ranking_spots_guaranteed()
+    # eucf_ranking_spots_likely() - eucf_ranking_spots_guaranteed()
+    total_wildcards() - wildcards_awarded()
   })
   
   output$season_ranking_evolution_plot <- renderPlotly({
