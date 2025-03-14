@@ -40,11 +40,15 @@ function(input, output, session) {
   
   # Functions for Wrangling Data
   game_data_filtered <- reactive({
-    game_data %>% filter_output_data
+    game_data %>% 
+      as.data.table() %>% 
+      filter_output_data
   })
   
   summary_data_filtered <- reactive({
     summary_data %>% 
+      as.data.table() %>% 
+      add_delta_to_summary_data() %>% 
       filter_output_data %>% 
       add_wildcard_to_summary
   })
@@ -154,7 +158,7 @@ function(input, output, session) {
   output$eucf_ranking_spots_likely <- renderText({
     req(input$ranking_date)
     # eucf_ranking_spots_likely() - eucf_ranking_spots_guaranteed()
-    total_wildcards() - wildcards_awarded()
+    total_wildcards() -  wildcards_awarded()
   })
   
   output$season_ranking_evolution_plot <- renderPlotly({
@@ -164,6 +168,7 @@ function(input, output, session) {
     
     season_evo_data <- 
       summary_data %>% 
+      as.data.table %>% 
       filter(Division==input$division, Season==input$season) %>% 
       rename(Rating = Rating_USAU)
     
@@ -242,6 +247,7 @@ function(input, output, session) {
       #        Delta_Rating = delta_to_character(Delta_Rating)) %>% 
       dplyr::rename(`Δ` = Delta_Ranking,
                     `Δ Rating` = Delta_Rating) %>% 
+      mutate(Rating = round(Rating, 2)) %>% 
       format_DT(options = DT_options(hidden_rows = c("Ranking_No_Wildcard"))) %>% 
       formatStyle(
         'Ranking_No_Wildcard',
