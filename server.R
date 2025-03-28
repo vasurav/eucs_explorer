@@ -87,27 +87,34 @@ function(input, output, session) {
       ungroup()
   }
   
-  total_wildcards <- reactive({
-    wildcard_data %>% 
-      filter(Season == input$season) %>% 
-      filter(Division == input$division) %>% 
-      nrow
-  })
+  # total_wildcards <- reactive({
+  #   wildcard_data %>% 
+  #     filter(Season == input$season) %>% 
+  #     filter(Division == input$division) %>% 
+  #     nrow
+  # })
   
   wildcards_awarded <- reactive({
     summary_data_filtered() %>% filter(Wildcard == T) %>% nrow
   })
   
-  bid_row <- reactive({
+  bid_row <- function(lvl = 1)
+  {
     bids %>% 
       filter(Season == input$season,
              Division == input$division,
-             Level == 1)
-  })
+             Level == lvl)
+  }
   
   eucf_bids <- reactive({
     bid_row() %>% 
       pull(Bids)
+  })
+  
+  eucf2_bids <- reactive({
+    # bid_row(2) %>%
+    #   pull(Bids)
+    8
   })
   
   eucf_wildcards <- reactive({
@@ -116,11 +123,19 @@ function(input, output, session) {
   })
   
   eucf_ranking_spots_guaranteed <- reactive({
-    eucf_bids() - total_wildcards() + if_else(input$eligible_only & end_of_season_bool(), ineligible_wildcards(), 0)
+    eucf_bids() - eucf_wildcards() + if_else(input$eligible_only & end_of_season_bool(), ineligible_wildcards(), 0)
   })
   
   eucf_ranking_spots_likely <- reactive({
     eucf_bids() - wildcards_awarded() + if_else(input$eligible_only & !end_of_season_bool(), ineligible_wildcards(), 0)
+  })
+  
+  eucf2_ranking_spots_guaranteed <- reactive({
+    eucf_ranking_spots_likely() + eucf2_bids() - eucf_wildcards() + wildcards_awarded()
+  })
+  
+  eucf2_ranking_spots_likely <- reactive({
+    eucf_ranking_spots_likely() + eucf2_bids()
   })
   
   eligible_wildcards <- reactive({
@@ -164,7 +179,7 @@ function(input, output, session) {
   # Functions for Season Tab
   output$wildcard_count <- renderText({
     req(input$ranking_date)
-    paste0(wildcards_awarded(), " of ", total_wildcards())
+    paste0(wildcards_awarded(), " of ", eucf_wildcards())
   })
   
   output$eucf_ranking_spots_guaranteed <- renderText({
@@ -172,10 +187,20 @@ function(input, output, session) {
     eucf_ranking_spots_guaranteed()
   })
   
-  output$eucf_ranking_spots_likely <- renderText({
+  output$eucf_bids <- renderText({
+    req(input$season, input$division)
+    eucf_bids()
+  })
+  
+  output$eucf2_bids <- renderText({
+    req(input$season, input$division)
+    eucf2_bids()
+  })
+  
+  output$eucf_potential_bids <- renderText({
     req(input$ranking_date)
     # eucf_ranking_spots_likely() - eucf_ranking_spots_guaranteed()
-    total_wildcards() -  wildcards_awarded()
+    eucf_wildcards() -  wildcards_awarded()
   })
   
   output$season_ranking_evolution_plot <- renderPlotly({
@@ -266,6 +291,17 @@ function(input, output, session) {
                     `Δ Rating` = Delta_Rating) %>% 
       mutate(Rating = round(Rating, 2)) %>% 
       format_DT(options = DT_options(hidden_rows = c("Ranking_No_Wildcard"))) %>% 
+      # Format the colors of the main parts of the row in the table
+      formatStyle(
+        'Ranking_No_Wildcard',
+        target='row',
+        backgroundColor = styleEqual(1:(eucf2_ranking_spots_likely()), color_eucf_likely_light)
+      ) %>% 
+      formatStyle(
+        'Ranking_No_Wildcard',
+        target='row',
+        backgroundColor = styleEqual(1:(eucf2_ranking_spots_guaranteed()), if_else(end_of_season_bool(), color_eucf2_dark, color_eucf2_light))
+      ) %>% 
       formatStyle(
         'Ranking_No_Wildcard',
         target='row',
@@ -275,6 +311,17 @@ function(input, output, session) {
         'Ranking_No_Wildcard',
         target='row',
         backgroundColor = styleEqual(1:(eucf_ranking_spots_guaranteed()), if_else(end_of_season_bool(), color_eucf_guaranteed_dark, color_eucf_guaranteed_light))
+      ) %>% 
+      #Format the color of the Row Header in the table
+      formatStyle(
+        'Ranking',
+        'Ranking_No_Wildcard',
+        backgroundColor = styleEqual(1:(eucf2_ranking_spots_likely()), color_eucf_likely_dark)
+      ) %>% 
+      formatStyle(
+        'Ranking',
+        'Ranking_No_Wildcard',
+        backgroundColor = styleEqual(1:(eucf2_ranking_spots_guaranteed()), color_eucf2_dark)
       ) %>% 
       formatStyle(
         'Ranking',
@@ -286,6 +333,7 @@ function(input, output, session) {
         'Ranking_No_Wildcard',
         backgroundColor = styleEqual(1:(eucf_ranking_spots_guaranteed()), color_eucf_guaranteed_dark)
       ) %>% 
+      #Format Wildcards
       formatStyle(
         'Wildcard',
         target='row',
