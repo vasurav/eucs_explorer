@@ -98,12 +98,29 @@ function(input, output, session) {
     summary_data_filtered() %>% filter(Wildcard == T) %>% nrow
   })
   
+  bid_row <- reactive({
+    bids %>% 
+      filter(Season == input$season,
+             Division == input$division,
+             Level == 1)
+  })
+  
+  eucf_bids <- reactive({
+    bid_row() %>% 
+      pull(Bids)
+  })
+  
+  eucf_wildcards <- reactive({
+    bid_row() %>% 
+      pull(Wildcards)
+  })
+  
   eucf_ranking_spots_guaranteed <- reactive({
-    16 - total_wildcards() + if_else(input$eligible_only & end_of_season_bool(), ineligible_wildcards(), 0)
+    eucf_bids() - total_wildcards() + if_else(input$eligible_only & end_of_season_bool(), ineligible_wildcards(), 0)
   })
   
   eucf_ranking_spots_likely <- reactive({
-    16 - wildcards_awarded() + if_else(input$eligible_only & !end_of_season_bool(), ineligible_wildcards(), 0)
+    eucf_bids() - wildcards_awarded() + if_else(input$eligible_only & !end_of_season_bool(), ineligible_wildcards(), 0)
   })
   
   eligible_wildcards <- reactive({
@@ -193,7 +210,7 @@ function(input, output, session) {
       filter(Team %in% top_teams)
     
     `EUCF Cutoff` = find_eucf_cutoff() + 0.5
-    `EUCF Cutoff (Including Unassigned Wildcards)` = 16 + 0.5
+    `EUCF Cutoff (Including Unassigned Wildcards)` = eucf_bids() + 0.5
     
     plt <- season_evo_data %>% 
         ggplot(aes(x=Ranking_Calculation_Date, y=!!y_var, color=Team, label=!!label_var)) +
@@ -389,7 +406,7 @@ function(input, output, session) {
       ggplot(aes(x=Ranking_Calculation_Date, y=Ranking, color=Team, label=Rating)) +
       geom_line() + geom_point() +
       scale_y_reverse(limits = c(NA,1)) +
-      geom_hline(yintercept = 16.5, 
+      geom_hline(yintercept = eucf_bids() + 0.5, 
                  color=color_eucf_likely_dark, 
                  linetype="dashed") +
       geom_hline(yintercept = find_eucf_cutoff() + 0.5, 

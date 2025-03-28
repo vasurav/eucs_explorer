@@ -59,12 +59,16 @@ master_roster <- tbl(pool, "rostering_master_rosters")
 event_teams <- tbl(pool, "rostering_event_teams")
 event_roster <- tbl(pool, "rostering_event_rosters")
 events <- tbl(pool, "rostering_events")
+champ_events <- tbl(pool,"euf_events")
+bids <- tbl(pool,"euf_bids")
 
 
 # Color Schemes
 color_eucf_guaranteed_dark <- "#88CC99"
 color_eucf_guaranteed_light <- "#DDEEDD"
-color_eucf_likely_dark <- "#7799FF"
-color_eucf_likely_light <- "#CCDDFF"
+color_eucf_likely_dark <- "#BBBBBB"
+color_eucf_likely_light <- "#DDDDDD"
+color_eucf2_guarnateed_dark <- "#7799FF"
+color_eucf2_guaranteed_light <- "#7799FF"
 color_primary_light <- '#FFCC00'
 color_primary_dark <- "#DDAA00"
