@@ -112,9 +112,8 @@ function(input, output, session) {
   })
   
   eucf2_bids <- reactive({
-    # bid_row(2) %>%
-    #   pull(Bids)
-    8
+    bid_row(2) %>%
+      pull(Bids)
   })
   
   eucf_wildcards <- reactive({
@@ -429,12 +428,15 @@ function(input, output, session) {
     
     selectInput("team", label = NULL, width="100%",
                 choices = 
-                  summary_data %>%
-                  filter(Division == input$division,
-                         Season == input$season) %>% 
-                  arrange(Team) %>% 
-                  pull(Team) %>% 
-                  unique(),
+                  teams_data %>%
+                  filter(division_name == input$division) %>% 
+                  pull(team_name) %>% unique() %>% sort(),
+                  # summary_data %>%
+                  # filter(Division == input$division,
+                  #        Season == input$season) %>% 
+                  # arrange(Team) %>% 
+                  # pull(Team) %>% 
+                  # unique(),
                 selected = current_selection)
   })
   
@@ -591,7 +593,8 @@ function(input, output, session) {
   output$team_master_roster <- renderDT(
     master_roster %>% 
       filter(division_name == input$division,
-             team_name == input$team) %>% 
+             team_name == input$team,
+             season == input$season) %>% 
       mutate(Name = paste(first_name, last_name)) %>% 
       select(Name) %>% 
       arrange(Name) %>% 
@@ -601,12 +604,14 @@ function(input, output, session) {
   
   team_events <- reactive(
     {
-    req(input$team)
-    
-    event_teams %>%
-      filter(team_name == input$team, division_name == input$division) %>% 
-      as_tibble() %>% 
-      pull(event_name)
+      req(input$team, input$season)
+      
+      event_teams %>%
+        filter(team_name == input$team, 
+               division_name == input$division,
+               season == input$season) %>% 
+        as_tibble() %>% 
+        pull(event_name)
     }
   )
   
@@ -622,7 +627,8 @@ function(input, output, session) {
       event_roster %>%
         filter(team_name == input$team, 
                division_name == input$division,
-               event_name == input$team_event) %>% 
+               event_name == input$team_event,
+               season == input$season) %>% 
         mutate(Name = paste(first_name, last_name)) %>% 
         rename(Jersey = shirt_no) %>% 
         select(Jersey, Name) %>% 
@@ -861,7 +867,8 @@ function(input, output, session) {
   output$event_select_ui <- renderUI({
     all_events_div <- 
       events %>% 
-      filter(division_name == input$division) %>% 
+      filter(division_name == input$division,
+             season == input$season) %>% 
       arrange(name) %>% pull(name)
     
     selectInput("event", NULL, width="100%",
@@ -871,7 +878,8 @@ function(input, output, session) {
   event_team_list <- function(event, division){
     event_teams %>% 
       filter(event_name == event,
-                           division_name == division) %>% 
+             division_name == division,
+             season == input$season) %>% 
       pull(team_name) %>% 
       sort()
   }
@@ -902,7 +910,8 @@ function(input, output, session) {
   get_event_row <- function(event)
   {
     events %>% 
-      filter(name == input$event) %>% 
+      filter(name == input$event,
+             season == input$season) %>% 
       first()
   }
   
