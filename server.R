@@ -87,15 +87,16 @@ function(input, output, session) {
       ungroup()
   }
   
-  # total_wildcards <- reactive({
-  #   wildcard_data %>% 
-  #     filter(Season == input$season) %>% 
-  #     filter(Division == input$division) %>% 
-  #     nrow
-  # })
-  
   wildcards_awarded <- reactive({
-    summary_data_filtered() %>% filter(Wildcard == T) %>% nrow
+    # summary_data_filtered() %>% filter(Wildcard == T) %>% nrow
+    if(is_null(input$ranking_date))
+      return(0)
+    
+    wildcard_data %>% 
+      filter(Division == input$division,
+             Season == input$season,
+             Wildcard_Date < input$ranking_date) %>% 
+      nrow
   })
   
   bid_row <- function(lvl = 1)
@@ -177,7 +178,7 @@ function(input, output, session) {
   
   # Functions for Season Tab
   output$wildcard_count <- renderText({
-    req(input$ranking_date)
+    # req(input$ranking_date)
     paste0(wildcards_awarded(), " of ", eucf_wildcards())
   })
   
@@ -197,7 +198,7 @@ function(input, output, session) {
   })
   
   output$eucf_potential_bids <- renderText({
-    req(input$ranking_date)
+    # req(input$ranking_date)
     # eucf_ranking_spots_likely() - eucf_ranking_spots_guaranteed()
     eucf_wildcards() -  wildcards_awarded()
   })

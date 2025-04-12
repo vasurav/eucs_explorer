@@ -26,14 +26,16 @@ season_nav_panel <-
                                   theme = "primary"),
                         value_box(title = span(tooltip(trigger = list("EUCF 2 Bids",
                                                                       bs_icon("info-circle")),
-                                                       "Number of ranking spots that are guaranteed to get EUCF spots. Ranking spots in green are guaranteed to qualify teams for the EUCF.")),
+                                                       "Number of ranking spots for the EUCF Division 2. Ranking Spots in blue are guaranteed to go to EUCF Division 2.")),
                                   value = textOutput("eucf2_bids"),
                                   showcase = bs_icon("2-circle-fill"),
                                   theme = value_box_theme(bg = color_eucf2_dark)),
                         value_box(title = span(tooltip(trigger = list("Potential Bids",
-                                                                         bs_icon("info-circle")),
-                                                             "The number of potential spots is equal to the number of unassigned wildcards. 
-                                           Ranking spots in gray will qualify teams to the EUCF only if teams that earn the wildcards are in the top 16 of the ranking.")),
+                                                                      bs_icon("info-circle")),
+                                                       "The number of potential spots is equal to the number of unassigned wildcards. 
+                                           Ranking spots in gray are not guaranteed to go to a certain EUCF event. 
+                                           Gray spots between blue and green could go to EUCF or EUCF Division 2 depending on where the wildcards finish. 
+                                           Gray spots below blue could go to EUCF Division 2 or not qualify for anything depending on where the wildcards finish.")),
                                   value = textOutput("eucf_potential_bids"),
                                   showcase = bs_icon("patch-question-fill"),
                                   theme = value_box_theme(bg = color_eucf_likely_dark))
