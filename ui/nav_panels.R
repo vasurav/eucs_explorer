@@ -248,9 +248,16 @@ event_nav_panel <-
       
     ),
     
+    layout_column_wrap(
     card(
       title = "Teams",
       DTOutput("event_input_division_teams")
+    ),
+    card(
+      title = "Rosters",
+      uiOutput("event_team_select"),
+      DTOutput("event_team_roster")
+    )
     )
   )
 

@@ -621,23 +621,43 @@ function(input, output, session) {
                 choices = team_events(), width = "100%")
   )
   
+  event_roster_dt <- function(team, event)
+  {
+    event_roster %>%
+      filter(team_name == team, 
+             division_name == input$division,
+             event_name == event,
+             season == input$season) %>% 
+      mutate(Name = paste(first_name, last_name)) %>% 
+      rename(Jersey = shirt_no) %>% 
+      select(Jersey, Name) %>% 
+      arrange(Jersey) %>% 
+      collect() %>% 
+      format_DT
+  }
+  
   output$team_event_roster <- renderDT(
     {
       req(input$team_event)
       
-      event_roster %>%
-        filter(team_name == input$team, 
-               division_name == input$division,
-               event_name == input$team_event,
-               season == input$season) %>% 
-        mutate(Name = paste(first_name, last_name)) %>% 
-        rename(Jersey = shirt_no) %>% 
-        select(Jersey, Name) %>% 
-        arrange(Jersey) %>% 
-        collect() %>% 
-        format_DT
+      event_roster_dt(input$team, input$team_event)
     }
   )
+  
+  output$event_team_select <- renderUI(
+    {
+      selectInput("event_team", NULL,
+                  choices = event_team_list(input$event, input$division),
+                  width = "100%")
+    }
+  )
+  
+  output$event_team_roster <- renderDT({
+    req(input$event_team)
+    
+    event_roster_dt(input$event_team, input$event)
+  })
+  
   
   output$team_connection <- renderSimpleNetwork(
     {
