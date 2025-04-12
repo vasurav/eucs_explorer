@@ -130,10 +130,6 @@ team_nav_panel <-
       ),
     navset_card_tab(
       full_screen = T,
-      # nav_panel(
-      #   title = games_tooltip(),
-      #   DTOutput("team_games_table")
-      # ),
       nav_panel(
         "Roster",
         layout_column_wrap(
@@ -144,6 +140,10 @@ team_nav_panel <-
                uiOutput("team_event_select"),
                DTOutput("team_event_roster"))
         )
+      ),
+      nav_panel(
+        title = games_tooltip(),
+        DTOutput("team_games_table")
       ),
       nav_panel(
         "Plot",
