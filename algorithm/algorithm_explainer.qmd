@@ -1,9 +1,9 @@
 ## Algorithm Purpose
 
-The purpose of the algorithm is to rank teams and qualify them for the EUCF. The top N teams in the ranking (aside from Wildcard teams) at the end of the season qualify for the EUCF where N is 16 - the number of Wildcard bids awarded in each division. In 2024, Wildcard bids are awarded to the Elite Invite winner and the winners of the Summer Tour events in August. The number of wildcard bids for each division in 2024 are:
+The purpose of the algorithm is to rank teams and qualify them for the EUCF. The top N teams in the ranking (aside from Wildcard teams) at the end of the season qualify for the EUCF where N is 16 - the number of Wildcard bids awarded in each division. In 2025, Wildcard bids are awarded to the Elite Invite winner and the winners of the Summer Tour events in August. The number of wildcard bids for each division in 2025 are:
 
 1. Mixed: 4 Wildcards (3 Summer Tours and Elite Invite)
-1. Women: 4 Wildcards (3 Summer Tours and Elite Invite)
+1. Women: 3 Wildcards (2 Summer Tours and Elite Invite)
 1. Open: 6 Wildcards (5 Summer Tours and Elite Invite)
 
 ## Short Explanation
@@ -17,7 +17,7 @@ This explanation is based on these sources:
 
 There are two major differences in the EUCS implementation of the USAU algorithm.
 
-1.  USAU includes a recency bias, which weighs games at the end of the season more than games at the beginning of the season. In the EUCS implementation, weighting does not consider recency, so games are weighed equally regardless of when they occur.
+1.  USAU includes a recency bias, which weighs games at the end of the season more than games at the beginning of the season. In the EUCS implementation, all games are counted the same, except for Summer Tour games which are weighed 1.25 times higher than other games.
 1.  USAU starts everyone with a rating of 1000, so scores are typically between 0 and 2000. In the EUCS implementation everyone starts with a score of 0, so typical scores are between -1000 and 1000. If you want an equivalent USAU rating, add 1000 to the rating here.
 
 ## Long Explanation
@@ -48,6 +48,8 @@ As an example if you beat a team with a rating of 302 with a score of 15-14, you
 
 ### Game Weight
 
+#### Weighting from Scoring
+
 Low scoring games are considered to be less representative than full games to 15. So games where the score doesn't reach a high value (usually due to extreme weather conditions) are weighed less.
 
 The weight function is given below:
@@ -57,6 +59,17 @@ $$\min{\left( 1, \sqrt{\frac{W + \max{\left( L, \left| \left(W-1 \right)/2 \righ
 1. All games where the winning team scores at least 13 are counted fully.
 1. Games that reach a minimum combined score of 19 points are counted fully
 1. Other games are weighted less
+
+#### Other Weights
+
+The following weights are also applied to games:
+
+1. Summer Tour game weights multiplied by a factor of 1.25
+1. Single Game weights are multiplied by a factor of 0.75
+
+Summer Tour games are weighted slightly higher because they are at the very end of the season and represent a team strength at the EUCF more closely than other games. This weighting is also there to encourage teams to play summer tour, though it is not required.
+
+Single games are sometimes necessary for teams to get to their 10 required games. However, these games are played in very different conditions than other games. Therefore they are weighed slightly less than tournament games.
 
 ### Iterative Calculation
 
@@ -70,11 +83,17 @@ Yes this is true, to deal with this there is a blowout rule. blowout games are n
 
 1. The winning team has a rating of 600 or more points higher than the losing team.
 1. The winning team wins by ***more than*** twice the score of the losing team + 1.
-1. The winning team has at least 5 other results where results are not being ignored. 
+1. The winning team has at least 7 other results where results are not being ignored. 
 
 *Note: If removing multiple games would bring the winning team below 5 games (for example, 5 blowout eligible wins in 8 total games), then the first games removed are the ones that hurt the winning team the most.*
 
-### Source Code
+## Changelog
+
+### 2025
+1. Game weights of 1.25 for Summer Tour and 0.75 for Single Games were added.
+1. The number of games required to be counted before blowouts start taking effect was raised from 5 to 7.
+
+## Source Code
 
 To be completely transparent, the source code for the ranking calculation is given below:
 
