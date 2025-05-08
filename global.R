@@ -88,6 +88,9 @@ wildcard_data <- tbl(pool, "euf_ranking_wildcards") %>%
   as.data.table()
 summary_data <- tbl(pool, "euf_ranking_summary")
 
+# game_data <- tbl(pool, "test_games")
+# summary_data <- tbl(pool, "test_summary")
+
 champ_events <- tbl(pool,"euf_events")
 bids <- tbl(pool,"euf_bids")
 
