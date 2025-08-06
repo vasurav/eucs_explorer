@@ -72,8 +72,10 @@ function(input, output, session) {
   }
   
   add_wildcard_to_summary <- function(df) {
-    df %>% left_join(wildcard_data %>% 
-                       filter(Wildcard_Date < input$ranking_date), 
+    df %>% left_join(wildcard_data %>%
+                       filter(Wildcard_Date < input$ranking_date) %>%
+                       group_by(Team, Division, Season) %>%
+                       summarize(Wildcard_Event = paste(Wildcard_Event, collapse = ", "), .groups = 'drop'),
                      by=c("Team", "Division", "Season")) %>% 
       mutate(Wildcard = !is.na(Wildcard_Event)) %>% 
       add_ranking_no_wildcard
@@ -342,7 +344,8 @@ function(input, output, session) {
   })
   
   wildcard_events <- reactive({
-    wildcard_data %>% pull(Wildcard_Event)
+    # wildcard_data %>% pull(Wildcard_Event)
+    summary_data_filtered_eligible() %>% pull(Wildcard_Event)
   })
   
   output$season_games_table <- renderDT({
