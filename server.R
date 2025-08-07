@@ -13,6 +13,14 @@ function(input, output, session) {
     updateCheckboxInput(session, "eligible_only", value=end_of_season_bool())
   })
   
+  observeEvent(input$season, {
+    updateSelectInput(session,"ranking_date", choices = game_data %>% 
+                        filter(Season == input$season) %>% 
+                        pull(Ranking_Calculation_Date) %>% 
+                        unique %>% 
+                        sort(decreasing=T))
+  })
+  
   
   # Sidebar UI
   output$select_ranking_date <- renderUI({
@@ -54,6 +62,7 @@ function(input, output, session) {
   })
   
   summary_data_filtered_eligible <- reactive({
+    req(input$ranking_date)
     summary_data_filtered() %>% 
       filter(
         # if(input$eligible_only == ">10 Games Only")
@@ -71,11 +80,20 @@ function(input, output, session) {
                   Ranking_Calculation_Date == input$ranking_date)
   }
   
+  wildcard_data_filtered <- reactive({
+    req(input$season, input$ranking_date)
+    wildcard_data %>%
+      filter(Season == input$season,
+             Wildcard_Date < input$ranking_date) %>%
+      group_by(Team, Division, Season) %>%
+      summarize(Wildcard_Event = paste(Wildcard_Event, collapse = ", "), 
+                Wildcard_Date = min(Wildcard_Date),
+                                    .groups = 'drop')
+  })
+  
+  
   add_wildcard_to_summary <- function(df) {
-    df %>% left_join(wildcard_data %>%
-                       filter(Wildcard_Date < input$ranking_date) %>%
-                       group_by(Team, Division, Season) %>%
-                       summarize(Wildcard_Event = paste(Wildcard_Event, collapse = ", "), .groups = 'drop'),
+    df %>% left_join(wildcard_data_filtered(),
                      by=c("Team", "Division", "Season")) %>% 
       mutate(Wildcard = !is.na(Wildcard_Event)) %>% 
       add_ranking_no_wildcard
@@ -102,6 +120,7 @@ function(input, output, session) {
   })
   
   wildcard_teams <- reactive({
+    req(input$season, input$ranking_date)
     summary_data_filtered_eligible() %>% 
       filter(!is.na(Wildcard_Event)) %>% 
       nrow
@@ -284,7 +303,7 @@ function(input, output, session) {
   }
   
   output$season_ranking_table <- renderDT({
-    req(input$ranking_date)
+    req(input$ranking_date, input$season)
     summary_data_filtered_eligible() %>% 
       arrange(Ranking) %>% 
       mutate(Wildcard = if_else(Wildcard, Wildcard_Event, "")) %>% 
@@ -304,54 +323,55 @@ function(input, output, session) {
         'Ranking_No_Wildcard',
         target='row',
         backgroundColor = styleEqual(1:(eucf2_ranking_spots_likely()), color_eucf_likely_light)
-      ) %>% 
+      ) %>%
       formatStyle(
         'Ranking_No_Wildcard',
         target='row',
         backgroundColor = styleEqual(1:(eucf2_ranking_spots_guaranteed()), if_else(end_of_season_bool(), color_eucf2_dark, color_eucf2_light))
-      ) %>% 
+      ) %>%
       formatStyle(
         'Ranking_No_Wildcard',
         target='row',
         backgroundColor = styleEqual(1:(eucf_ranking_spots_likely()), color_eucf_likely_light)
-      ) %>% 
+      ) %>%
       formatStyle(
         'Ranking_No_Wildcard',
         target='row',
         backgroundColor = styleEqual(1:(eucf_ranking_spots_guaranteed()), if_else(end_of_season_bool(), color_eucf_guaranteed_dark, color_eucf_guaranteed_light))
-      ) %>% 
+      ) %>%
       #Format the color of the Row Header in the table
       formatStyle(
         'Ranking',
         'Ranking_No_Wildcard',
         backgroundColor = styleEqual(1:(eucf2_ranking_spots_likely()), color_eucf_likely_dark)
-      ) %>% 
+      ) %>%
       formatStyle(
         'Ranking',
         'Ranking_No_Wildcard',
         backgroundColor = styleEqual(1:(eucf2_ranking_spots_guaranteed()), color_eucf2_dark)
-      ) %>% 
+      ) %>%
       formatStyle(
         'Ranking',
         'Ranking_No_Wildcard',
         backgroundColor = styleEqual(1:(eucf_ranking_spots_likely()), color_eucf_likely_dark)
-      ) %>% 
+      ) %>%
       formatStyle(
         'Ranking',
         'Ranking_No_Wildcard',
         backgroundColor = styleEqual(1:(eucf_ranking_spots_guaranteed()), color_eucf_guaranteed_dark)
-      ) %>% 
+      ) %>%
       #Format Wildcards
       formatStyle(
         'Wildcard',
         target='row',
         backgroundColor = styleEqual(wildcard_events(), color_primary_light)
-      ) 
+      )
   })
   
   wildcard_events <- reactive({
-    # wildcard_data %>% pull(Wildcard_Event)
-    summary_data_filtered_eligible() %>% pull(Wildcard_Event)
+    req(input$ranking_date, input$season)
+    #wildcard_data %>% pull(Wildcard_Event)
+    wildcard_data_collapsed %>% pull(Wildcard_Event)
   })
   
   output$season_games_table <- renderDT({

@@ -86,6 +86,13 @@ end_of_season_data <- tbl(pool, "euf_ranking_eos") %>%
 game_data <- tbl(pool, "euf_ranking_games")
 wildcard_data <- tbl(pool, "euf_ranking_wildcards") %>% 
   as.data.table()
+
+wildcard_data_collapsed <- 
+  wildcard_data %>% 
+  group_by(Team, Division, Season) %>%
+  summarize(Wildcard_Event = paste(Wildcard_Event, collapse = ", "), 
+            Wildcard_Date = min(Wildcard_Date),
+            .groups = 'drop')
 summary_data <- tbl(pool, "euf_ranking_summary")
 
 # game_data <- tbl(pool, "test_games")
