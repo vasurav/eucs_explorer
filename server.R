@@ -101,6 +101,12 @@ function(input, output, session) {
       nrow
   })
   
+  wildcard_teams <- reactive({
+    summary_data_filtered_eligible() %>% 
+      filter(!is.na(Wildcard_Event)) %>% 
+      nrow
+  })
+  
   bid_row <- function(lvl = 1)
   {
     bids %>% 
@@ -125,11 +131,11 @@ function(input, output, session) {
   })
   
   eucf_ranking_spots_guaranteed <- reactive({
-    eucf_bids() - eucf_wildcards() + if_else(input$eligible_only & end_of_season_bool(), ineligible_wildcards(), 0)
+    eucf_bids() - eucf_wildcards() + (wildcards_awarded() - wildcard_teams()) + if_else(input$eligible_only & end_of_season_bool(), ineligible_wildcards(), 0)
   })
   
   eucf_ranking_spots_likely <- reactive({
-    eucf_bids() - wildcards_awarded() + if_else(input$eligible_only & !end_of_season_bool(), ineligible_wildcards(), 0)
+    eucf_bids() - wildcard_teams() + if_else(input$eligible_only & !end_of_season_bool(), ineligible_wildcards(), 0)
   })
   
   eucf2_ranking_spots_guaranteed <- reactive({
