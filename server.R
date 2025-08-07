@@ -153,7 +153,7 @@ function(input, output, session) {
   })
   
   ineligible_wildcards <- reactive({
-    wildcards_awarded() - eligible_wildcards()
+    wildcard_teams() - eligible_wildcards()
   })
   
   # Formatting Functions
