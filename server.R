@@ -383,11 +383,12 @@ function(input, output, session) {
                                                 flag_and_link, 
                                                 division = input$division, left_side=F))) %>%
       mutate(Game_Rating_Diff = Game_Rank_Diff_USAU %>% round(2),
-             Team_Rating_Diff = Team_Rank_Diff_USAU %>% round(2)) %>% 
+             Team_Rating_Diff = Team_Rank_Diff_USAU %>% round(2),
+             Weight = Game_Wght_USAU %>% round(2)) %>% 
       mutate(Counted = ifelse(Is_Ignored_USAU, "No", "Yes")) %>% 
       select(Game, Tournament, Date, 
              Game_Rating_Diff,
-             Team_Rating_Diff, Counted) %>% 
+             Team_Rating_Diff, Weight, Counted) %>% 
       format_DT %>% 
       format_blowout_games()
   })
@@ -437,11 +438,13 @@ function(input, output, session) {
              Score             = paste0(Score_Team, " - ", Score_Opponent),
              Result            = case_when(Score_Team > Score_Opponent ~ "Win", 
                                            Score_Team < Score_Opponent ~ "Loss",
-                                           Score_Team == Score_Opponent ~ "Draw")) %>% 
+                                           Score_Team == Score_Opponent ~ "Draw"),
+             Weight = Game_Wght_USAU %>% round(2)) %>% 
       left_join(summary_data_filtered() %>% 
                   select(Team, Rating_USAU),
                 by = c("Opponent"="Team")) %>% 
       rename(Opponent_Rating = Rating_USAU) %>% 
+      mutate(Opponent_Rating = Opponent_Rating %>% round(2)) %>% 
       mutate(Game_Rating = ifelse(Result == "Win", 
                                   Opponent_Rating + Game_Rank_Diff_USAU, 
                                   Opponent_Rating - Game_Rank_Diff_USAU) %>% 
@@ -570,7 +573,7 @@ function(input, output, session) {
   output$team_games_table <- renderDT({
     req(input$team)
     team_summary_data() %>% 
-      select(Opponent, Result, Score, Game_Rating, Opponent_Rating, Tournament, Date,  Counted) %>% 
+      select(Opponent, Result, Score, Game_Rating, Weight, Opponent_Rating, Tournament, Date,  Counted) %>% 
       arrange(desc(Date)) %>% 
       mutate(Opponent = sapply(Opponent, flag_and_link, division = input$division)) %>% 
       format_DT %>% format_blowout_games
@@ -845,7 +848,7 @@ function(input, output, session) {
       mutate(common = Opponent %in% common_opponents) %>% 
       filter(Opponent %in% common_opponents | !input$matchup_mutual_only) %>% 
       arrange(desc(common), Opponent) %>% 
-      select(Opponent, Result, Score, Game_Rating, Tournament, Counted) %>% 
+      select(Opponent, Result, Score, Game_Rating, Weight, Tournament, Counted) %>% 
       mutate(Opponent = sapply(Opponent, flag_and_link, division = division)) %>% 
       format_DT(options = DT_options(searching = F)) %>% 
       format_blowout_games
