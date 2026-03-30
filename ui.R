@@ -64,7 +64,7 @@ function(reqest){
                     choices = c("Mixed", "Open", "Women"), selected = "Mixed"),
         selectInput(inputId = "season",
                     label = "Season:",
-                    choices = c(2025, 2024),
+                    choices = c(2026, 2025, 2024),
                     selected = 2025),
                     # choices = game_data %>% pull(Season) %>% unique %>% sort(decreasing=T),
                     # selected = game_data %>% pull(Season) %>% unique %>% max),

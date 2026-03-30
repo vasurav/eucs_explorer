@@ -462,7 +462,7 @@ function(input, output, session) {
     selectInput("team", label = NULL, width="100%",
                 choices = 
                   teams_data %>%
-                  filter(division_name == input$division) %>% 
+                  filter(division_name == input$division, season == input$season) %>% 
                   pull(team_name) %>% unique() %>% sort(),
                   # summary_data %>%
                   # filter(Division == input$division,

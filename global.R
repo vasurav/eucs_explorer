@@ -26,7 +26,7 @@ enableBookmarking("url")
 # Read Data
 
 # Old Code used to read data locally - could be used to debug things
-# data_path <- "data/"
+data_path <- "data/"
 # game_data <- read_all_game_data(data_path)
 # summary_data <- read_all_summary_data(data_path)
 
@@ -60,25 +60,42 @@ events_2025 <- tbl(pool, "rostering_events_2025") %>%
 event_teams_2025 <- tbl(pool, "rostering_event_teams_2025") %>% 
   mutate(season = 2025)
 
+# get 2026 data to add later
+teams_data_2026 <- tbl(pool, "rostering_master_teams_2026") %>% 
+  mutate(season = 2026)
+master_roster_2026 <- tbl(pool, "rostering_master_rosters_2026") %>% 
+  mutate(season = 2026)
+event_roster_2026 <- tbl(pool, "rostering_event_rosters_2026") %>% 
+  mutate(season = 2026)
+events_2026 <- tbl(pool, "rostering_events_2026") %>% 
+  mutate(season = 2026)
+event_teams_2026 <- tbl(pool, "rostering_event_teams_2026") %>% 
+  mutate(season = 2026)
+
 
 # get 2024 data and append 2025 data to it - this should be replaced later when backend is fixed
-teams_data <- tbl(pool, "rostering_master_teams") %>% 
-  mutate(season = 2024) %>% 
-  union_all(teams_data_2025) %>% 
-  as.data.table %>% 
+teams_data <- tbl(pool, "rostering_master_teams") %>%
+  mutate(season = 2024) %>%
+  union_all(teams_data_2025) %>%
+  union_all(teams_data_2026) %>% 
+  as.data.table %>%
   mutate(iso2c = countrycode(country_ioc, "ioc", "iso2c"))
 master_roster <- tbl(pool, "rostering_master_rosters")  %>% 
   mutate(season = 2024) %>% 
-  union_all(master_roster_2025)
-event_teams <- tbl(pool, "rostering_event_teams")%>% 
+  union_all(master_roster_2025) %>% 
+  union_all(master_roster_2026)
+event_teams <- tbl(pool, "rostering_event_teams") %>% 
   mutate(season = 2024) %>% 
-  union_all(event_teams_2025)
+  union_all(event_teams_2025) %>% 
+  union_all(event_teams_2026)
 event_roster <- tbl(pool, "rostering_event_rosters") %>% 
   mutate(season = 2024) %>% 
-  union_all(event_roster_2025)
+  union_all(event_roster_2025) %>% 
+  union_all(event_roster_2026)
 events <- tbl(pool, "rostering_events") %>% 
   mutate(season = 2024) %>% 
-  union_all(events_2025)
+  union_all(events_2025) %>% 
+  union_all(events_2026)
 
 # get ranking data - this data already has a season column so no appending necessary
 end_of_season_data <- tbl(pool, "euf_ranking_eos") %>% 
