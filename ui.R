@@ -66,7 +66,7 @@ function(reqest){
         selectInput(inputId = "season",
                     label = "Season:",
                     choices = c(2026, 2025, 2024),
-                    selected = 2025),
+                    selected = 2026),
                     # choices = game_data %>% pull(Season) %>% unique %>% sort(decreasing=T),
                     # selected = game_data %>% pull(Season) %>% unique %>% max),
         uiOutput("select_ranking_date"),
