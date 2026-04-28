@@ -48,7 +48,8 @@ function(reqest){
           "nav-link-hover-color" = "#fc0 !important",
           base_font = font_face(family = "Bebas Neue",
                                 src = "url('/fonts/BebasNeue-Regular.ttf') format('truetype')")
-        ),
+        ) %>% 
+        bs_add_rules(".navbar-nav .nav-link.active { color: #fff !important; }"),
       # Title
       title=img(
         src = "European_Ultimate_Federation_EUF_Logo.png",
