@@ -78,7 +78,7 @@ function(reqest){
         checkboxInput(inputId = "eligible_only",
                       label = tooltip(trigger = list("Eligible Teams Only?",
                                                      bs_icon("info-circle")),
-                                      "Only teams with 10 games or more are eligible to qualify for the EUCF. However, by default, in mid-season rankings, all teams are shown in the ranking here.",
+                                      "Only teams with 10 games or more are eligible to qualify for the EUCF. However, by default, in mid-season rankings, all teams are shown in the ranking here. There are some exceptions to this, such as if a Tournament was partially or totally cancelled. Some teams with exceptions like this will show up in the end of season rankings.",
                       value = F))
       ),
     
