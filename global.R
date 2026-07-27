@@ -104,6 +104,9 @@ game_data <- tbl(pool, "euf_ranking_games")
 wildcard_data <- tbl(pool, "euf_ranking_wildcards") %>% 
   as.data.table()
 
+exceptions_table <- tbl(pool,"euf_10_game_exceptions") %>% 
+  as.data.table()
+
 wildcard_data_collapsed <- 
   wildcard_data %>% 
   group_by(Team, Division, Season) %>%

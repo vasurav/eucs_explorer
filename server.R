@@ -61,13 +61,20 @@ function(input, output, session) {
       add_wildcard_to_summary
   })
   
+  eligible_exceptions <- reactive({
+    exceptions_table %>% 
+      filter(Division == input$division,
+             Season == input$season) %>% 
+      pull(Team)
+  })
+  
   summary_data_filtered_eligible <- reactive({
     req(input$ranking_date)
     summary_data_filtered() %>% 
       filter(
         # if(input$eligible_only == ">10 Games Only")
         if(input$eligible_only) 
-          Games >= 10 
+          Games >= 10 | (Team %in% eligible_exceptions() & end_of_season_bool())
         else T
       ) %>% 
       mutate(Ranking = rank(-Rating_USAU)) %>% 
